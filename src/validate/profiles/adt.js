@@ -1,6 +1,7 @@
-/** ADT profiles: A08, A31, A40. */
+/** ADT profiles: A01, A03, A04, A08, A31, A40. */
 import { fielder, comp, reps } from "hl7v2-core";
 import { checkEvn, checkPid, checkPv1, firstSeg, segLines, hasSeg } from "../common.js";
+import { checkTableCode } from "../report.js";
 
 /** EVN + PID + PV1 checks shared by the visit-level events. Returns the PV1 accessor (or null). */
 function visitCore(ctx, r, event, structure) {
@@ -20,6 +21,49 @@ function noMrg(ctx, r, event) {
   if (hasSeg(ctx, "MRG")) {
     r.err("MRG", `MRG must not appear in ADT^${event}. Merging identities is ADT^A40 (ADT_A39 structure); an ADT^${event} carrying MRG will be ignored or misapplied.`);
   }
+}
+
+export function validateADT_A01(ctx, r) {
+  const v = visitCore(ctx, r, "A01", "ADT_A01");
+  if (v) {
+    const cls = v(2).trim().toUpperCase();
+    if (cls === "O" || cls === "P") {
+      r.warn("PV1-2", `Patient Class '${v(2)}' on an A01. v2.5.1 §3.3.1 intends A01 for admitted patients only; an outpatient or pre-admit visit is A04 (register) or A05 (pre-admit).`);
+    }
+    if (!v(3)) r.warn("PV1-3", "No Assigned Patient Location. An admission (A01) assigns the patient to a bed; receivers such as bed boards and RIS worklists key on PV1-3.");
+    if (!v(19)) r.warn("PV1-19", "No Visit Number. Later A02/A03/A08 messages for this stay need PV1-19 to find the right encounter.");
+    if (!v(44)) r.warn("PV1-44", "No Admit Date/Time. An A01 records an admission; PV1-44 is where receivers read when it happened.");
+    if (v(45)) r.warn("PV1-45", "Discharge Date/Time is populated on an admission. If the patient has left, send A03.");
+  }
+  noMrg(ctx, r, "A01");
+  r.note("ADT^A01", "A01 is for admitted (inpatient) encounters. Outpatient and emergency check-ins are normally A04; a later cancellation is A11, not a second A01.");
+}
+
+export function validateADT_A04(ctx, r) {
+  const v = visitCore(ctx, r, "A04", "ADT_A01");
+  if (v) {
+    const cls = v(2).trim().toUpperCase();
+    if (cls === "I") {
+      r.warn("PV1-2", "Patient Class 'I' (Inpatient) on an A04. v2.5.1 §3.3.4 uses A04 for patients who arrive or check in and are not assigned to a bed; an inpatient admission is A01.");
+    }
+    if (!v(19)) r.warn("PV1-19", "No Visit Number. Orders and results for this visit cannot be tied back to the registration without PV1-19.");
+    if (v(45)) r.warn("PV1-45", "Discharge Date/Time is populated on a registration. Ending the visit is A03.");
+  }
+  noMrg(ctx, r, "A04");
+  r.note("ADT^A04", "A04 registers an outpatient or emergency visit and shares the ADT_A01 structure. A later cancellation is A11.");
+}
+
+export function validateADT_A03(ctx, r) {
+  const v = visitCore(ctx, r, "A03", "ADT_A03");
+  if (v) {
+    if (!v(45)) {
+      r.warn("PV1-45", "No Discharge Date/Time. v2.5.1 §3.3.3 says an A03 signals that the patient's status has changed to discharged and a discharge date has been recorded; receivers read it from PV1-45.");
+    }
+    if (!v(19)) r.warn("PV1-19", "No Visit Number. The receiver cannot tell which open encounter to close without PV1-19.");
+    if (v(36)) checkTableCode(r, "PV1-36", "0112", v(36), { severity: "warning" });
+  }
+  noMrg(ctx, r, "A03");
+  r.note("ADT^A03", "A03 ends the visit. Undoing a discharge sent in error is A13 (cancel discharge), not an A08.");
 }
 
 export function validateADT_A08(ctx, r) {

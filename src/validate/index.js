@@ -5,16 +5,22 @@
 import { dissect, fielder, comp, getEvent, getSegment } from "hl7v2-core";
 import { makeReport, checkTs, checkTableCode } from "./report.js";
 import { firstSeg } from "./common.js";
-import { validateORM } from "./profiles/orders.js";
+import { validateORM, validateOMI } from "./profiles/orders.js";
 import { validateORU } from "./profiles/results.js";
-import { validateADT_A08, validateADT_A31, validateADT_A40 } from "./profiles/adt.js";
+import { validateADT_A01, validateADT_A03, validateADT_A04, validateADT_A08, validateADT_A31, validateADT_A40 } from "./profiles/adt.js";
+import { validateSIU_S12 } from "./profiles/scheduling.js";
 
 export const PROFILES = {
+  "ADT^A01": { label: "Admit/Visit Notification", fn: validateADT_A01 },
+  "ADT^A03": { label: "Discharge/End Visit", fn: validateADT_A03 },
+  "ADT^A04": { label: "Register a Patient", fn: validateADT_A04 },
   "ADT^A08": { label: "Update Patient Information", fn: validateADT_A08 },
   "ADT^A31": { label: "Update Person Information", fn: validateADT_A31 },
   "ADT^A40": { label: "Merge Patient — Patient Identifier List", fn: validateADT_A40 },
+  "OMI^O23": { label: "Imaging Order", fn: validateOMI },
   "ORM^O01": { label: "Order Message", fn: validateORM },
   "ORU^R01": { label: "Unsolicited Observation Result", fn: validateORU },
+  "SIU^S12": { label: "Notification of New Appointment Booking", fn: validateSIU_S12 },
 };
 
 export function validateMessage(message) {
