@@ -56,7 +56,7 @@ export function checkTableCode(r, loc, tableId, value, { severity = "error", str
   const v = String(value ?? "").trim();
   if (!v) return true;
   const t = getTable(tableId);
-  if (!t) return true;
+  if (!t || t.values.length === 0) return true; // nothing published to check against (typically a User table)
   const label = `table ${t.id}${t.name ? ` ${t.name}` : ""}`;
   const valid = listValid(t.id);
   const validText = valid.length ? ` Valid v2.5.1 values: ${valid.join(", ")}.` : "";
