@@ -1,0 +1,49 @@
+{
+ "standard": "HL7 v2.5.1",
+ "generator": "core/scripts/generate.mjs",
+ "sources": {
+  "hapi": {
+   "artifact": "ca.uhn.hapi:hapi-structures-v251:2.5.1 (+ hapi-base:2.5.1 primitives)",
+   "licence": "MPL-1.1 OR GPL (dual)",
+   "url": "https://repo1.maven.org/maven2/ca/uhn/hapi/hapi-structures-v251/2.5.1/hapi-structures-v251-2.5.1-sources.jar"
+  },
+  "tho": {
+   "package": "hl7.terminology.r4#7.4.0",
+   "licence": "CC0-1.0",
+   "url": "https://packages.fhir.org/hl7.terminology.r4/7.4.0"
+  },
+  "stu3": {
+   "package": "hl7.fhir.r3.core#3.0.2 v2 table pages (Version column)",
+   "licence": "CC0-1.0 (FHIR licence)",
+   "url": "https://hl7.org/fhir/STU3/v2/",
+   "tables": 422
+  },
+  "fetched": "2026-10-20T03:51:44.836Z"
+ },
+ "counts": {
+  "segments": 149,
+  "zSegments": 1,
+  "fields": 2078,
+  "fieldsWithCuratedDescription": 210,
+  "withdrawnFields": 1,
+  "overriddenFields": 5,
+  "datatypes": 89,
+  "compositeDatatypes": 78,
+  "structures": 200,
+  "structuresVerifiedInTable0354": 190,
+  "events": 349,
+  "eventsVerifiedInTable0003": 319,
+  "table_tables": 498,
+  "table_codes": 5955,
+  "table_valid": 4402,
+  "table_notIn251": 1015,
+  "table_unverified": 538,
+  "table_tablesWithoutValues": 153,
+  "tablesBoundToFields": 261,
+  "thoWhereUsedBindings": {
+   "fields": 208,
+   "components": 15,
+   "ambiguous": 6
+  }
+ }
+}

@@ -1,0 +1,1009 @@
+{
+  "ADT^A01": {
+    "description": "Admit/Visit Notification — patient is admitted to the facility",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "NK1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "DB1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "AL1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DG1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DRG",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "PR1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "GT1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "IN1",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "Used for inpatient admissions and emergency visit starts. Triggers the creation of a patient account in downstream systems."
+  },
+  "ADT^A02": {
+    "description": "Transfer a Patient — patient transferred to a different location within the facility",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "DB1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "PV1-3 contains new location; PV1-6 contains prior location."
+  },
+  "ADT^A03": {
+    "description": "Discharge/End Visit — patient is discharged from the facility",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "DB1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DG1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DRG",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "PR1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "PV1-45 contains the discharge date/time. PV1-36 contains the discharge disposition code."
+  },
+  "ADT^A04": {
+    "description": "Register a Patient — patient registered as outpatient",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "NK1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "DB1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "AL1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DG1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "IN1",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "Same structure as A01 but for outpatient registration. PV1-2 should be O (Outpatient)."
+  },
+  "ADT^A05": {
+    "description": "Pre-Admit a Patient — patient pre-admitted, no actual physical arrival yet",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "NK1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "DB1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "AL1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DG1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "IN1",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "PV1-2 should be P (Preadmit). Triggers worklist preparation."
+  },
+  "ADT^A08": {
+    "description": "Update Patient Information — demographics or other patient info changed",
+    "messageStructure": "ADT_A01",
+    "notes2": "A08 shares the ADT_A01 structure. It is a VISIT-level update: PV1 is required by the abstract syntax. Use A08 to correct demographics on an existing encounter; use A31 for person-level changes with no encounter context.",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "NK1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "DB1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "AL1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DG1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "IN1",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "Downstream systems (PACS) must update existing patient records. Critical for name corrections."
+  },
+  "ADT^A11": {
+    "description": "Cancel Admit/Visit Notification — cancels a previously sent A01",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "DB1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "Cancels the admission. EVN-5 contains the original event date/time."
+  },
+  "ADT^A13": {
+    "description": "Cancel Discharge/End Visit — cancels a previously sent A03",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "DB1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DG1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "Reinstates the visit cancelled by A03."
+  },
+  "ADT^A28": {
+    "description": "Add Person Information — adds a new person to the MPI without an associated visit",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "NK1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "IN1",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "Person-level event — no encounter. Often used to pre-populate the MPI."
+  },
+  "ADT^A31": {
+    "description": "Update Person Information — updates person-level data without a visit",
+    "messageStructure": "ADT_A05",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "SFT",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "ROL",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "NK1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PV1",
+        "req": "R",
+        "rpt": 1,
+        "note": "Required by the ADT_A05 abstract syntax even though A31 is person-level; usually sent minimally populated"
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "DB1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "AL1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DG1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "IN1",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "A31 shares the ADT_A05 structure. PERSON-level update — it changes the master person record, not an encounter. PV1 is structurally required but carries no meaningful visit; populating PV1-19 Visit Number on an A31 is a common source of confusion downstream. Use A08 when the change is scoped to a visit."
+  },
+  "ADT^A40": {
+    "description": "Merge Patient — Patient Identifier List — merges two patient identities into one",
+    "messageStructure": "ADT_A39",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "SFT",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "EVN",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1,
+        "group": "PATIENT (repeating)"
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT (repeating)"
+      },
+      {
+        "seg": "MRG",
+        "req": "R",
+        "rpt": 1,
+        "group": "PATIENT (repeating)"
+      },
+      {
+        "seg": "PV1",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT (repeating)"
+      }
+    ],
+    "notes": "A40 uses the ADT_A39 structure: MSH [SFT] EVN { PID [PD1] MRG [PV1] }. The PATIENT group REPEATS, so one A40 can carry several merges — each PID must be paired with its own MRG. PID-3 holds the surviving (winning) identifier; MRG-1 holds the prior (losing) identifier being retired. PACS must re-key all studies from MRG-1 onto PID-3. The assigning authority (component 4) of PID-3 and MRG-1 should match; a merge across two different authorities is almost always a build error."
+  },
+  "ORM^O01": {
+    "description": "Order Message — transmits orders from an order-placing application to an order-filling application",
+    "messageStructure": "ORM_O01",
+    "abstractSyntax": "MSH [{NTE}] [ PID [PD1] [{NTE}] [PV1 [PV2]] [{IN1 [IN2] [IN3]}] [GT1] [{AL1}] ] { ORC [ OBR | RQD | RQ1 | RXO | ODS | ODT ] [{NTE}] [CTD] [{DG1}] [{ OBX [{NTE}] }] [{FT1}] [{CTI}] [BLG] }",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PID",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT (optional as a whole)"
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT"
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞",
+        "group": "PATIENT"
+      },
+      {
+        "seg": "PV1",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT_VISIT"
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT_VISIT"
+      },
+      {
+        "seg": "IN1",
+        "req": "O",
+        "rpt": "∞",
+        "group": "INSURANCE"
+      },
+      {
+        "seg": "GT1",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT"
+      },
+      {
+        "seg": "AL1",
+        "req": "O",
+        "rpt": "∞",
+        "group": "PATIENT"
+      },
+      {
+        "seg": "ORC",
+        "req": "R",
+        "rpt": 1,
+        "group": "ORDER (repeating)"
+      },
+      {
+        "seg": "OBR",
+        "req": "C",
+        "rpt": 1,
+        "group": "ORDER_DETAIL — choice of OBR | RQD | RQ1 | RXO | ODS | ODT"
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞",
+        "group": "ORDER_DETAIL"
+      },
+      {
+        "seg": "CTD",
+        "req": "O",
+        "rpt": 1,
+        "group": "ORDER_DETAIL"
+      },
+      {
+        "seg": "DG1",
+        "req": "O",
+        "rpt": "∞",
+        "group": "ORDER_DETAIL"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞",
+        "group": "OBSERVATION"
+      },
+      {
+        "seg": "ZDS",
+        "req": "O",
+        "rpt": 1,
+        "group": "ORDER — IHE RAD extension, not part of base HL7 v2.5.1",
+        "note": "Carries the DICOM Study Instance UID (IHE RAD-4)"
+      },
+      {
+        "seg": "BLG",
+        "req": "O",
+        "rpt": 1,
+        "group": "ORDER"
+      }
+    ],
+    "notes": "The ORDER group REPEATS — one ORM can carry many orders, each with its own ORC and order-detail segment. PID is optional in the abstract syntax (the whole PATIENT group is optional) but required by every practical radiology interface. ORC-1 Order Control drives the semantics: NW=New, CA=Cancel, DC=Discontinue, HD=Hold, RL=Release, RP=Replace, SC=Status Change, XO=Change. IHE RAD Scheduled Workflow adds the non-standard ZDS segment to carry the Study Instance UID at RAD-4 Procedure Scheduled."
+  },
+  "ORR^O02": {
+    "description": "Order Response — general response to ORM^O01",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "MSA",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "ERR",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PID",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "ORC",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "OBR",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "MSA-1 values: AA=Application Accept (order processed), AE=Application Error, AR=Application Reject."
+  },
+  "ORU^R01": {
+    "description": "Unsolicited Observation Result — transmits observations and results",
+    "messageStructure": "ORU_R01",
+    "abstractSyntax": "MSH [SFT] { [ PID [PD1] [{NTE}] [{NK1}] [{ PV1 [PV2] }] ] { [ORC] OBR [{NTE}] [{TQ1 [{TQ2}]}] [{ OBX [{NTE}] }] [{FT1}] [{CTI}] } } [DSC]",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "SFT",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PID",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT (optional, inside repeating PATIENT_RESULT)"
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT"
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞",
+        "group": "PATIENT"
+      },
+      {
+        "seg": "NK1",
+        "req": "O",
+        "rpt": "∞",
+        "group": "PATIENT"
+      },
+      {
+        "seg": "PV1",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT/VISIT"
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1,
+        "group": "PATIENT/VISIT"
+      },
+      {
+        "seg": "ORC",
+        "req": "O",
+        "rpt": 1,
+        "group": "ORDER_OBSERVATION (repeating)"
+      },
+      {
+        "seg": "OBR",
+        "req": "R",
+        "rpt": 1,
+        "group": "ORDER_OBSERVATION (repeating)"
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞",
+        "group": "ORDER_OBSERVATION"
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞",
+        "group": "OBSERVATION (repeating)"
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞",
+        "group": "OBSERVATION"
+      },
+      {
+        "seg": "DSC",
+        "req": "O",
+        "rpt": 1
+      }
+    ],
+    "notes": "Two commonly-misstated points: PID is OPTIONAL in the abstract syntax (the PATIENT group is optional inside PATIENT_RESULT) and ORC is OPTIONAL inside ORDER_OBSERVATION — although virtually every real-world radiology and lab interface requires both. Both PATIENT_RESULT and ORDER_OBSERVATION repeat, so one ORU can carry several orders and several patients. OBR-25 Result Status uses table 0123 (P=Preliminary, F=Final, C=Correction); OBX-11 uses the DIFFERENT table 0085. In radiology, ORU^R01 carries the dictated/signed report keyed on the accession number issued at scheduling."
+  },
+  "ACK": {
+    "description": "General Acknowledgment — response to any received message requiring acknowledgment",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "MSA",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "ERR",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "MSA-1: AA=Accept, AE=Error, AR=Reject. MSA-2 echoes the MSH-10 of the original message. ERR-3 provides detailed error codes."
+  },
+  "SIU^S12": {
+    "description": "Notification of New Appointment Booking — new appointment has been booked",
+    "segments": [
+      {
+        "seg": "MSH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "SCH",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "TQ1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "PID",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "PD1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "PV1",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "PV2",
+        "req": "O",
+        "rpt": 1
+      },
+      {
+        "seg": "OBX",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "DG1",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "RGS",
+        "req": "R",
+        "rpt": 1
+      },
+      {
+        "seg": "AIS",
+        "req": "R",
+        "rpt": "∞"
+      },
+      {
+        "seg": "NTE",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "AIL",
+        "req": "O",
+        "rpt": "∞"
+      },
+      {
+        "seg": "AIP",
+        "req": "O",
+        "rpt": "∞"
+      }
+    ],
+    "notes": "Used for scheduling workflow. S12=New, S13=Rescheduled, S14=Modified, S15=Cancelled, S17=Deletion of Appointment."
+  }
+}

@@ -1,0 +1,1028 @@
+{
+  "0001": {
+    "name": "Administrative Sex",
+    "values": [
+      {
+        "code": "A",
+        "desc": "Ambiguous"
+      },
+      {
+        "code": "F",
+        "desc": "Female"
+      },
+      {
+        "code": "M",
+        "desc": "Male"
+      },
+      {
+        "code": "N",
+        "desc": "Not applicable"
+      },
+      {
+        "code": "O",
+        "desc": "Other"
+      },
+      {
+        "code": "U",
+        "desc": "Unknown"
+      }
+    ]
+  },
+  "0003": {
+    "name": "Event Type",
+    "values": [
+      {
+        "code": "A01",
+        "desc": "ADT/ACK - Admit/visit notification"
+      },
+      {
+        "code": "A02",
+        "desc": "ADT/ACK - Transfer a patient"
+      },
+      {
+        "code": "A03",
+        "desc": "ADT/ACK - Discharge/end visit"
+      },
+      {
+        "code": "A04",
+        "desc": "ADT/ACK - Register a patient"
+      },
+      {
+        "code": "A05",
+        "desc": "ADT/ACK - Pre-admit a patient"
+      },
+      {
+        "code": "A06",
+        "desc": "ADT/ACK - Change an outpatient to an inpatient"
+      },
+      {
+        "code": "A07",
+        "desc": "ADT/ACK - Change an inpatient to an outpatient"
+      },
+      {
+        "code": "A08",
+        "desc": "ADT/ACK - Update patient information"
+      },
+      {
+        "code": "A09",
+        "desc": "ADT/ACK - Patient departing - tracking"
+      },
+      {
+        "code": "A10",
+        "desc": "ADT/ACK - Patient arriving - tracking"
+      },
+      {
+        "code": "A11",
+        "desc": "ADT/ACK - Cancel admit/visit notification"
+      },
+      {
+        "code": "A12",
+        "desc": "ADT/ACK - Cancel transfer"
+      },
+      {
+        "code": "A13",
+        "desc": "ADT/ACK - Cancel discharge/end visit"
+      },
+      {
+        "code": "A14",
+        "desc": "ADT/ACK - Pending admit"
+      },
+      {
+        "code": "A15",
+        "desc": "ADT/ACK - Pending transfer"
+      },
+      {
+        "code": "A16",
+        "desc": "ADT/ACK - Pending discharge"
+      },
+      {
+        "code": "A17",
+        "desc": "ADT/ACK - Swap patients"
+      },
+      {
+        "code": "A18",
+        "desc": "ADT/ACK - Merge patient information"
+      },
+      {
+        "code": "A19",
+        "desc": "QRY/ADR - Patient query"
+      },
+      {
+        "code": "A20",
+        "desc": "ADT/ACK - Bed status update"
+      },
+      {
+        "code": "A21",
+        "desc": "ADT/ACK - Patient goes on a leave of absence"
+      },
+      {
+        "code": "A22",
+        "desc": "ADT/ACK - Patient returns from a leave of absence"
+      },
+      {
+        "code": "A23",
+        "desc": "ADT/ACK - Delete a patient record"
+      },
+      {
+        "code": "A24",
+        "desc": "ADT/ACK - Link patient information"
+      },
+      {
+        "code": "A25",
+        "desc": "ADT/ACK - Cancel pending discharge"
+      },
+      {
+        "code": "A26",
+        "desc": "ADT/ACK - Cancel pending transfer"
+      },
+      {
+        "code": "A27",
+        "desc": "ADT/ACK - Cancel pending admit"
+      },
+      {
+        "code": "A28",
+        "desc": "ADT/ACK - Add person or patient information"
+      },
+      {
+        "code": "A29",
+        "desc": "ADT/ACK - Delete person information"
+      },
+      {
+        "code": "A30",
+        "desc": "ADT/ACK - Merge person information"
+      },
+      {
+        "code": "A31",
+        "desc": "ADT/ACK - Update person information"
+      },
+      {
+        "code": "A32",
+        "desc": "ADT/ACK - Cancel patient arriving - tracking"
+      },
+      {
+        "code": "A33",
+        "desc": "ADT/ACK - Cancel patient departing - tracking"
+      },
+      {
+        "code": "A34",
+        "desc": "ADT/ACK - Merge patient information - patient ID only"
+      },
+      {
+        "code": "A35",
+        "desc": "ADT/ACK - Merge patient information - account number only"
+      },
+      {
+        "code": "A36",
+        "desc": "ADT/ACK - Merge patient information - patient ID and account number"
+      },
+      {
+        "code": "A37",
+        "desc": "ADT/ACK - Unlink patient information"
+      },
+      {
+        "code": "A38",
+        "desc": "ADT/ACK - Cancel pre-admit"
+      },
+      {
+        "code": "A39",
+        "desc": "ADT/ACK - Merge person - patient ID"
+      },
+      {
+        "code": "A40",
+        "desc": "ADT/ACK - Merge patient - patient identifier list"
+      },
+      {
+        "code": "A41",
+        "desc": "ADT/ACK - Merge account - patient account number"
+      },
+      {
+        "code": "A42",
+        "desc": "ADT/ACK - Merge visit - visit number"
+      },
+      {
+        "code": "A43",
+        "desc": "ADT/ACK - Move patient information - patient identifier list"
+      },
+      {
+        "code": "A44",
+        "desc": "ADT/ACK - Move account information - patient account number"
+      },
+      {
+        "code": "A45",
+        "desc": "ADT/ACK - Move visit information - visit number"
+      },
+      {
+        "code": "O01",
+        "desc": "ORM - Order message (also ORM^O01)"
+      },
+      {
+        "code": "O02",
+        "desc": "ORR - Order acknowledgment"
+      },
+      {
+        "code": "R01",
+        "desc": "ORU - Unsolicited transmission of an observation message"
+      },
+      {
+        "code": "R02",
+        "desc": "QRY - Query for results of observation"
+      },
+      {
+        "code": "T02",
+        "desc": "MDM - Original document notification and content"
+      },
+      {
+        "code": "T11",
+        "desc": "MDM - Document cancel notification"
+      }
+    ]
+  },
+  "0004": {
+    "name": "Patient Class",
+    "values": [
+      {
+        "code": "B",
+        "desc": "Obstetrics"
+      },
+      {
+        "code": "C",
+        "desc": "Commercial Account"
+      },
+      {
+        "code": "E",
+        "desc": "Emergency"
+      },
+      {
+        "code": "I",
+        "desc": "Inpatient"
+      },
+      {
+        "code": "N",
+        "desc": "Not Applicable"
+      },
+      {
+        "code": "O",
+        "desc": "Outpatient"
+      },
+      {
+        "code": "P",
+        "desc": "Preadmit"
+      },
+      {
+        "code": "R",
+        "desc": "Recurring Patient"
+      },
+      {
+        "code": "U",
+        "desc": "Unknown"
+      }
+    ]
+  },
+  "0007": {
+    "name": "Admission Type",
+    "values": [
+      {
+        "code": "A",
+        "desc": "Accident"
+      },
+      {
+        "code": "C",
+        "desc": "Elective"
+      },
+      {
+        "code": "E",
+        "desc": "Emergency"
+      },
+      {
+        "code": "L",
+        "desc": "Labor and Delivery"
+      },
+      {
+        "code": "N",
+        "desc": "Newborn (birth in healthcare facility)"
+      },
+      {
+        "code": "R",
+        "desc": "Routine"
+      },
+      {
+        "code": "U",
+        "desc": "Urgent"
+      }
+    ]
+  },
+  "0008": {
+    "name": "Acknowledgment Code",
+    "values": [
+      {
+        "code": "AA",
+        "desc": "Original mode: Application Accept - Enhanced mode: Application acknowledgment: Accept"
+      },
+      {
+        "code": "AE",
+        "desc": "Original mode: Application Error - Enhanced mode: Application acknowledgment: Error"
+      },
+      {
+        "code": "AR",
+        "desc": "Original mode: Application Reject - Enhanced mode: Application acknowledgment: Reject"
+      },
+      {
+        "code": "CA",
+        "desc": "Enhanced mode: Accept acknowledgment: Commit Accept"
+      },
+      {
+        "code": "CE",
+        "desc": "Enhanced mode: Accept acknowledgment: Commit Error"
+      },
+      {
+        "code": "CR",
+        "desc": "Enhanced mode: Accept acknowledgment: Commit Reject"
+      }
+    ]
+  },
+  "0074": {
+    "name": "Diagnostic Service Section ID",
+    "values": [
+      {
+        "code": "AU",
+        "desc": "Audiology"
+      },
+      {
+        "code": "BG",
+        "desc": "Blood Gases"
+      },
+      {
+        "code": "BLB",
+        "desc": "Blood Bank"
+      },
+      {
+        "code": "CH",
+        "desc": "Chemistry"
+      },
+      {
+        "code": "CP",
+        "desc": "Cytopathology"
+      },
+      {
+        "code": "CT",
+        "desc": "CAT Scan"
+      },
+      {
+        "code": "CTH",
+        "desc": "Cardiac Catheterization"
+      },
+      {
+        "code": "CUS",
+        "desc": "Cardiac Ultrasound"
+      },
+      {
+        "code": "EC",
+        "desc": "Electrocardiac (EKG/ECG)"
+      },
+      {
+        "code": "EN",
+        "desc": "Electroneuro (EEG/EMG/EP/PSG)"
+      },
+      {
+        "code": "GE",
+        "desc": "Genetics"
+      },
+      {
+        "code": "HM",
+        "desc": "Hematology"
+      },
+      {
+        "code": "ICU",
+        "desc": "Bedside ICU Monitoring"
+      },
+      {
+        "code": "IMG",
+        "desc": "Diagnostic Imaging"
+      },
+      {
+        "code": "IMM",
+        "desc": "Immunology"
+      },
+      {
+        "code": "LAB",
+        "desc": "Laboratory"
+      },
+      {
+        "code": "MB",
+        "desc": "Microbiology"
+      },
+      {
+        "code": "MCB",
+        "desc": "Mycobacteriology"
+      },
+      {
+        "code": "MYC",
+        "desc": "Mycology"
+      },
+      {
+        "code": "NMR",
+        "desc": "Nuclear Magnetic Resonance (MRI)"
+      },
+      {
+        "code": "NMS",
+        "desc": "Nuclear Medicine Scan"
+      },
+      {
+        "code": "NRS",
+        "desc": "Nursing Service Measures"
+      },
+      {
+        "code": "OT",
+        "desc": "Occupational Therapy"
+      },
+      {
+        "code": "OTH",
+        "desc": "Other"
+      },
+      {
+        "code": "OUS",
+        "desc": "OB Ultrasound"
+      },
+      {
+        "code": "PAR",
+        "desc": "Parasitology"
+      },
+      {
+        "code": "PAT",
+        "desc": "Pathology (gross and histologic diagnosis)"
+      },
+      {
+        "code": "PF",
+        "desc": "Pulmonary Function"
+      },
+      {
+        "code": "PHR",
+        "desc": "Pharmacy"
+      },
+      {
+        "code": "PT",
+        "desc": "Physical Therapy"
+      },
+      {
+        "code": "RAD",
+        "desc": "Radiology"
+      },
+      {
+        "code": "RC",
+        "desc": "Respiratory Care (Therapy)"
+      },
+      {
+        "code": "RT",
+        "desc": "Radiation Therapy"
+      },
+      {
+        "code": "RUS",
+        "desc": "Radiology Ultrasound"
+      },
+      {
+        "code": "RX",
+        "desc": "Radiograph"
+      },
+      {
+        "code": "SP",
+        "desc": "Surgical Pathology"
+      },
+      {
+        "code": "SR",
+        "desc": "Serology"
+      },
+      {
+        "code": "TX",
+        "desc": "Toxicology"
+      },
+      {
+        "code": "URN",
+        "desc": "Urinalysis"
+      },
+      {
+        "code": "VR",
+        "desc": "Virology"
+      },
+      {
+        "code": "VUS",
+        "desc": "Vascular Ultrasound"
+      },
+      {
+        "code": "XRC",
+        "desc": "Cineradiograph"
+      }
+    ]
+  },
+  "0078": {
+    "name": "Abnormal Flags",
+    "values": [
+      {
+        "code": "L",
+        "desc": "Below low normal"
+      },
+      {
+        "code": "H",
+        "desc": "Above high normal"
+      },
+      {
+        "code": "LL",
+        "desc": "Below lower panic limits"
+      },
+      {
+        "code": "HH",
+        "desc": "Above upper panic limits"
+      },
+      {
+        "code": "<",
+        "desc": "Below absolute low-off instrument scale"
+      },
+      {
+        "code": ">",
+        "desc": "Above absolute high-off instrument scale"
+      },
+      {
+        "code": "A",
+        "desc": "Abnormal (applies to non-numeric results)"
+      },
+      {
+        "code": "AA",
+        "desc": "Very abnormal (applies to non-numeric results)"
+      },
+      {
+        "code": "null",
+        "desc": "No range defined, or normal ranges don't apply"
+      },
+      {
+        "code": "N",
+        "desc": "Normal (applies to non-numeric results)"
+      },
+      {
+        "code": "I",
+        "desc": "Intermediate (microbiology susceptibilities only)"
+      },
+      {
+        "code": "MS",
+        "desc": "Moderately susceptible (microbiology susceptibilities only)"
+      },
+      {
+        "code": "R",
+        "desc": "Resistant (microbiology susceptibilities only)"
+      },
+      {
+        "code": "S",
+        "desc": "Susceptible (microbiology susceptibilities only)"
+      },
+      {
+        "code": "VS",
+        "desc": "Very susceptible (microbiology susceptibilities only)"
+      },
+      {
+        "code": "U",
+        "desc": "Significant change up"
+      },
+      {
+        "code": "D",
+        "desc": "Significant change down"
+      },
+      {
+        "code": "B",
+        "desc": "Better — use when direction not relevant"
+      },
+      {
+        "code": "W",
+        "desc": "Worse — use when direction not relevant"
+      }
+    ]
+  },
+  "0085": {
+    "name": "Observation Result Status Codes Interpretation",
+    "values": [
+      {
+        "code": "C",
+        "desc": "Record coming over is a correction and thus replaces a final result"
+      },
+      {
+        "code": "D",
+        "desc": "Deletes the OBX record"
+      },
+      {
+        "code": "F",
+        "desc": "Final results; Can only be changed with a corrected result"
+      },
+      {
+        "code": "I",
+        "desc": "Specimen in lab; results pending"
+      },
+      {
+        "code": "N",
+        "desc": "Not asked; used only on queries where only certain results are requested"
+      },
+      {
+        "code": "O",
+        "desc": "Order detail description only (no result)"
+      },
+      {
+        "code": "P",
+        "desc": "Preliminary results"
+      },
+      {
+        "code": "R",
+        "desc": "Results entered, not verified"
+      },
+      {
+        "code": "S",
+        "desc": "Partial results"
+      },
+      {
+        "code": "U",
+        "desc": "Results status change to final without retransmitting results already sent as 'preliminary'"
+      },
+      {
+        "code": "W",
+        "desc": "Post original as wrong, e.g. transmitted for wrong patient"
+      },
+      {
+        "code": "X",
+        "desc": "Results cannot be obtained for this observation"
+      }
+    ]
+  },
+  "0119": {
+    "name": "Order Control Codes",
+    "values": [
+      {
+        "code": "NW",
+        "desc": "New order/service"
+      },
+      {
+        "code": "OK",
+        "desc": "Order/service accepted & OK"
+      },
+      {
+        "code": "UA",
+        "desc": "Unable to accept order/service"
+      },
+      {
+        "code": "CA",
+        "desc": "Cancel order/service request"
+      },
+      {
+        "code": "OC",
+        "desc": "Order/service canceled"
+      },
+      {
+        "code": "CR",
+        "desc": "Canceled as requested"
+      },
+      {
+        "code": "UC",
+        "desc": "Unable to cancel"
+      },
+      {
+        "code": "DC",
+        "desc": "Discontinue order/service request"
+      },
+      {
+        "code": "OD",
+        "desc": "Order/service discontinued"
+      },
+      {
+        "code": "DR",
+        "desc": "Discontinued as requested"
+      },
+      {
+        "code": "UD",
+        "desc": "Unable to discontinue"
+      },
+      {
+        "code": "HD",
+        "desc": "Hold order request"
+      },
+      {
+        "code": "OH",
+        "desc": "Order/service held"
+      },
+      {
+        "code": "UH",
+        "desc": "Unable to put on hold"
+      },
+      {
+        "code": "HR",
+        "desc": "On hold as requested"
+      },
+      {
+        "code": "RL",
+        "desc": "Release previous hold"
+      },
+      {
+        "code": "OE",
+        "desc": "Order/service released"
+      },
+      {
+        "code": "OR",
+        "desc": "Released as requested"
+      },
+      {
+        "code": "UR",
+        "desc": "Unable to release"
+      },
+      {
+        "code": "RP",
+        "desc": "Order/service replace request"
+      },
+      {
+        "code": "RU",
+        "desc": "Replaced unsolicited"
+      },
+      {
+        "code": "RO",
+        "desc": "Replacement order"
+      },
+      {
+        "code": "RQ",
+        "desc": "Replaced as requested"
+      },
+      {
+        "code": "UM",
+        "desc": "Unable to replace"
+      },
+      {
+        "code": "PA",
+        "desc": "Parent order"
+      },
+      {
+        "code": "CH",
+        "desc": "Child order"
+      },
+      {
+        "code": "XO",
+        "desc": "Change order/service request"
+      },
+      {
+        "code": "XX",
+        "desc": "Order/service changed, unsol."
+      },
+      {
+        "code": "UX",
+        "desc": "Unable to change"
+      },
+      {
+        "code": "XR",
+        "desc": "Changed as requested"
+      },
+      {
+        "code": "DE",
+        "desc": "Data errors"
+      },
+      {
+        "code": "RE",
+        "desc": "Observations/Performed Service to Follow"
+      },
+      {
+        "code": "RR",
+        "desc": "Request received"
+      },
+      {
+        "code": "SR",
+        "desc": "Response to send order/service status request"
+      },
+      {
+        "code": "SS",
+        "desc": "Send order/service status request"
+      },
+      {
+        "code": "SC",
+        "desc": "Status changed"
+      },
+      {
+        "code": "SN",
+        "desc": "Send order/service number"
+      },
+      {
+        "code": "NA",
+        "desc": "Number assigned"
+      },
+      {
+        "code": "CN",
+        "desc": "Combined result"
+      },
+      {
+        "code": "RF",
+        "desc": "Refill order request"
+      },
+      {
+        "code": "AF",
+        "desc": "Order/service refill request approval"
+      },
+      {
+        "code": "DF",
+        "desc": "Order/service refill request denied"
+      },
+      {
+        "code": "FU",
+        "desc": "Order/service refilled, unsolicited"
+      },
+      {
+        "code": "OF",
+        "desc": "Order/service refilled as requested"
+      },
+      {
+        "code": "UF",
+        "desc": "Unable to refill"
+      }
+    ]
+  },
+  "0123": {
+    "name": "Result Status - OBR",
+    "note": "Applies to OBR-25 only. Do not confuse with table 0085 (OBX-11), which uses an overlapping but different code set — 0123 has no M, N, U or W.",
+    "values": [
+      {
+        "code": "O",
+        "desc": "Order received; specimen not yet received"
+      },
+      {
+        "code": "I",
+        "desc": "No results available; specimen received, procedure incomplete"
+      },
+      {
+        "code": "S",
+        "desc": "No results available; procedure scheduled, but not done"
+      },
+      {
+        "code": "A",
+        "desc": "Some, but not all, results available"
+      },
+      {
+        "code": "P",
+        "desc": "Preliminary: A verified early result is available, final results not yet obtained"
+      },
+      {
+        "code": "C",
+        "desc": "Correction to results"
+      },
+      {
+        "code": "R",
+        "desc": "Results stored; not yet verified"
+      },
+      {
+        "code": "F",
+        "desc": "Final results; results stored and verified. Can only be changed with a corrected result"
+      },
+      {
+        "code": "X",
+        "desc": "No results available; Order canceled"
+      },
+      {
+        "code": "Y",
+        "desc": "No order on record for this test (used only on queries)"
+      },
+      {
+        "code": "Z",
+        "desc": "No record of this patient (used only on queries)"
+      }
+    ]
+  },
+  "0155": {
+    "name": "Accept/Application Acknowledgment Conditions",
+    "values": [
+      {
+        "code": "AL",
+        "desc": "Always"
+      },
+      {
+        "code": "ER",
+        "desc": "Error/reject conditions only"
+      },
+      {
+        "code": "NE",
+        "desc": "Never"
+      },
+      {
+        "code": "SU",
+        "desc": "Successful completion only"
+      }
+    ]
+  },
+  "0190": {
+    "name": "Address Type",
+    "values": [
+      {
+        "code": "B",
+        "desc": "Firm/Business"
+      },
+      {
+        "code": "BA",
+        "desc": "Bad address"
+      },
+      {
+        "code": "BDL",
+        "desc": "Birth delivery location (mother's address)"
+      },
+      {
+        "code": "BR",
+        "desc": "Residence at birth (newborn's address at birth)"
+      },
+      {
+        "code": "C",
+        "desc": "Current Or Temporary"
+      },
+      {
+        "code": "F",
+        "desc": "Country Of Origin"
+      },
+      {
+        "code": "H",
+        "desc": "Home"
+      },
+      {
+        "code": "L",
+        "desc": "Legal Address"
+      },
+      {
+        "code": "M",
+        "desc": "Mailing"
+      },
+      {
+        "code": "N",
+        "desc": "Birth (nee) (birth address)"
+      },
+      {
+        "code": "O",
+        "desc": "Office/Business"
+      },
+      {
+        "code": "P",
+        "desc": "Permanent"
+      },
+      {
+        "code": "RH",
+        "desc": "Registry home. Refers to the information system used as the master. Used if there is a difference in what information is exchanged with the 'official' source."
+      },
+      {
+        "code": "TM",
+        "desc": "Tribal/Community"
+      },
+      {
+        "code": "V",
+        "desc": "Visit Address"
+      }
+    ]
+  },
+  "0357": {
+    "name": "Message Error Condition Codes",
+    "values": [
+      {
+        "code": "0",
+        "desc": "Message accepted"
+      },
+      {
+        "code": "100",
+        "desc": "Segment sequence error"
+      },
+      {
+        "code": "101",
+        "desc": "Required field missing"
+      },
+      {
+        "code": "102",
+        "desc": "Data type error"
+      },
+      {
+        "code": "103",
+        "desc": "Table value not found"
+      },
+      {
+        "code": "200",
+        "desc": "Unsupported message type"
+      },
+      {
+        "code": "201",
+        "desc": "Unsupported event code"
+      },
+      {
+        "code": "202",
+        "desc": "Unsupported processing ID"
+      },
+      {
+        "code": "203",
+        "desc": "Unsupported version ID"
+      },
+      {
+        "code": "204",
+        "desc": "Unknown key identifier"
+      },
+      {
+        "code": "205",
+        "desc": "Duplicate key identifier"
+      },
+      {
+        "code": "206",
+        "desc": "Application record locked"
+      },
+      {
+        "code": "207",
+        "desc": "Application internal error"
+      }
+    ]
+  }
+}

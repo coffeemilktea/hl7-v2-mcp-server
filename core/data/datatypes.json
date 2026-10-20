@@ -1,0 +1,3843 @@
+{
+ "AD": {
+  "code": "AD",
+  "name": "Address",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Street Address",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Other Designation",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "City",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "State or Province",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Zip or Postal Code",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Country",
+    "type": "ID",
+    "table": "0399"
+   },
+   {
+    "seq": 7,
+    "name": "Address Type",
+    "type": "ID",
+    "table": "0190"
+   },
+   {
+    "seq": 8,
+    "name": "Other Geographic Designation",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "AUI": {
+  "code": "AUI",
+  "name": "Authorization Information",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Authorization Number",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Date",
+    "type": "DT",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Source",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CCD": {
+  "code": "CCD",
+  "name": "Charge Code and Date",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Invocation Event",
+    "type": "ID",
+    "table": "0100"
+   },
+   {
+    "seq": 2,
+    "name": "Date/time",
+    "type": "TS",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CCP": {
+  "code": "CCP",
+  "name": "Channel Calibration Parameters",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Channel Calibration Sensitivity Correction Factor",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Channel Calibration Baseline",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Channel Calibration Time Skew",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CD": {
+  "code": "CD",
+  "name": "Channel Definition",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Channel Identifier",
+    "type": "WVI",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Waveform Source",
+    "type": "WVS",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Channel Sensitivity/Units",
+    "type": "CSU",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Channel Calibration Parameters",
+    "type": "CCP",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Channel Sampling Frequency",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Minimum/Maximum Data Values",
+    "type": "NR",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CE": {
+  "code": "CE",
+  "name": "Coded Element",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Text",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Name of Coding System",
+    "type": "ID",
+    "table": "0396"
+   },
+   {
+    "seq": 4,
+    "name": "Alternate Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Alternate Text",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Name of Alternate Coding System",
+    "type": "ID",
+    "table": "0396"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CF": {
+  "code": "CF",
+  "name": "Coded Element with Formatted Values",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Formatted Text",
+    "type": "FT",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Name of Coding System",
+    "type": "ID",
+    "table": "0396"
+   },
+   {
+    "seq": 4,
+    "name": "Alternate Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Alternate Formatted Text",
+    "type": "FT",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Name of Alternate Coding System",
+    "type": "ID",
+    "table": "0396"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CNE": {
+  "code": "CNE",
+  "name": "Coded with No Exceptions",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Text",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Name of Coding System",
+    "type": "ID",
+    "table": "0396"
+   },
+   {
+    "seq": 4,
+    "name": "Alternate Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Alternate Text",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Name of Alternate Coding System",
+    "type": "ID",
+    "table": "0396"
+   },
+   {
+    "seq": 7,
+    "name": "Coding System Version ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 8,
+    "name": "Alternate Coding System Version ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 9,
+    "name": "Original Text",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CNN": {
+  "code": "CNN",
+  "name": "Composite ID Number and Name Simplified",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "ID Number",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Family Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Given Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Second and Further Given Names or Initials Thereof",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Suffix (e.g., JR or III)",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Prefix (e.g., DR)",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Degree (e.g., MD",
+    "type": "IS",
+    "table": "0360"
+   },
+   {
+    "seq": 8,
+    "name": "Source Table",
+    "type": "IS",
+    "table": "0297"
+   },
+   {
+    "seq": 9,
+    "name": "Assigning Authority   - Namespace ID",
+    "type": "IS",
+    "table": "0363"
+   },
+   {
+    "seq": 10,
+    "name": "Assigning Authority  - Universal ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 11,
+    "name": "Assigning Authority  - Universal ID Type",
+    "type": "ID",
+    "table": "0301"
+   }
+  ],
+  "table0440": {
+   "status": "not-in-2.5.1",
+   "history": "added v2.7"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CP": {
+  "code": "CP",
+  "name": "Composite Price",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Price",
+    "type": "MO",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Price Type",
+    "type": "ID",
+    "table": "0205"
+   },
+   {
+    "seq": 3,
+    "name": "From Value",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "To Value",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Range Units",
+    "type": "CE",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Range Type",
+    "type": "ID",
+    "table": "0298"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CQ": {
+  "code": "CQ",
+  "name": "Composite Quantity with Units",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Quantity",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Units",
+    "type": "CE",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CSU": {
+  "code": "CSU",
+  "name": "Channel Sensitivity",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Channel Sensitivity",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Unit of Measure Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Unit of Measure Description",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Unit of Measure Coding System",
+    "type": "ID",
+    "table": "0396"
+   },
+   {
+    "seq": 5,
+    "name": "Alternate Unit of Measure Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Alternate Unit of Measure Description",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Alternate Unit of Measure Coding System",
+    "type": "ID",
+    "table": "0396"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CWE": {
+  "code": "CWE",
+  "name": "Coded with Exceptions",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Text",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Name of Coding System",
+    "type": "ID",
+    "table": "0396"
+   },
+   {
+    "seq": 4,
+    "name": "Alternate Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Alternate Text",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Name of Alternate Coding System",
+    "type": "ID",
+    "table": "0396"
+   },
+   {
+    "seq": 7,
+    "name": "Coding System Version ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 8,
+    "name": "Alternate Coding System Version ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 9,
+    "name": "Original Text",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "CX": {
+  "code": "CX",
+  "name": "Extended Composite ID with Check Digit",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "ID Number",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Check Digit",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Check Digit Scheme",
+    "type": "ID",
+    "table": "0061"
+   },
+   {
+    "seq": 4,
+    "name": "Assigning Authority",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Identifier Type Code",
+    "type": "ID",
+    "table": "0203"
+   },
+   {
+    "seq": 6,
+    "name": "Assigning Facility",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Effective Date",
+    "type": "DT",
+    "table": null
+   },
+   {
+    "seq": 8,
+    "name": "Expiration Date",
+    "type": "DT",
+    "table": null
+   },
+   {
+    "seq": 9,
+    "name": "Assigning Jurisdiction",
+    "type": "CWE",
+    "table": null
+   },
+   {
+    "seq": 10,
+    "name": "Assigning Agency or Department",
+    "type": "CWE",
+    "table": "0530",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "DDI": {
+  "code": "DDI",
+  "name": "Daily Deductible Information",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Delay Days",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Monetary Amount",
+    "type": "MO",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Number of Days",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "DIN": {
+  "code": "DIN",
+  "name": "Date and Institution Name",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Date",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Institution Name",
+    "type": "CE",
+    "table": "0531",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "DLD": {
+  "code": "DLD",
+  "name": "Discharge Location and Date",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Discharge Location",
+    "type": "IS",
+    "table": "0113"
+   },
+   {
+    "seq": 2,
+    "name": "Effective Date",
+    "type": "TS",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "DLN": {
+  "code": "DLN",
+  "name": "Driver's License Number",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "License Number",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Issuing State, Province, Country",
+    "type": "IS",
+    "table": "0333"
+   },
+   {
+    "seq": 3,
+    "name": "Expiration Date",
+    "type": "DT",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "DLT": {
+  "code": "DLT",
+  "name": "Delta",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Normal Range",
+    "type": "NR",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Numeric Threshold",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Change Computation",
+    "type": "ID",
+    "table": "0523"
+   },
+   {
+    "seq": 4,
+    "name": "Days Retained",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "DR": {
+  "code": "DR",
+  "name": "Date/Time Range",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Range Start Date/Time",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Range End Date/Time",
+    "type": "TS",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "DT": {
+  "code": "DT",
+  "name": "Date",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI",
+   "name": "THO table 0440"
+  }
+ },
+ "DTM": {
+  "code": "DTM",
+  "name": "Date/time",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI",
+   "name": "THO table 0440"
+  }
+ },
+ "DTN": {
+  "code": "DTN",
+  "name": "Day Type and Number",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Day Type",
+    "type": "IS",
+    "table": "0149"
+   },
+   {
+    "seq": 2,
+    "name": "Number of Days",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "ED": {
+  "code": "ED",
+  "name": "Encapsulated Data",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Source Application",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Type of Data",
+    "type": "ID",
+    "table": "0191"
+   },
+   {
+    "seq": 3,
+    "name": "Data Subtype",
+    "type": "ID",
+    "table": "0291"
+   },
+   {
+    "seq": 4,
+    "name": "Encoding",
+    "type": "ID",
+    "table": "0299"
+   },
+   {
+    "seq": 5,
+    "name": "Data",
+    "type": "TX",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "EI": {
+  "code": "EI",
+  "name": "Entity Identifier",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Entity Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Namespace ID",
+    "type": "IS",
+    "table": "0363"
+   },
+   {
+    "seq": 3,
+    "name": "Universal ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Universal ID Type",
+    "type": "ID",
+    "table": "0301"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "EIP": {
+  "code": "EIP",
+  "name": "Entity Identifier Pair",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Placer Assigned Identifier",
+    "type": "EI",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Filler Assigned Identifier",
+    "type": "EI",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "ELD": {
+  "code": "ELD",
+  "name": "Error Location and Description",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Segment ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Segment Sequence",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Field Position",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Code Identifying Error",
+    "type": "CE",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "ERL": {
+  "code": "ERL",
+  "name": "Error Location",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Segment ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Segment Sequence",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Field Position",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Field Repetition",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Component Number",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Sub-Component Number",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "FC": {
+  "code": "FC",
+  "name": "Financial Class",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Financial Class Code",
+    "type": "IS",
+    "table": "0064"
+   },
+   {
+    "seq": 2,
+    "name": "Effective Date",
+    "type": "TS",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "FN": {
+  "code": "FN",
+  "name": "Family Name",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Surname",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Own Surname Prefix",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Own Surname",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Surname Prefix From Partner/Spouse",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Surname From Partner/Spouse",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "FT": {
+  "code": "FT",
+  "name": "Formatted Text Data",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "GTS": {
+  "code": "GTS",
+  "name": "General Timing Specification",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "HD": {
+  "code": "HD",
+  "name": "Hierarchic Designator",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Namespace ID",
+    "type": "IS",
+    "table": "0300"
+   },
+   {
+    "seq": 2,
+    "name": "Universal ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Universal ID Type",
+    "type": "ID",
+    "table": "0301"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "ICD": {
+  "code": "ICD",
+  "name": "Insurance Certification Definition",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Certification Patient Type",
+    "type": "IS",
+    "table": "0150"
+   },
+   {
+    "seq": 2,
+    "name": "Certification Required",
+    "type": "ID",
+    "table": "0136"
+   },
+   {
+    "seq": 3,
+    "name": "Date/Time Certification Required",
+    "type": "TS",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "ID": {
+  "code": "ID",
+  "name": "Coded values for HL7 tables",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI",
+   "name": "THO table 0440"
+  }
+ },
+ "IS": {
+  "code": "IS",
+  "name": "Coded value for user-defined tables",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI",
+   "name": "THO table 0440"
+  }
+ },
+ "JCC": {
+  "code": "JCC",
+  "name": "Job Code/Class",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Job Code",
+    "type": "IS",
+    "table": "0327"
+   },
+   {
+    "seq": 2,
+    "name": "Job Class",
+    "type": "IS",
+    "table": "0328"
+   },
+   {
+    "seq": 3,
+    "name": "Job Description Text",
+    "type": "TX",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "LA1": {
+  "code": "LA1",
+  "name": "Location with Address Variation 1",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Point of Care",
+    "type": "IS",
+    "table": "0302"
+   },
+   {
+    "seq": 2,
+    "name": "Room",
+    "type": "IS",
+    "table": "0303"
+   },
+   {
+    "seq": 3,
+    "name": "Bed",
+    "type": "IS",
+    "table": "0304"
+   },
+   {
+    "seq": 4,
+    "name": "Facility",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Location Status",
+    "type": "IS",
+    "table": "0306"
+   },
+   {
+    "seq": 6,
+    "name": "Patient Location Type",
+    "type": "IS",
+    "table": "0305"
+   },
+   {
+    "seq": 7,
+    "name": "Building",
+    "type": "IS",
+    "table": "0307"
+   },
+   {
+    "seq": 8,
+    "name": "Floor",
+    "type": "IS",
+    "table": "0308"
+   },
+   {
+    "seq": 9,
+    "name": "Address",
+    "type": "AD",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "LA2": {
+  "code": "LA2",
+  "name": "Location with Address Variation 2",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Point of Care",
+    "type": "IS",
+    "table": "0302"
+   },
+   {
+    "seq": 2,
+    "name": "Room",
+    "type": "IS",
+    "table": "0303"
+   },
+   {
+    "seq": 3,
+    "name": "Bed",
+    "type": "IS",
+    "table": "0304"
+   },
+   {
+    "seq": 4,
+    "name": "Facility",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Location Status",
+    "type": "IS",
+    "table": "0306"
+   },
+   {
+    "seq": 6,
+    "name": "Patient Location Type",
+    "type": "IS",
+    "table": "0305"
+   },
+   {
+    "seq": 7,
+    "name": "Building",
+    "type": "IS",
+    "table": "0307"
+   },
+   {
+    "seq": 8,
+    "name": "Floor",
+    "type": "IS",
+    "table": "0308"
+   },
+   {
+    "seq": 9,
+    "name": "Street Address",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 10,
+    "name": "Other Designation",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 11,
+    "name": "City",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 12,
+    "name": "State or Province",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 13,
+    "name": "Zip or Postal Code",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 14,
+    "name": "Country",
+    "type": "ID",
+    "table": "0399"
+   },
+   {
+    "seq": 15,
+    "name": "Address Type",
+    "type": "ID",
+    "table": "0190"
+   },
+   {
+    "seq": 16,
+    "name": "Other Geographic Designation",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "MA": {
+  "code": "MA",
+  "name": "Multiplexed Array",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Sample 1 From Channel 1",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Sample 1 From Channel 2",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Sample 1 From Channel N",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Sample 2 From Channel 1",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Sample 2 From Channel N",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Sample N From Channel N",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "MO": {
+  "code": "MO",
+  "name": "Money",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Quantity",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Denomination",
+    "type": "ID",
+    "table": "0000"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "MOC": {
+  "code": "MOC",
+  "name": "Money and Code",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Monetary Amount",
+    "type": "MO",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Charge Code",
+    "type": "CE",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "MOP": {
+  "code": "MOP",
+  "name": "Money or Percentage",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Money or Percentage Indicator",
+    "type": "ID",
+    "table": "0148"
+   },
+   {
+    "seq": 2,
+    "name": "Money or Percentage Quantity",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Currency Denomination",
+    "type": "ID",
+    "table": "0000"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "MSG": {
+  "code": "MSG",
+  "name": "Message Type",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Message Code",
+    "type": "ID",
+    "table": "0076"
+   },
+   {
+    "seq": 2,
+    "name": "Trigger Event",
+    "type": "ID",
+    "table": "0003"
+   },
+   {
+    "seq": 3,
+    "name": "Message Structure",
+    "type": "ID",
+    "table": "0354"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "NA": {
+  "code": "NA",
+  "name": "Numeric Array",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Value1",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Value2",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Value3",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Value4",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "NDL": {
+  "code": "NDL",
+  "name": "Name with Date and Location",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Name",
+    "type": "CNN",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Start Date/time",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "End Date/time",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Point of Care",
+    "type": "IS",
+    "table": "0302"
+   },
+   {
+    "seq": 5,
+    "name": "Room",
+    "type": "IS",
+    "table": "0303"
+   },
+   {
+    "seq": 6,
+    "name": "Bed",
+    "type": "IS",
+    "table": "0304"
+   },
+   {
+    "seq": 7,
+    "name": "Facility",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 8,
+    "name": "Location Status",
+    "type": "IS",
+    "table": "0306"
+   },
+   {
+    "seq": 9,
+    "name": "Patient Location Type",
+    "type": "IS",
+    "table": "0305"
+   },
+   {
+    "seq": 10,
+    "name": "Building",
+    "type": "IS",
+    "table": "0307"
+   },
+   {
+    "seq": 11,
+    "name": "Floor",
+    "type": "IS",
+    "table": "0308"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "NM": {
+  "code": "NM",
+  "name": "Numeric",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "NR": {
+  "code": "NR",
+  "name": "Numeric Range",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Low Value",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "High Value",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "OCD": {
+  "code": "OCD",
+  "name": "Occurrence Code and Date",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Occurrence Code",
+    "type": "CNE",
+    "table": "0350",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 2,
+    "name": "Occurrence Date",
+    "type": "DT",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "OSD": {
+  "code": "OSD",
+  "name": "Order Sequence Definition",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Sequence/Results Flag",
+    "type": "ID",
+    "table": "0524"
+   },
+   {
+    "seq": 2,
+    "name": "Placer Order Number: Entity Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Placer Order Number: Namespace ID",
+    "type": "IS",
+    "table": "0363"
+   },
+   {
+    "seq": 4,
+    "name": "Filler Order Number: Entity Identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Filler Order Number: Namespace ID",
+    "type": "IS",
+    "table": "0363"
+   },
+   {
+    "seq": 6,
+    "name": "Sequence Condition Value",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Maximum Number of Repeats",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 8,
+    "name": "Placer Order Number: Universal ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 9,
+    "name": "Placer Order Number: Universal ID Type",
+    "type": "ID",
+    "table": "0301"
+   },
+   {
+    "seq": 10,
+    "name": "Filler Order Number: Universal ID",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 11,
+    "name": "Filler Order Number: Universal ID Type",
+    "type": "ID",
+    "table": "0301"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "OSP": {
+  "code": "OSP",
+  "name": "Occurrence Span Code and Date",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Occurrence Span Code",
+    "type": "CNE",
+    "table": "0351",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 2,
+    "name": "Occurrence Span Start Date",
+    "type": "DT",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Occurrence Span Stop Date",
+    "type": "DT",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "PIP": {
+  "code": "PIP",
+  "name": "Practitioner Institutional Privileges",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Privilege",
+    "type": "CE",
+    "table": "0525",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 2,
+    "name": "Privilege Class",
+    "type": "CE",
+    "table": "0526",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 3,
+    "name": "Expiration Date",
+    "type": "DT",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Activation Date",
+    "type": "DT",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Facility",
+    "type": "EI",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "PL": {
+  "code": "PL",
+  "name": "Person Location",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Point of Care",
+    "type": "IS",
+    "table": "0302"
+   },
+   {
+    "seq": 2,
+    "name": "Room",
+    "type": "IS",
+    "table": "0303"
+   },
+   {
+    "seq": 3,
+    "name": "Bed",
+    "type": "IS",
+    "table": "0304"
+   },
+   {
+    "seq": 4,
+    "name": "Facility",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Location Status",
+    "type": "IS",
+    "table": "0306"
+   },
+   {
+    "seq": 6,
+    "name": "Person Location Type",
+    "type": "IS",
+    "table": "0305"
+   },
+   {
+    "seq": 7,
+    "name": "Building",
+    "type": "IS",
+    "table": "0307"
+   },
+   {
+    "seq": 8,
+    "name": "Floor",
+    "type": "IS",
+    "table": "0308"
+   },
+   {
+    "seq": 9,
+    "name": "Location Description",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 10,
+    "name": "Comprehensive Location Identifier",
+    "type": "EI",
+    "table": null
+   },
+   {
+    "seq": 11,
+    "name": "Assigning Authority for Location",
+    "type": "HD",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "PLN": {
+  "code": "PLN",
+  "name": "Practitioner License or Other ID Number",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "ID Number",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Type of ID Number",
+    "type": "IS",
+    "table": "0338"
+   },
+   {
+    "seq": 3,
+    "name": "State/other Qualifying Information",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Expiration Date",
+    "type": "DT",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "PPN": {
+  "code": "PPN",
+  "name": "Performing Person Time Stamp",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "ID Number",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Family Name",
+    "type": "FN",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Given Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Second and Further Given Names or Initials Thereof",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Suffix (e.g., JR or III)",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Prefix (e.g., DR)",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Degree (e.g., MD)",
+    "type": "IS",
+    "table": "0360"
+   },
+   {
+    "seq": 8,
+    "name": "Source Table",
+    "type": "IS",
+    "table": "0297"
+   },
+   {
+    "seq": 9,
+    "name": "Assigning Authority",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 10,
+    "name": "Name Type Code",
+    "type": "ID",
+    "table": "0200"
+   },
+   {
+    "seq": 11,
+    "name": "Identifier Check Digit",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 12,
+    "name": "Check Digit Scheme",
+    "type": "ID",
+    "table": "0061"
+   },
+   {
+    "seq": 13,
+    "name": "Identifier Type Code",
+    "type": "ID",
+    "table": "0203"
+   },
+   {
+    "seq": 14,
+    "name": "Assigning Facility",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 15,
+    "name": "Date/Time Action Performed",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 16,
+    "name": "Name Representation Code",
+    "type": "ID",
+    "table": "0465"
+   },
+   {
+    "seq": 17,
+    "name": "Name Context",
+    "type": "CE",
+    "table": "0448",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 18,
+    "name": "Name Validity Range",
+    "type": "DR",
+    "table": null
+   },
+   {
+    "seq": 19,
+    "name": "Name Assembly Order",
+    "type": "ID",
+    "table": "0444"
+   },
+   {
+    "seq": 20,
+    "name": "Effective Date",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 21,
+    "name": "Expiration Date",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 22,
+    "name": "Professional Suffix",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 23,
+    "name": "Assigning Jurisdiction",
+    "type": "CWE",
+    "table": null
+   },
+   {
+    "seq": 24,
+    "name": "Assigning Agency or Department",
+    "type": "CWE",
+    "table": "0530",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "PRL": {
+  "code": "PRL",
+  "name": "Parent Result Link",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Parent Observation Identifier",
+    "type": "CE",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Parent Observation Sub-identifier",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Parent Observation Value Descriptor",
+    "type": "TX",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "PT": {
+  "code": "PT",
+  "name": "Processing Type",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Processing ID",
+    "type": "ID",
+    "table": "0103"
+   },
+   {
+    "seq": 2,
+    "name": "Processing Mode",
+    "type": "ID",
+    "table": "0207"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "PTA": {
+  "code": "PTA",
+  "name": "Policy Type and Amount",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Policy Type",
+    "type": "IS",
+    "table": "0147"
+   },
+   {
+    "seq": 2,
+    "name": "Amount Class",
+    "type": "IS",
+    "table": "0193"
+   },
+   {
+    "seq": 3,
+    "name": "Money or Percentage Quantity",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Money or Percentage",
+    "type": "MOP",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "QIP": {
+  "code": "QIP",
+  "name": "Query Input Parameter List",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Segment Field Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Values",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "QSC": {
+  "code": "QSC",
+  "name": "Query Selection Criteria",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Segment Field Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Relational Operator",
+    "type": "ID",
+    "table": "0209"
+   },
+   {
+    "seq": 3,
+    "name": "Value",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Relational Conjunction",
+    "type": "ID",
+    "table": "0210"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "RCD": {
+  "code": "RCD",
+  "name": "Row Column Definition",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Segment Field Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "HL7 Data Type",
+    "type": "ID",
+    "table": "0440"
+   },
+   {
+    "seq": 3,
+    "name": "Maximum Column Width",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "RFR": {
+  "code": "RFR",
+  "name": "Reference Range",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Numeric Range",
+    "type": "NR",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Administrative Sex",
+    "type": "IS",
+    "table": "0001"
+   },
+   {
+    "seq": 3,
+    "name": "Age Range",
+    "type": "NR",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Gestational Age Range",
+    "type": "NR",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Species",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Race/subspecies",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Conditions",
+    "type": "TX",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "RI": {
+  "code": "RI",
+  "name": "Repeat Interval",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Repeat Pattern",
+    "type": "IS",
+    "table": "0335"
+   },
+   {
+    "seq": 2,
+    "name": "Explicit Time Interval",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "RMC": {
+  "code": "RMC",
+  "name": "Room Coverage",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Room Type",
+    "type": "IS",
+    "table": "0145"
+   },
+   {
+    "seq": 2,
+    "name": "Amount Type",
+    "type": "IS",
+    "table": "0146"
+   },
+   {
+    "seq": 3,
+    "name": "Coverage Amount",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Money or Percentage",
+    "type": "MOP",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "RP": {
+  "code": "RP",
+  "name": "Reference Pointer",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Pointer",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Application ID",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Type of Data",
+    "type": "ID",
+    "table": "0191"
+   },
+   {
+    "seq": 4,
+    "name": "Subtype",
+    "type": "ID",
+    "table": "0291"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "RPT": {
+  "code": "RPT",
+  "name": "Repeat Pattern",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Repeat Pattern Code",
+    "type": "CWE",
+    "table": "0335",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 2,
+    "name": "Calendar Alignment",
+    "type": "ID",
+    "table": "0527"
+   },
+   {
+    "seq": 3,
+    "name": "Phase Range Begin Value",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Phase Range End Value",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Period Quantity",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Period Units",
+    "type": "IS",
+    "table": "0000"
+   },
+   {
+    "seq": 7,
+    "name": "Institution Specified Time",
+    "type": "ID",
+    "table": "0136"
+   },
+   {
+    "seq": 8,
+    "name": "Event",
+    "type": "ID",
+    "table": "0528"
+   },
+   {
+    "seq": 9,
+    "name": "Event Offset Quantity",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 10,
+    "name": "Event Offset Units",
+    "type": "IS",
+    "table": "0000"
+   },
+   {
+    "seq": 11,
+    "name": "General Timing Specification",
+    "type": "GTS",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "SAD": {
+  "code": "SAD",
+  "name": "Street Address",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Street or Mailing Address",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Street Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Dwelling Number",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "SCV": {
+  "code": "SCV",
+  "name": "Scheduling Class Value Pair",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Parameter Class",
+    "type": "CWE",
+    "table": "0294",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 2,
+    "name": "Parameter Value",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "SI": {
+  "code": "SI",
+  "name": "Sequence ID",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "SN": {
+  "code": "SN",
+  "name": "Structured Numeric",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Comparator",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Num1",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Separator/Suffix",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Num2",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "SPD": {
+  "code": "SPD",
+  "name": "Specialty Description",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Specialty Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Governing Board",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Eligible or Certified",
+    "type": "ID",
+    "table": "0337"
+   },
+   {
+    "seq": 4,
+    "name": "Date of Certification",
+    "type": "DT",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "SPS": {
+  "code": "SPS",
+  "name": "Specimen Source",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Specimen Source Name or Code",
+    "type": "CWE",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Additives",
+    "type": "CWE",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Specimen Collection Method",
+    "type": "TX",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Body Site",
+    "type": "CWE",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Site Modifier",
+    "type": "CWE",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Collection Method Modifier Code",
+    "type": "CWE",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Specimen Role",
+    "type": "CWE",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "SRT": {
+  "code": "SRT",
+  "name": "Sort Order",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Sort-by Field",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Sequencing",
+    "type": "ID",
+    "table": "0397"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "ST": {
+  "code": "ST",
+  "name": "String Data",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "TM": {
+  "code": "TM",
+  "name": "Time",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI",
+   "name": "THO table 0440"
+  }
+ },
+ "TQ": {
+  "code": "TQ",
+  "name": "Timing Quantity",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Quantity",
+    "type": "CQ",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Interval",
+    "type": "RI",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Duration",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Start Date/Time",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "End Date/Time",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Priority",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Condition",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 8,
+    "name": "Text",
+    "type": "TX",
+    "table": null
+   },
+   {
+    "seq": 9,
+    "name": "Conjunction",
+    "type": "ID",
+    "table": "0472"
+   },
+   {
+    "seq": 10,
+    "name": "Order Sequencing",
+    "type": "OSD",
+    "table": null
+   },
+   {
+    "seq": 11,
+    "name": "Occurrence Duration",
+    "type": "CE",
+    "table": null
+   },
+   {
+    "seq": 12,
+    "name": "Total Occurrences",
+    "type": "NM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "TS": {
+  "code": "TS",
+  "name": "Time Stamp",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Time",
+    "type": "DTM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Degree of Precision",
+    "type": "ID",
+    "table": "0529"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "TX": {
+  "code": "TX",
+  "name": "Text Data",
+  "kind": "primitive",
+  "components": [],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "UVC": {
+  "code": "UVC",
+  "name": "UB Value Code and Amount",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Value Code",
+    "type": "CNE",
+    "table": "0153",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 2,
+    "name": "Value Amount",
+    "type": "MO",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "VH": {
+  "code": "VH",
+  "name": "Visiting Hours",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Start Day Range",
+    "type": "ID",
+    "table": "0267"
+   },
+   {
+    "seq": 2,
+    "name": "End Day Range",
+    "type": "ID",
+    "table": "0267"
+   },
+   {
+    "seq": 3,
+    "name": "Start Hour Range",
+    "type": "TM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "End Hour Range",
+    "type": "TM",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "VID": {
+  "code": "VID",
+  "name": "Version Identifier",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Version ID",
+    "type": "ID",
+    "table": "0104"
+   },
+   {
+    "seq": 2,
+    "name": "Internationalization Code",
+    "type": "CE",
+    "table": "0399",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 3,
+    "name": "International Version ID",
+    "type": "CE",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "VR": {
+  "code": "VR",
+  "name": "Value Range",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "First Data Code Value",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Last Data Code Value",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "WVI": {
+  "code": "WVI",
+  "name": "Channel Identifier",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Channel Number",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Channel Name",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "WVS": {
+  "code": "WVS",
+  "name": "Waveform Source",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Source One Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Source Two Name",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "XAD": {
+  "code": "XAD",
+  "name": "Extended Address",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Street Address",
+    "type": "SAD",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Other Designation",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "City",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "State or Province",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Zip or Postal Code",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Country",
+    "type": "ID",
+    "table": "0399"
+   },
+   {
+    "seq": 7,
+    "name": "Address Type",
+    "type": "ID",
+    "table": "0190"
+   },
+   {
+    "seq": 8,
+    "name": "Other Geographic Designation",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 9,
+    "name": "County/Parish Code",
+    "type": "IS",
+    "table": "0289"
+   },
+   {
+    "seq": 10,
+    "name": "Census Tract",
+    "type": "IS",
+    "table": "0288"
+   },
+   {
+    "seq": 11,
+    "name": "Address Representation Code",
+    "type": "ID",
+    "table": "0465"
+   },
+   {
+    "seq": 12,
+    "name": "Address Validity Range",
+    "type": "DR",
+    "table": null
+   },
+   {
+    "seq": 13,
+    "name": "Effective Date",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 14,
+    "name": "Expiration Date",
+    "type": "TS",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "XCN": {
+  "code": "XCN",
+  "name": "Extended Composite ID Number and Name for Persons",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "ID Number",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Family Name",
+    "type": "FN",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Given Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Second and Further Given Names or Initials Thereof",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Suffix (e.g., JR or III)",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Prefix (e.g., DR)",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Degree (e.g., MD)",
+    "type": "IS",
+    "table": "0360"
+   },
+   {
+    "seq": 8,
+    "name": "Source Table",
+    "type": "IS",
+    "table": "0297"
+   },
+   {
+    "seq": 9,
+    "name": "Assigning Authority",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 10,
+    "name": "Name Type Code",
+    "type": "ID",
+    "table": "0200"
+   },
+   {
+    "seq": 11,
+    "name": "Identifier Check Digit",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 12,
+    "name": "Check Digit Scheme",
+    "type": "ID",
+    "table": "0061"
+   },
+   {
+    "seq": 13,
+    "name": "Identifier Type Code",
+    "type": "ID",
+    "table": "0203"
+   },
+   {
+    "seq": 14,
+    "name": "Assigning Facility",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 15,
+    "name": "Name Representation Code",
+    "type": "ID",
+    "table": "0465"
+   },
+   {
+    "seq": 16,
+    "name": "Name Context",
+    "type": "CE",
+    "table": "0448",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 17,
+    "name": "Name Validity Range",
+    "type": "DR",
+    "table": null
+   },
+   {
+    "seq": 18,
+    "name": "Name Assembly Order",
+    "type": "ID",
+    "table": "0444"
+   },
+   {
+    "seq": 19,
+    "name": "Effective Date",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 20,
+    "name": "Expiration Date",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 21,
+    "name": "Professional Suffix",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 22,
+    "name": "Assigning Jurisdiction",
+    "type": "CWE",
+    "table": null
+   },
+   {
+    "seq": 23,
+    "name": "Assigning Agency or Department",
+    "type": "CWE",
+    "table": "0530",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "XON": {
+  "code": "XON",
+  "name": "Extended Composite Name and Identification Number for Organizations",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Organization Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Organization Name Type Code",
+    "type": "IS",
+    "table": "0204"
+   },
+   {
+    "seq": 3,
+    "name": "ID Number",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Check Digit",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Check Digit Scheme",
+    "type": "ID",
+    "table": "0061"
+   },
+   {
+    "seq": 6,
+    "name": "Assigning Authority",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Identifier Type Code",
+    "type": "ID",
+    "table": "0203"
+   },
+   {
+    "seq": 8,
+    "name": "Assigning Facility",
+    "type": "HD",
+    "table": null
+   },
+   {
+    "seq": 9,
+    "name": "Name Representation Code",
+    "type": "ID",
+    "table": "0465"
+   },
+   {
+    "seq": 10,
+    "name": "Organization Identifier",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "XPN": {
+  "code": "XPN",
+  "name": "Extended Person Name",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Family Name",
+    "type": "FN",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Given Name",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 3,
+    "name": "Second and Further Given Names or Initials Thereof",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 4,
+    "name": "Suffix (e.g., JR or III)",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Prefix (e.g., DR)",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Degree (e.g., MD)",
+    "type": "IS",
+    "table": "0360"
+   },
+   {
+    "seq": 7,
+    "name": "Name Type Code",
+    "type": "ID",
+    "table": "0200"
+   },
+   {
+    "seq": 8,
+    "name": "Name Representation Code",
+    "type": "ID",
+    "table": "0465"
+   },
+   {
+    "seq": 9,
+    "name": "Name Context",
+    "type": "CE",
+    "table": "0448",
+    "tableSource": "THO v2-where-used (latest v2 version; not confirmed for 2.5.1)"
+   },
+   {
+    "seq": 10,
+    "name": "Name Validity Range",
+    "type": "DR",
+    "table": null
+   },
+   {
+    "seq": 11,
+    "name": "Name Assembly Order",
+    "type": "ID",
+    "table": "0444"
+   },
+   {
+    "seq": 12,
+    "name": "Effective Date",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 13,
+    "name": "Expiration Date",
+    "type": "TS",
+    "table": null
+   },
+   {
+    "seq": 14,
+    "name": "Professional Suffix",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ },
+ "XTN": {
+  "code": "XTN",
+  "name": "Extended Telecommunication Number",
+  "kind": "composite",
+  "components": [
+   {
+    "seq": 1,
+    "name": "Telephone Number",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 2,
+    "name": "Telecommunication Use Code",
+    "type": "ID",
+    "table": "0201"
+   },
+   {
+    "seq": 3,
+    "name": "Telecommunication Equipment Type",
+    "type": "ID",
+    "table": "0202"
+   },
+   {
+    "seq": 4,
+    "name": "Email Address",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 5,
+    "name": "Country Code",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 6,
+    "name": "Area/City Code",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 7,
+    "name": "Local Number",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 8,
+    "name": "Extension",
+    "type": "NM",
+    "table": null
+   },
+   {
+    "seq": 9,
+    "name": "Any Text",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 10,
+    "name": "Extension Prefix",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 11,
+    "name": "Speed Dial Code",
+    "type": "ST",
+    "table": null
+   },
+   {
+    "seq": 12,
+    "name": "Unformatted Telephone number",
+    "type": "ST",
+    "table": null
+   }
+  ],
+  "table0440": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "structure": "HAPI"
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "hl7v2-core",
+  "version": "1.0.0",
+  "description": "HL7 v2.5.1 reference data (segments, fields, datatypes, message structures, trigger events, tables) and a dependency-free message parser, shared by hl7-v2-mcp-server and hl7-v2-fhir-mcp-server.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./parser": "./src/parser.js",
+    "./ts": "./src/ts.js",
+    "./data": "./src/data.js",
+    "./data/*": "./data/*"
+  },
+  "files": [
+    "src",
+    "data",
+    "NOTICE",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coffeemilktea/hl7-v2-mcp-server.git",
+    "directory": "core"
+  },
+  "keywords": [
+    "hl7",
+    "hl7-v2",
+    "hl7v2.5.1",
+    "parser",
+    "healthcare",
+    "interoperability"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "fetch-sources": "node scripts/fetch-sources.mjs"
+  }
+}

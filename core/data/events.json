@@ -1,0 +1,6667 @@
+{
+ "ADR^A19": {
+  "messageType": "ADR",
+  "event": "A19",
+  "structure": "ADR_A19",
+  "description": "QRY/ADR -  Patient query",
+  "messageTypeName": "ADT response",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A01": {
+  "messageType": "ADT",
+  "event": "A01",
+  "structure": "ADT_A01",
+  "description": "ADT/ACK - Admit/visit notification",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Admit/Visit Notification — patient is admitted to the facility",
+   "notes": "Used for inpatient admissions and emergency visit starts. Triggers the creation of a patient account in downstream systems.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A02": {
+  "messageType": "ADT",
+  "event": "A02",
+  "structure": "ADT_A02",
+  "description": "ADT/ACK - Transfer a patient",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Transfer a Patient — patient transferred to a different location within the facility",
+   "notes": "PV1-3 contains new location; PV1-6 contains prior location.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A03": {
+  "messageType": "ADT",
+  "event": "A03",
+  "structure": "ADT_A03",
+  "description": "ADT/ACK -  Discharge/end visit",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Discharge/End Visit — patient is discharged from the facility",
+   "notes": "PV1-45 contains the discharge date/time. PV1-36 contains the discharge disposition code.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A04": {
+  "messageType": "ADT",
+  "event": "A04",
+  "structure": "ADT_A01",
+  "description": "ADT/ACK -  Register a patient",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Register a Patient — patient registered as outpatient",
+   "notes": "Same structure as A01 but for outpatient registration. PV1-2 should be O (Outpatient).",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A05": {
+  "messageType": "ADT",
+  "event": "A05",
+  "structure": "ADT_A05",
+  "description": "ADT/ACK -  Pre-admit a patient",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Pre-Admit a Patient — patient pre-admitted, no actual physical arrival yet",
+   "notes": "PV1-2 should be P (Preadmit). Triggers worklist preparation.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A06": {
+  "messageType": "ADT",
+  "event": "A06",
+  "structure": "ADT_A06",
+  "description": "ADT/ACK -  Change an outpatient to an inpatient",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A07": {
+  "messageType": "ADT",
+  "event": "A07",
+  "structure": "ADT_A06",
+  "description": "ADT/ACK -  Change an inpatient to an outpatient",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A08": {
+  "messageType": "ADT",
+  "event": "A08",
+  "structure": "ADT_A01",
+  "description": "ADT/ACK -  Update patient information",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Update Patient Information — demographics or other patient info changed",
+   "notes": "Downstream systems (PACS) must update existing patient records. Critical for name corrections.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A09": {
+  "messageType": "ADT",
+  "event": "A09",
+  "structure": "ADT_A09",
+  "description": "ADT/ACK -  Patient departing - tracking",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A10": {
+  "messageType": "ADT",
+  "event": "A10",
+  "structure": "ADT_A09",
+  "description": "ADT/ACK -  Patient arriving - tracking",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A11": {
+  "messageType": "ADT",
+  "event": "A11",
+  "structure": "ADT_A09",
+  "description": "ADT/ACK -  Cancel admit/visit notification",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Cancel Admit/Visit Notification — cancels a previously sent A01",
+   "notes": "Cancels the admission. EVN-5 contains the original event date/time.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A12": {
+  "messageType": "ADT",
+  "event": "A12",
+  "structure": "ADT_A12",
+  "description": "ADT/ACK -  Cancel transfer",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A13": {
+  "messageType": "ADT",
+  "event": "A13",
+  "structure": "ADT_A01",
+  "description": "ADT/ACK -  Cancel discharge/end visit",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Cancel Discharge/End Visit — cancels a previously sent A03",
+   "notes": "Reinstates the visit cancelled by A03.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A14": {
+  "messageType": "ADT",
+  "event": "A14",
+  "structure": "ADT_A05",
+  "description": "ADT/ACK -  Pending admit",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A15": {
+  "messageType": "ADT",
+  "event": "A15",
+  "structure": "ADT_A15",
+  "description": "ADT/ACK -  Pending transfer",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A16": {
+  "messageType": "ADT",
+  "event": "A16",
+  "structure": "ADT_A16",
+  "description": "ADT/ACK -  Pending discharge",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A17": {
+  "messageType": "ADT",
+  "event": "A17",
+  "structure": "ADT_A17",
+  "description": "ADT/ACK -  Swap patients",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A18": {
+  "messageType": "ADT",
+  "event": "A18",
+  "structure": "ADT_A18",
+  "description": "ADT/ACK -  Merge patient information",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A20": {
+  "messageType": "ADT",
+  "event": "A20",
+  "structure": "ADT_A20",
+  "description": "ADT/ACK -  Bed status update",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A21": {
+  "messageType": "ADT",
+  "event": "A21",
+  "structure": "ADT_A21",
+  "description": "ADT/ACK -  Patient goes on a \"leave of absence\"",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A22": {
+  "messageType": "ADT",
+  "event": "A22",
+  "structure": "ADT_A21",
+  "description": "ADT/ACK -  Patient returns from a \"leave of absence\"",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A23": {
+  "messageType": "ADT",
+  "event": "A23",
+  "structure": "ADT_A21",
+  "description": "ADT/ACK -  Delete a patient record",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A24": {
+  "messageType": "ADT",
+  "event": "A24",
+  "structure": "ADT_A24",
+  "description": "ADT/ACK -  Link patient information",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A25": {
+  "messageType": "ADT",
+  "event": "A25",
+  "structure": "ADT_A21",
+  "description": "ADT/ACK -  Cancel pending discharge",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A26": {
+  "messageType": "ADT",
+  "event": "A26",
+  "structure": "ADT_A21",
+  "description": "ADT/ACK -  Cancel pending transfer",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A27": {
+  "messageType": "ADT",
+  "event": "A27",
+  "structure": "ADT_A21",
+  "description": "ADT/ACK -  Cancel pending admit",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A28": {
+  "messageType": "ADT",
+  "event": "A28",
+  "structure": "ADT_A05",
+  "description": "ADT/ACK -  Add person information",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Add Person Information — adds a new person to the MPI without an associated visit",
+   "notes": "Person-level event — no encounter. Often used to pre-populate the MPI.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A29": {
+  "messageType": "ADT",
+  "event": "A29",
+  "structure": "ADT_A21",
+  "description": "ADT/ACK -  Delete person information",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A30": {
+  "messageType": "ADT",
+  "event": "A30",
+  "structure": "ADT_A30",
+  "description": "ADT/ACK -  Merge person information",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A31": {
+  "messageType": "ADT",
+  "event": "A31",
+  "structure": "ADT_A05",
+  "description": "ADT/ACK -  Update person information",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Update Person Information — updates person-level data without a visit",
+   "notes": "A31 shares the ADT_A05 structure. PERSON-level update — it changes the master person record, not an encounter. PV1 is structurally required but carries no meaningful visit; populating PV1-19 Visit Number on an A31 is a common source of confusion downstream. Use A08 when the change is scoped to a visit.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A32": {
+  "messageType": "ADT",
+  "event": "A32",
+  "structure": "ADT_A21",
+  "description": "ADT/ACK -  Cancel patient arriving - tracking",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A33": {
+  "messageType": "ADT",
+  "event": "A33",
+  "structure": "ADT_A21",
+  "description": "ADT/ACK -  Cancel patient departing - tracking",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A34": {
+  "messageType": "ADT",
+  "event": "A34",
+  "structure": "ADT_A30",
+  "description": "ADT/ACK -  Merge patient information - patient ID only",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A35": {
+  "messageType": "ADT",
+  "event": "A35",
+  "structure": "ADT_A30",
+  "description": "ADT/ACK -  Merge patient information - account number only",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A36": {
+  "messageType": "ADT",
+  "event": "A36",
+  "structure": "ADT_A30",
+  "description": "ADT/ACK -  Merge patient information - patient ID and account number",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A37": {
+  "messageType": "ADT",
+  "event": "A37",
+  "structure": "ADT_A37",
+  "description": "ADT/ACK -  Unlink patient information",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A38": {
+  "messageType": "ADT",
+  "event": "A38",
+  "structure": "ADT_A38",
+  "description": "ADT/ACK - Cancel pre-admit",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A39": {
+  "messageType": "ADT",
+  "event": "A39",
+  "structure": "ADT_A39",
+  "description": "ADT/ACK - Merge person - patient ID",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A40": {
+  "messageType": "ADT",
+  "event": "A40",
+  "structure": "ADT_A39",
+  "description": "ADT/ACK - Merge patient - patient identifier list",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "curated": {
+   "description": "Merge Patient — Patient Identifier List — merges two patient identities into one",
+   "notes": "A40 uses the ADT_A39 structure: MSH [SFT] EVN { PID [PD1] MRG [PV1] }. The PATIENT group REPEATS, so one A40 can carry several merges — each PID must be paired with its own MRG. PID-3 holds the surviving (winning) identifier; MRG-1 holds the prior (losing) identifier being retired. PACS must re-key all studies from MRG-1 onto PID-3. The assigning authority (component 4) of PID-3 and MRG-1 should match; a merge across two different authorities is almost always a build error.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A41": {
+  "messageType": "ADT",
+  "event": "A41",
+  "structure": "ADT_A39",
+  "description": "ADT/ACK - Merge account - patient account number",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A42": {
+  "messageType": "ADT",
+  "event": "A42",
+  "structure": "ADT_A39",
+  "description": "ADT/ACK - Merge visit - visit number",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A43": {
+  "messageType": "ADT",
+  "event": "A43",
+  "structure": "ADT_A43",
+  "description": "ADT/ACK - Move patient information - patient identifier list",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A44": {
+  "messageType": "ADT",
+  "event": "A44",
+  "structure": "ADT_A43",
+  "description": "ADT/ACK - Move account information - patient account number",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A45": {
+  "messageType": "ADT",
+  "event": "A45",
+  "structure": "ADT_A45",
+  "description": "ADT/ACK - Move visit information - visit number",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A46": {
+  "messageType": "ADT",
+  "event": "A46",
+  "structure": "ADT_A30",
+  "description": "ADT/ACK - Change patient ID",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A47": {
+  "messageType": "ADT",
+  "event": "A47",
+  "structure": "ADT_A30",
+  "description": "ADT/ACK - Change patient identifier list",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A48": {
+  "messageType": "ADT",
+  "event": "A48",
+  "structure": "ADT_A30",
+  "description": "ADT/ACK - Change alternate patient ID",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A49": {
+  "messageType": "ADT",
+  "event": "A49",
+  "structure": "ADT_A30",
+  "description": "ADT/ACK - Change patient account number",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A50": {
+  "messageType": "ADT",
+  "event": "A50",
+  "structure": "ADT_A50",
+  "description": "ADT/ACK - Change visit number",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A51": {
+  "messageType": "ADT",
+  "event": "A51",
+  "structure": "ADT_A50",
+  "description": "ADT/ACK - Change alternate visit ID",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A52": {
+  "messageType": "ADT",
+  "event": "A52",
+  "structure": "ADT_A52",
+  "description": "ADT/ACK - Cancel leave of absence for a patient",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A53": {
+  "messageType": "ADT",
+  "event": "A53",
+  "structure": "ADT_A52",
+  "description": "ADT/ACK - Cancel patient returns from a leave of absence",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A54": {
+  "messageType": "ADT",
+  "event": "A54",
+  "structure": "ADT_A54",
+  "description": "ADT/ACK - Change attending doctor",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A55": {
+  "messageType": "ADT",
+  "event": "A55",
+  "structure": "ADT_A52",
+  "description": "ADT/ACK - Cancel change attending doctor",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A60": {
+  "messageType": "ADT",
+  "event": "A60",
+  "structure": "ADT_A60",
+  "description": "ADT/ACK - Update allergy information",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A61": {
+  "messageType": "ADT",
+  "event": "A61",
+  "structure": "ADT_A61",
+  "description": "ADT/ACK - Change consulting doctor",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ADT^A62": {
+  "messageType": "ADT",
+  "event": "A62",
+  "structure": "ADT_A61",
+  "description": "ADT/ACK - Cancel change consulting doctor",
+  "messageTypeName": "ADT message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "BAR^P01": {
+  "messageType": "BAR",
+  "event": "P01",
+  "structure": "BAR_P01",
+  "description": "BAR/ACK - Add patient accounts",
+  "messageTypeName": "Add/change billing account",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "BAR^P02": {
+  "messageType": "BAR",
+  "event": "P02",
+  "structure": "BAR_P02",
+  "description": "BAR/ACK - Purge patient accounts",
+  "messageTypeName": "Add/change billing account",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "BAR^P05": {
+  "messageType": "BAR",
+  "event": "P05",
+  "structure": "BAR_P05",
+  "description": "BAR/ACK - Update account",
+  "messageTypeName": "Add/change billing account",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "BAR^P06": {
+  "messageType": "BAR",
+  "event": "P06",
+  "structure": "BAR_P06",
+  "description": "BAR/ACK - End account",
+  "messageTypeName": "Add/change billing account",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "BAR^P10": {
+  "messageType": "BAR",
+  "event": "P10",
+  "structure": "BAR_P10",
+  "description": "BAR/ACK -Transmit Ambulatory Payment  Classification(APC)",
+  "messageTypeName": "Add/change billing account",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "BAR^P12": {
+  "messageType": "BAR",
+  "event": "P12",
+  "structure": "BAR_P12",
+  "description": "BAR/ACK - Update Diagnosis/Procedure",
+  "messageTypeName": "Add/change billing account",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "BPS^O29": {
+  "messageType": "BPS",
+  "event": "O29",
+  "structure": "BPS_O29",
+  "description": "BPS - Blood product dispense status",
+  "messageTypeName": "Blood product dispense status message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "BRP^O30": {
+  "messageType": "BRP",
+  "event": "O30",
+  "structure": "BRP_O30",
+  "description": "BRP - Blood product dispense status acknowledgment",
+  "messageTypeName": "Blood product dispense status acknowledgement message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "BRT^O32": {
+  "messageType": "BRT",
+  "event": "O32",
+  "structure": "BRT_O32",
+  "description": "BRT - Blood product transfusion/disposition acknowledgment",
+  "messageTypeName": "Blood product transfusion/disposition acknowledgement message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "BTS^O31": {
+  "messageType": "BTS",
+  "event": "O31",
+  "structure": "BTS_O31",
+  "description": "BTS - Blood product transfusion/disposition",
+  "messageTypeName": "Blood product transfusion/disposition message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "CRM^C01": {
+  "messageType": "CRM",
+  "event": "C01",
+  "structure": "CRM_C01",
+  "description": "CRM - Register a patient on a clinical trial",
+  "messageTypeName": "Clinical study registration message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "CRM^C02": {
+  "messageType": "CRM",
+  "event": "C02",
+  "structure": "CRM_C01",
+  "description": "CRM - Cancel a patient registration on clinical trial (for clerical mistakes only)",
+  "messageTypeName": "Clinical study registration message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "CRM^C03": {
+  "messageType": "CRM",
+  "event": "C03",
+  "structure": "CRM_C01",
+  "description": "CRM - Correct/update registration information",
+  "messageTypeName": "Clinical study registration message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "CRM^C04": {
+  "messageType": "CRM",
+  "event": "C04",
+  "structure": "CRM_C01",
+  "description": "CRM - Patient has gone off a clinical trial",
+  "messageTypeName": "Clinical study registration message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "CRM^C05": {
+  "messageType": "CRM",
+  "event": "C05",
+  "structure": "CRM_C01",
+  "description": "CRM - Patient enters phase of clinical trial",
+  "messageTypeName": "Clinical study registration message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "CRM^C06": {
+  "messageType": "CRM",
+  "event": "C06",
+  "structure": "CRM_C01",
+  "description": "CRM - Cancel patient entering a phase (clerical mistake)",
+  "messageTypeName": "Clinical study registration message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "CRM^C07": {
+  "messageType": "CRM",
+  "event": "C07",
+  "structure": "CRM_C01",
+  "description": "CRM - Correct/update phase information",
+  "messageTypeName": "Clinical study registration message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "CRM^C08": {
+  "messageType": "CRM",
+  "event": "C08",
+  "structure": "CRM_C01",
+  "description": "CRM - Patient has gone off phase of clinical trial",
+  "messageTypeName": "Clinical study registration message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "CSU^C09": {
+  "messageType": "CSU",
+  "event": "C09",
+  "structure": "CSU_C09",
+  "description": "CSU - Automated time intervals for reporting, like monthly",
+  "messageTypeName": "Unsolicited study data message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "CSU^C10": {
+  "messageType": "CSU",
+  "event": "C10",
+  "structure": "CSU_C09",
+  "description": "CSU - Patient completes the clinical trial",
+  "messageTypeName": "Unsolicited study data message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "CSU^C11": {
+  "messageType": "CSU",
+  "event": "C11",
+  "structure": "CSU_C09",
+  "description": "CSU - Patient completes a phase of the clinical trial",
+  "messageTypeName": "Unsolicited study data message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "CSU^C12": {
+  "messageType": "CSU",
+  "event": "C12",
+  "structure": "CSU_C09",
+  "description": "CSU - Update/correction of patient order/result information",
+  "messageTypeName": "Unsolicited study data message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "DFT^P03": {
+  "messageType": "DFT",
+  "event": "P03",
+  "structure": "DFT_P03",
+  "description": "DFT/ACK - Post detail financial transaction",
+  "messageTypeName": "Detail financial transactions",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "DFT^P11": {
+  "messageType": "DFT",
+  "event": "P11",
+  "structure": "DFT_P11",
+  "description": "DFT/ACK - Post Detail Financial Transactions - New",
+  "messageTypeName": "Detail financial transactions",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "DOC^T12": {
+  "messageType": "DOC",
+  "event": "T12",
+  "structure": "DOC_T12",
+  "description": "QRY/DOC - Document query",
+  "messageTypeName": "Document response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "DSR^Q01": {
+  "messageType": "DSR",
+  "event": "Q01",
+  "structure": "DSR_Q01",
+  "description": "QRY/DSR - Query sent for immediate response",
+  "messageTypeName": "Display response",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "DSR^Q03": {
+  "messageType": "DSR",
+  "event": "Q03",
+  "structure": "DSR_Q03",
+  "description": "DSR/ACK - Deferred response to a query",
+  "messageTypeName": "Display response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "EAC^U07": {
+  "messageType": "EAC",
+  "event": "U07",
+  "structure": "EAC_U07",
+  "description": "EAC/ACK - Automated equipment command",
+  "messageTypeName": "Automated equipment command message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "EAN^U09": {
+  "messageType": "EAN",
+  "event": "U09",
+  "structure": "EAN_U09",
+  "description": "EAN/ACK - Automated equipment notification",
+  "messageTypeName": "Automated equipment notification message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "EAR^U08": {
+  "messageType": "EAR",
+  "event": "U08",
+  "structure": "EAR_U08",
+  "description": "EAR/ACK - Automated equipment response",
+  "messageTypeName": "Automated equipment response message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "EDR^R07": {
+  "messageType": "EDR",
+  "event": "R07",
+  "structure": "EDR_R07",
+  "description": "EDR - Enhanced Display Response",
+  "messageTypeName": "Enhanced display response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3.1, removed after v2.5.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3, removed after v2.5.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "EQQ^Q04": {
+  "messageType": "EQQ",
+  "event": "Q04",
+  "structure": "EQQ_Q04",
+  "description": "EQQ - Embedded query language query",
+  "messageTypeName": "Embedded query language query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3.1, removed after v2.5.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3, removed after v2.5.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ERP^R09": {
+  "messageType": "ERP",
+  "event": "R09",
+  "structure": "ERP_R09",
+  "description": "ERP - Event Replay Response",
+  "messageTypeName": "Event replay response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3.1, removed after v2.5.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3, removed after v2.5.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ESR^U02": {
+  "messageType": "ESR",
+  "event": "U02",
+  "structure": "ESR_U02",
+  "description": "ESR/ACK - Automated equipment status request",
+  "messageTypeName": "Automated equipment status update acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ESU^U01": {
+  "messageType": "ESU",
+  "event": "U01",
+  "structure": "ESU_U01",
+  "description": "ESU/ACK - Automated equipment status update",
+  "messageTypeName": "Automated equipment status update message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "INR^U06": {
+  "messageType": "INR",
+  "event": "U06",
+  "structure": "INR_U06",
+  "description": "INR/ACK - Automated equipment inventory request",
+  "messageTypeName": "Automated equipment inventory request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "INU^U05": {
+  "messageType": "INU",
+  "event": "U05",
+  "structure": "INU_U05",
+  "description": "INU/ACK  - Automated equipment inventory update",
+  "messageTypeName": "Automated equipment inventory update message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "LSR^U13": {
+  "messageType": "LSR",
+  "event": "U13",
+  "structure": "LSU_U12",
+  "description": "LSR/ACK - Automated equipment log/service request",
+  "messageTypeName": "Automated equipment log/service request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "LSU^U12": {
+  "messageType": "LSU",
+  "event": "U12",
+  "structure": "LSU_U12",
+  "description": "LSU/ACK - Automated equipment log/service update",
+  "messageTypeName": "Automated equipment log/service update message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T01": {
+  "messageType": "MDM",
+  "event": "T01",
+  "structure": "MDM_T01",
+  "description": "MDM/ACK - Original document notification",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T02": {
+  "messageType": "MDM",
+  "event": "T02",
+  "structure": "MDM_T02",
+  "description": "MDM/ACK - Original document notification and content",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T03": {
+  "messageType": "MDM",
+  "event": "T03",
+  "structure": "MDM_T01",
+  "description": "MDM/ACK - Document status change notification",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T04": {
+  "messageType": "MDM",
+  "event": "T04",
+  "structure": "MDM_T02",
+  "description": "MDM/ACK - Document status change notification and content",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T05": {
+  "messageType": "MDM",
+  "event": "T05",
+  "structure": "MDM_T01",
+  "description": "MDM/ACK - Document addendum notification",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T06": {
+  "messageType": "MDM",
+  "event": "T06",
+  "structure": "MDM_T02",
+  "description": "MDM/ACK - Document addendum notification and content",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T07": {
+  "messageType": "MDM",
+  "event": "T07",
+  "structure": "MDM_T01",
+  "description": "MDM/ACK - Document edit notification",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T08": {
+  "messageType": "MDM",
+  "event": "T08",
+  "structure": "MDM_T02",
+  "description": "MDM/ACK - Document edit notification and content",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T09": {
+  "messageType": "MDM",
+  "event": "T09",
+  "structure": "MDM_T01",
+  "description": "MDM/ACK - Document replacement notification",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T10": {
+  "messageType": "MDM",
+  "event": "T10",
+  "structure": "MDM_T02",
+  "description": "MDM/ACK - Document replacement notification and content",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MDM^T11": {
+  "messageType": "MDM",
+  "event": "T11",
+  "structure": "MDM_T01",
+  "description": "MDM/ACK - Document cancel notification",
+  "messageTypeName": "Medical document management",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFK^M01": {
+  "messageType": "MFK",
+  "event": "M01",
+  "structure": "MFK_M01",
+  "description": "MFN/MFK - Master file not otherwise specified",
+  "messageTypeName": "Master files application acknowledgment",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M01": {
+  "messageType": "MFN",
+  "event": "M01",
+  "structure": "MFN_M01",
+  "description": "MFN/MFK - Master file not otherwise specified",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M02": {
+  "messageType": "MFN",
+  "event": "M02",
+  "structure": "MFN_M02",
+  "description": "MFN/MFK - Master file - staff practitioner",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M03": {
+  "messageType": "MFN",
+  "event": "M03",
+  "structure": "MFN_M03",
+  "description": "MFN/MFK - Master file - test/observation",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M04": {
+  "messageType": "MFN",
+  "event": "M04",
+  "structure": "MFN_M04",
+  "description": "MFN/MFK - Master files charge description",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M05": {
+  "messageType": "MFN",
+  "event": "M05",
+  "structure": "MFN_M05",
+  "description": "MFN/MFK - Patient location master file",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M06": {
+  "messageType": "MFN",
+  "event": "M06",
+  "structure": "MFN_M06",
+  "description": "MFN/MFK - Clinical study with phases and schedules master file",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M07": {
+  "messageType": "MFN",
+  "event": "M07",
+  "structure": "MFN_M07",
+  "description": "MFN/MFK - Clinical study without phases but with schedules master file",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M08": {
+  "messageType": "MFN",
+  "event": "M08",
+  "structure": "MFN_M08",
+  "description": "MFN/MFK - Test/observation (numeric) master file",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M09": {
+  "messageType": "MFN",
+  "event": "M09",
+  "structure": "MFN_M09",
+  "description": "MFN/MFK - Test/observation (categorical) master file",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M10": {
+  "messageType": "MFN",
+  "event": "M10",
+  "structure": "MFN_M10",
+  "description": "MFN/MFK - Test /observation batteries master file",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M11": {
+  "messageType": "MFN",
+  "event": "M11",
+  "structure": "MFN_M11",
+  "description": "MFN/MFK - Test/calculated observations master file",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M12": {
+  "messageType": "MFN",
+  "event": "M12",
+  "structure": "MFN_M12",
+  "description": "MFN/MFK - Master file notification message",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M13": {
+  "messageType": "MFN",
+  "event": "M13",
+  "structure": "MFN_M13",
+  "description": "MFN/MFK - Master file notification - general",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M14": {
+  "messageType": "MFN",
+  "event": "M14",
+  "structure": "MFN_Znn",
+  "description": "MFN/MFK - Master file notification - site defined",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFN^M15": {
+  "messageType": "MFN",
+  "event": "M15",
+  "structure": "MFN_M15",
+  "description": "MFN/MFK - Inventory item master file notification",
+  "messageTypeName": "Master files notification",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M01": {
+  "messageType": "MFQ",
+  "event": "M01",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Master file not otherwise specified",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M02": {
+  "messageType": "MFQ",
+  "event": "M02",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Master file - staff practitioner",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M03": {
+  "messageType": "MFQ",
+  "event": "M03",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Master file - test/observation",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M04": {
+  "messageType": "MFQ",
+  "event": "M04",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Master files charge description",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M05": {
+  "messageType": "MFQ",
+  "event": "M05",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Patient location master file",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M06": {
+  "messageType": "MFQ",
+  "event": "M06",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Clinical study with phases and schedules master file",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M07": {
+  "messageType": "MFQ",
+  "event": "M07",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Clinical study without phases but with schedules master file",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M08": {
+  "messageType": "MFQ",
+  "event": "M08",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Test/observation (numeric) master file",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M09": {
+  "messageType": "MFQ",
+  "event": "M09",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Test/observation (categorical) master file",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M10": {
+  "messageType": "MFQ",
+  "event": "M10",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Test /observation batteries master file",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M11": {
+  "messageType": "MFQ",
+  "event": "M11",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Test/calculated observations master file",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M12": {
+  "messageType": "MFQ",
+  "event": "M12",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Master file notification message",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M13": {
+  "messageType": "MFQ",
+  "event": "M13",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Master file notification - general",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFQ^M14": {
+  "messageType": "MFQ",
+  "event": "M14",
+  "structure": "MFQ_M01",
+  "description": "MFN/MFK - Master file notification - site defined",
+  "messageTypeName": "Master files query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "MFR^M01": {
+  "messageType": "MFR",
+  "event": "M01",
+  "structure": "MFR_M01",
+  "description": "MFN/MFK - Master file not otherwise specified",
+  "messageTypeName": "Master files response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFR^M04": {
+  "messageType": "MFR",
+  "event": "M04",
+  "structure": "MFR_M04",
+  "description": "MFN/MFK - Master files charge description",
+  "messageTypeName": "Master files response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFR^M05": {
+  "messageType": "MFR",
+  "event": "M05",
+  "structure": "MFR_M05",
+  "description": "MFN/MFK - Patient location master file",
+  "messageTypeName": "Master files response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFR^M06": {
+  "messageType": "MFR",
+  "event": "M06",
+  "structure": "MFR_M06",
+  "description": "MFN/MFK - Clinical study with phases and schedules master file",
+  "messageTypeName": "Master files response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "MFR^M07": {
+  "messageType": "MFR",
+  "event": "M07",
+  "structure": "MFR_M07",
+  "description": "MFN/MFK - Clinical study without phases but with schedules master file",
+  "messageTypeName": "Master files response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "NMD^N02": {
+  "messageType": "NMD",
+  "event": "N02",
+  "structure": "NMD_N02",
+  "description": "NMD/ACK - Application management data message (unsolicited)",
+  "messageTypeName": "Application management data message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "NMQ^N01": {
+  "messageType": "NMQ",
+  "event": "N01",
+  "structure": "NMQ_N01",
+  "description": "NMQ/NMR - Application management query message",
+  "messageTypeName": "Application management query message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "NMR^N01": {
+  "messageType": "NMR",
+  "event": "N01",
+  "structure": "NMR_N01",
+  "description": "NMQ/NMR - Application management query message",
+  "messageTypeName": "Application management response message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OMB^O27": {
+  "messageType": "OMB",
+  "event": "O27",
+  "structure": "OMB_O27",
+  "description": "OMB - Blood product order",
+  "messageTypeName": "Blood product order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OMD^O03": {
+  "messageType": "OMD",
+  "event": "O03",
+  "structure": "OMD_O03",
+  "description": "OMD - Diet order",
+  "messageTypeName": "Dietary order",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OMG^O19": {
+  "messageType": "OMG",
+  "event": "O19",
+  "structure": "OMG_O19",
+  "description": "OMG - General clinical order",
+  "messageTypeName": "General clinical order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OMI^O23": {
+  "messageType": "OMI",
+  "event": "O23",
+  "structure": "OMI_O23",
+  "description": "OMI - Imaging order",
+  "messageTypeName": "Imaging order",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OML^O21": {
+  "messageType": "OML",
+  "event": "O21",
+  "structure": "OML_O21",
+  "description": "OML - Laboratory order",
+  "messageTypeName": "Laboratory order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OML^O33": {
+  "messageType": "OML",
+  "event": "O33",
+  "structure": "OML_O33",
+  "description": "OML - Laboratory order for multiple orders related to a single specimen",
+  "messageTypeName": "Laboratory order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OML^O35": {
+  "messageType": "OML",
+  "event": "O35",
+  "structure": "OML_O35",
+  "description": "OML - Laboratory order for multiple orders related to a single container of a specimen",
+  "messageTypeName": "Laboratory order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OMN^O07": {
+  "messageType": "OMN",
+  "event": "O07",
+  "structure": "OMN_O07",
+  "description": "OMN - Non-stock requisition order",
+  "messageTypeName": "Non-stock requisition order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OMP^O09": {
+  "messageType": "OMP",
+  "event": "O09",
+  "structure": "OMP_O09",
+  "description": "OMP - Pharmacy/treatment order",
+  "messageTypeName": "Pharmacy/treatment order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OMS^O05": {
+  "messageType": "OMS",
+  "event": "O05",
+  "structure": "OMS_O05",
+  "description": "OMS - Stock requisition order",
+  "messageTypeName": "Stock requisition order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORB^O28": {
+  "messageType": "ORB",
+  "event": "O28",
+  "structure": "ORB_O28",
+  "description": "ORB - Blood product order acknowledgment",
+  "messageTypeName": "Blood product order acknowledgement message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORD^O04": {
+  "messageType": "ORD",
+  "event": "O04",
+  "structure": "ORD_O04",
+  "description": "ORD - Diet order acknowledgment",
+  "messageTypeName": "Dietary order acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORF^R04": {
+  "messageType": "ORF",
+  "event": "R04",
+  "structure": "ORF_R04",
+  "description": "ORF - Response to query; transmission of requested observation",
+  "messageTypeName": "Query for results of observation",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORG^O20": {
+  "messageType": "ORG",
+  "event": "O20",
+  "structure": "ORG_O20",
+  "description": "ORG/ORL - General clinical order response",
+  "messageTypeName": "General clinical order acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORI^O24": {
+  "messageType": "ORI",
+  "event": "O24",
+  "structure": "ORI_O24",
+  "description": "ORI - Imaging order response message to any OMI",
+  "messageTypeName": "Imaging order acknowledgement message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORL^O22": {
+  "messageType": "ORL",
+  "event": "O22",
+  "structure": "ORL_O22",
+  "description": "ORL - General laboratory order response message to any OML",
+  "messageTypeName": "Laboratory acknowledgment message (unsolicited)",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORL^O34": {
+  "messageType": "ORL",
+  "event": "O34",
+  "structure": "ORL_O34",
+  "description": "ORL - Laboratory order response message to a multiple order related to single specimen OML",
+  "messageTypeName": "Laboratory acknowledgment message (unsolicited)",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORL^O36": {
+  "messageType": "ORL",
+  "event": "O36",
+  "structure": "ORL_O36",
+  "description": "ORL - Laboratory order response message to a single container of a specimen OML",
+  "messageTypeName": "Laboratory acknowledgment message (unsolicited)",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORM^O01": {
+  "messageType": "ORM",
+  "event": "O01",
+  "structure": "ORM_O01",
+  "description": "ORM - Order message (also RDE, RDS, RGV, RAS)",
+  "messageTypeName": "Pharmacy/treatment order message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "curated": {
+   "description": "Order Message — transmits orders from an order-placing application to an order-filling application",
+   "notes": "The ORDER group REPEATS — one ORM can carry many orders, each with its own ORC and order-detail segment. PID is optional in the abstract syntax (the whole PATIENT group is optional) but required by every practical radiology interface. ORC-1 Order Control drives the semantics: NW=New, CA=Cancel, DC=Discontinue, HD=Hold, RL=Release, RP=Replace, SC=Status Change, XO=Change. IHE RAD Scheduled Workflow adds the non-standard ZDS segment to carry the Study Instance UID at RAD-4 Procedure Scheduled.",
+   "abstractSyntax": "MSH [{NTE}] [ PID [PD1] [{NTE}] [PV1 [PV2]] [{IN1 [IN2] [IN3]}] [GT1] [{AL1}] ] { ORC [ OBR | RQD | RQ1 | RXO | ODS | ODT ] [{NTE}] [CTD] [{DG1}] [{ OBX [{NTE}] }] [{FT1}] [{CTI}] [BLG] }"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORN^O08": {
+  "messageType": "ORN",
+  "event": "O08",
+  "structure": "ORN_O08",
+  "description": "ORN - Non-stock requisition acknowledgment",
+  "messageTypeName": "Non-stock requisition - General order acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORP^O10": {
+  "messageType": "ORP",
+  "event": "O10",
+  "structure": "ORP_O10",
+  "description": "ORP - Pharmacy/treatment order acknowledgment",
+  "messageTypeName": "Pharmacy/treatment order acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORR^O02": {
+  "messageType": "ORR",
+  "event": "O02",
+  "structure": "ORR_O02",
+  "description": "ORR - Order response (also RRE, RRD, RRG, RRA)",
+  "messageTypeName": "General order response message response to any ORM",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "curated": {
+   "description": "Order Response — general response to ORM^O01",
+   "notes": "MSA-1 values: AA=Application Accept (order processed), AE=Application Error, AR=Application Reject.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORS^O06": {
+  "messageType": "ORS",
+  "event": "O06",
+  "structure": "ORS_O06",
+  "description": "ORS - Stock requisition acknowledgment",
+  "messageTypeName": "Stock requisition - Order acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORU^R01": {
+  "messageType": "ORU",
+  "event": "R01",
+  "structure": "ORU_R01",
+  "description": "ORU/ACK - Unsolicited transmission of an observation message",
+  "messageTypeName": "Unsolicited transmission of an observation message",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "curated": {
+   "description": "Unsolicited Observation Result — transmits observations and results",
+   "notes": "Two commonly-misstated points: PID is OPTIONAL in the abstract syntax (the PATIENT group is optional inside PATIENT_RESULT) and ORC is OPTIONAL inside ORDER_OBSERVATION — although virtually every real-world radiology and lab interface requires both. Both PATIENT_RESULT and ORDER_OBSERVATION repeat, so one ORU can carry several orders and several patients. OBR-25 Result Status uses table 0123 (P=Preliminary, F=Final, C=Correction); OBX-11 uses the DIFFERENT table 0085. In radiology, ORU^R01 carries the dictated/signed report keyed on the accession number issued at scheduling.",
+   "abstractSyntax": "MSH [SFT] { [ PID [PD1] [{NTE}] [{NK1}] [{ PV1 [PV2] }] ] { [ORC] OBR [{NTE}] [{TQ1 [{TQ2}]}] [{ OBX [{NTE}] }] [{FT1}] [{CTI}] } } [DSC]"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORU^R30": {
+  "messageType": "ORU",
+  "event": "R30",
+  "structure": "ORU_R30",
+  "description": "ORU - Unsolicited Point-Of-Care Observation Message Without Existing Order - Place An Order",
+  "messageTypeName": "Unsolicited transmission of an observation message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ORU^R31": {
+  "messageType": "ORU",
+  "event": "R31",
+  "structure": "ORU_R30",
+  "description": "ORU - Unsolicited New Point-Of-Care Observation Message - Search For An Order",
+  "messageTypeName": "Unsolicited transmission of an observation message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "ORU^R32": {
+  "messageType": "ORU",
+  "event": "R32",
+  "structure": "ORU_R30",
+  "description": "ORU - Unsolicited Pre-Ordered Point-Of-Care Observation",
+  "messageTypeName": "Unsolicited transmission of an observation message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "OSQ^Q06": {
+  "messageType": "OSQ",
+  "event": "Q06",
+  "structure": "OSQ_Q06",
+  "description": "OSQ/OSR - Query for order status",
+  "messageTypeName": "Query response for order status",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OSR^Q06": {
+  "messageType": "OSR",
+  "event": "Q06",
+  "structure": "OSR_Q06",
+  "description": "OSQ/OSR - Query for order status",
+  "messageTypeName": "Query response for order status",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OUL^R21": {
+  "messageType": "OUL",
+  "event": "R21",
+  "structure": "OUL_R21",
+  "description": "OUL - Unsolicited laboratory observation",
+  "messageTypeName": "Unsolicited laboratory observation message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OUL^R22": {
+  "messageType": "OUL",
+  "event": "R22",
+  "structure": "OUL_R22",
+  "description": "OUL - Unsolicited Specimen Oriented Observation Message",
+  "messageTypeName": "Unsolicited laboratory observation message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OUL^R23": {
+  "messageType": "OUL",
+  "event": "R23",
+  "structure": "OUL_R23",
+  "description": "OUL - Unsolicited Specimen Container Oriented Observation Message",
+  "messageTypeName": "Unsolicited laboratory observation message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "OUL^R24": {
+  "messageType": "OUL",
+  "event": "R24",
+  "structure": "OUL_R24",
+  "description": "OUL - Unsolicited Order Oriented Observation Message",
+  "messageTypeName": "Unsolicited laboratory observation message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PEX^P07": {
+  "messageType": "PEX",
+  "event": "P07",
+  "structure": "PEX_P07",
+  "description": "PEX - Unsolicited initial individual product experience report",
+  "messageTypeName": "Product experience message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PEX^P08": {
+  "messageType": "PEX",
+  "event": "P08",
+  "structure": "PEX_P07",
+  "description": "PEX - Unsolicited update individual product experience report",
+  "messageTypeName": "Product experience message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PGL^PC6": {
+  "messageType": "PGL",
+  "event": "PC6",
+  "structure": "PGL_PC6",
+  "description": "PGL - PC/ goal add",
+  "messageTypeName": "Patient goal message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PGL^PC7": {
+  "messageType": "PGL",
+  "event": "PC7",
+  "structure": "PGL_PC6",
+  "description": "PGL - PC/ goal update",
+  "messageTypeName": "Patient goal message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PGL^PC8": {
+  "messageType": "PGL",
+  "event": "PC8",
+  "structure": "PGL_PC6",
+  "description": "PGL - PC/ goal delete",
+  "messageTypeName": "Patient goal message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PIN^I07": {
+  "messageType": "PIN",
+  "event": "I07",
+  "structure": "RQI_I01",
+  "description": "PIN/ACK - Unsolicited insurance information",
+  "messageTypeName": "Patient insurance information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PMU^B01": {
+  "messageType": "PMU",
+  "event": "B01",
+  "structure": "PMU_B01",
+  "description": "PMU/ACK - Add personnel record",
+  "messageTypeName": "Add personnel record",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PMU^B02": {
+  "messageType": "PMU",
+  "event": "B02",
+  "structure": "PMU_B01",
+  "description": "PMU/ACK - Update personnel record",
+  "messageTypeName": "Add personnel record",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PMU^B03": {
+  "messageType": "PMU",
+  "event": "B03",
+  "structure": "PMU_B03",
+  "description": "PMU/ACK - Delete personnel re cord",
+  "messageTypeName": "Add personnel record",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PMU^B04": {
+  "messageType": "PMU",
+  "event": "B04",
+  "structure": "PMU_B04",
+  "description": "PMU/ACK - Active practicing person",
+  "messageTypeName": "Add personnel record",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PMU^B05": {
+  "messageType": "PMU",
+  "event": "B05",
+  "structure": "PMU_B04",
+  "description": "PMU/ACK - Deactivate practicing person",
+  "messageTypeName": "Add personnel record",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PMU^B06": {
+  "messageType": "PMU",
+  "event": "B06",
+  "structure": "PMU_B04",
+  "description": "PMU/ACK - Terminate practicing person",
+  "messageTypeName": "Add personnel record",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PMU^B07": {
+  "messageType": "PMU",
+  "event": "B07",
+  "structure": "PMU_B07",
+  "description": "PMU/ACK - Grant Certificate/Permission",
+  "messageTypeName": "Add personnel record",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PMU^B08": {
+  "messageType": "PMU",
+  "event": "B08",
+  "structure": "PMU_B08",
+  "description": "PMU/ACK - Revoke Certificate/Permission",
+  "messageTypeName": "Add personnel record",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PPG^PCG": {
+  "messageType": "PPG",
+  "event": "PCG",
+  "structure": "PPG_PCG",
+  "description": "PPG - PC/ pathway (goal-oriented) add",
+  "messageTypeName": "Patient pathway message (goal-oriented)",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PPG^PCH": {
+  "messageType": "PPG",
+  "event": "PCH",
+  "structure": "PPG_PCG",
+  "description": "PPG - PC/ pathway (goal-oriented) update",
+  "messageTypeName": "Patient pathway message (goal-oriented)",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PPG^PCJ": {
+  "messageType": "PPG",
+  "event": "PCJ",
+  "structure": "PPG_PCG",
+  "description": "PPG - PC/ pathway (goal-oriented) delete",
+  "messageTypeName": "Patient pathway message (goal-oriented)",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PPP^PCB": {
+  "messageType": "PPP",
+  "event": "PCB",
+  "structure": "PPP_PCB",
+  "description": "PPP - PC/ pathway (problem-oriented) add",
+  "messageTypeName": "Patient pathway message (problem-oriented)",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PPP^PCC": {
+  "messageType": "PPP",
+  "event": "PCC",
+  "structure": "PPP_PCB",
+  "description": "PPP - PC/ pathway (problem-oriented) update",
+  "messageTypeName": "Patient pathway message (problem-oriented)",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PPP^PCD": {
+  "messageType": "PPP",
+  "event": "PCD",
+  "structure": "PPP_PCB",
+  "description": "PPP - PC/ pathway (problem-oriented) delete",
+  "messageTypeName": "Patient pathway message (problem-oriented)",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PPR^PC1": {
+  "messageType": "PPR",
+  "event": "PC1",
+  "structure": "PPR_PC1",
+  "description": "PPR - PC/ problem add",
+  "messageTypeName": "Patient problem message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PPR^PC2": {
+  "messageType": "PPR",
+  "event": "PC2",
+  "structure": "PPR_PC1",
+  "description": "PPR - PC/ problem update",
+  "messageTypeName": "Patient problem message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PPR^PC3": {
+  "messageType": "PPR",
+  "event": "PC3",
+  "structure": "PPR_PC1",
+  "description": "PPR - PC/ problem delete",
+  "messageTypeName": "Patient problem message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "PPT^PCL": {
+  "messageType": "PPT",
+  "event": "PCL",
+  "structure": "PPT_PCL",
+  "description": "PPT - PC/ pathway (goal-oriented) query response",
+  "messageTypeName": "Patient pathway goal-oriented response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PPV^PCA": {
+  "messageType": "PPV",
+  "event": "PCA",
+  "structure": "PPV_PCA",
+  "description": "PPV - PC/ goal response",
+  "messageTypeName": "Patient goal response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PRR^PC5": {
+  "messageType": "PRR",
+  "event": "PC5",
+  "structure": "PRR_PC5",
+  "description": "PRR - PC/ problem response",
+  "messageTypeName": "Patient problem response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "PTR^PCF": {
+  "messageType": "PTR",
+  "event": "PCF",
+  "structure": "PTR_PCF",
+  "description": "PTR - PC/ pathway (problem-oriented) query response",
+  "messageTypeName": "Patient pathway problem-oriented response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Q11": {
+  "messageType": "QBP",
+  "event": "Q11",
+  "structure": "QBP_Q11",
+  "description": "QBP - Query by parameter requesting an RSP segment pattern response",
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Q13": {
+  "messageType": "QBP",
+  "event": "Q13",
+  "structure": "QBP_Q13",
+  "description": "QBP - Query by parameter requesting an  RTB - tabular response",
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Q15": {
+  "messageType": "QBP",
+  "event": "Q15",
+  "structure": "QBP_Q15",
+  "description": "QBP - Query by parameter requesting an RDY display response",
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Q21": {
+  "messageType": "QBP",
+  "event": "Q21",
+  "structure": "QBP_Q21",
+  "description": "QBP - Get person demographics",
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Q22": {
+  "messageType": "QBP",
+  "event": "Q22",
+  "structure": "QBP_Q21",
+  "description": "QBP - Find candidates",
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Q23": {
+  "messageType": "QBP",
+  "event": "Q23",
+  "structure": "QBP_Q21",
+  "description": "QBP - Get corresponding identifiers",
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Q24": {
+  "messageType": "QBP",
+  "event": "Q24",
+  "structure": "QBP_Q21",
+  "description": "QBP - Allocate identifiers",
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Q25": {
+  "messageType": "QBP",
+  "event": "Q25",
+  "structure": "QBP_Q21",
+  "description": "QBP - Personnel Information by Segment Query",
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Q31": {
+  "messageType": "QBP",
+  "event": "Q31",
+  "structure": "QBP_Q11",
+  "description": "QBP Query Dispense history",
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QBP^Z73": {
+  "messageType": "QBP",
+  "event": "Z73",
+  "structure": "QBP_Z73",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name"
+  }
+ },
+ "QBP^Z75": {
+  "messageType": "QBP",
+  "event": "Z75",
+  "structure": "QBP_Q13",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z77": {
+  "messageType": "QBP",
+  "event": "Z77",
+  "structure": "QBP_Q13",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z79": {
+  "messageType": "QBP",
+  "event": "Z79",
+  "structure": "QBP_Q15",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z81": {
+  "messageType": "QBP",
+  "event": "Z81",
+  "structure": "QBP_Q11",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z85": {
+  "messageType": "QBP",
+  "event": "Z85",
+  "structure": "QBP_Q11",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z87": {
+  "messageType": "QBP",
+  "event": "Z87",
+  "structure": "QBP_Q11",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z89": {
+  "messageType": "QBP",
+  "event": "Z89",
+  "structure": "QBP_Q11",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z91": {
+  "messageType": "QBP",
+  "event": "Z91",
+  "structure": "QBP_Q13",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z93": {
+  "messageType": "QBP",
+  "event": "Z93",
+  "structure": "QBP_Q13",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z95": {
+  "messageType": "QBP",
+  "event": "Z95",
+  "structure": "QBP_Q13",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z97": {
+  "messageType": "QBP",
+  "event": "Z97",
+  "structure": "QBP_Q15",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QBP^Z99": {
+  "messageType": "QBP",
+  "event": "Z99",
+  "structure": "QBP_Q13",
+  "description": null,
+  "messageTypeName": "Query by parameter",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QCK^Q02": {
+  "messageType": "QCK",
+  "event": "Q02",
+  "structure": "QCK_Q02",
+  "description": "QRY/QCK - Query sent for deferred response",
+  "messageTypeName": "Query general acknowledgment",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QCN^J01": {
+  "messageType": "QCN",
+  "event": "J01",
+  "structure": "QCN_J01",
+  "description": "QCN/ACK - Cancel query/acknowledge message",
+  "messageTypeName": "Cancel query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QRY^A19": {
+  "messageType": "QRY",
+  "event": "A19",
+  "structure": "QRY_A19",
+  "description": "QRY/ADR -  Patient query",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QRY^PC4": {
+  "messageType": "QRY",
+  "event": "PC4",
+  "structure": "QRY_PC4",
+  "description": "QRY - PC/ problem query",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QRY^PC9": {
+  "messageType": "QRY",
+  "event": "PC9",
+  "structure": "QRY_PC4",
+  "description": "QRY - PC/ goal query",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QRY^PCE": {
+  "messageType": "QRY",
+  "event": "PCE",
+  "structure": "QRY_PC4",
+  "description": "QRY - PC/ pathway (problem-oriented) query",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QRY^PCK": {
+  "messageType": "QRY",
+  "event": "PCK",
+  "structure": "QRY_PC4",
+  "description": "QRY - PC/ pathway (goal-oriented) query",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QRY^Q01": {
+  "messageType": "QRY",
+  "event": "Q01",
+  "structure": "QRY_Q01",
+  "description": "QRY/DSR - Query sent for immediate response",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QRY^Q02": {
+  "messageType": "QRY",
+  "event": "Q02",
+  "structure": "QRY_Q02",
+  "description": "QRY/QCK - Query sent for deferred response",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QRY^Q26": {
+  "messageType": "QRY",
+  "event": "Q26",
+  "structure": "QRY_Q01",
+  "description": "ROR - Pharmacy/treatment order response",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QRY^Q27": {
+  "messageType": "QRY",
+  "event": "Q27",
+  "structure": "QRY_Q01",
+  "description": "RAR - Pharmacy/treatment administration information",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QRY^Q28": {
+  "messageType": "QRY",
+  "event": "Q28",
+  "structure": "QRY_Q01",
+  "description": "RDR - Pharmacy/treatment dispense information",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QRY^Q29": {
+  "messageType": "QRY",
+  "event": "Q29",
+  "structure": "QRY_Q01",
+  "description": "RER - Pharmacy/treatment encoded order information",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QRY^Q30": {
+  "messageType": "QRY",
+  "event": "Q30",
+  "structure": "QRY_Q01",
+  "description": "RGR - Pharmacy/treatment dose information",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QRY^R02": {
+  "messageType": "QRY",
+  "event": "R02",
+  "structure": "QRY_R02",
+  "description": "QRY - Query for results of observation",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QRY^T12": {
+  "messageType": "QRY",
+  "event": "T12",
+  "structure": "QRY",
+  "description": "QRY/DOC - Document query",
+  "messageTypeName": "Query, original mode",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QSB^Q16": {
+  "messageType": "QSB",
+  "event": "Q16",
+  "structure": "QSB_Q16",
+  "description": "QSB - Create subscription",
+  "messageTypeName": "Create subscription",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "QSB^Z83": {
+  "messageType": "QSB",
+  "event": "Z83",
+  "structure": "QSB_Q16",
+  "description": null,
+  "messageTypeName": "Create subscription",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "QSX^J02": {
+  "messageType": "QSX",
+  "event": "J02",
+  "structure": "QCN_J01",
+  "description": "QSX/ACK - Cancel subscription/acknowledge message",
+  "messageTypeName": "Cancel subscription/acknowledge message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "QVR^Q17": {
+  "messageType": "QVR",
+  "event": "Q17",
+  "structure": "QVR_Q17",
+  "description": "QVR - Query for previous events",
+  "messageTypeName": "Query for previous events",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RAR^RAR": {
+  "messageType": "RAR",
+  "event": "RAR",
+  "structure": "RAR_RAR",
+  "description": "RAR - Pharmacy administration information query response",
+  "messageTypeName": "Pharmacy/treatment administration information",
+  "table0003": {
+   "status": "not-in-2.5.1",
+   "history": "added v2.3, removed after v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RAS^O17": {
+  "messageType": "RAS",
+  "event": "O17",
+  "structure": "RAS_O17",
+  "description": "RAS - Pharmacy/treatment administration",
+  "messageTypeName": "Pharmacy/treatment administration message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RCI^I05": {
+  "messageType": "RCI",
+  "event": "I05",
+  "structure": "RCI_I05",
+  "description": "RQC/RCI - Request for patient clinical information",
+  "messageTypeName": "Return clinical information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RCL^I06": {
+  "messageType": "RCL",
+  "event": "I06",
+  "structure": "RCL_I06",
+  "description": "RQC/RCL - Request/receipt of clinical data listing",
+  "messageTypeName": "Return clinical list",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RDE^O11": {
+  "messageType": "RDE",
+  "event": "O11",
+  "structure": "RDE_O11",
+  "description": "RDE - Pharmacy/treatment encoded order",
+  "messageTypeName": "Pharmacy/treatment encoded order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RDE^O25": {
+  "messageType": "RDE",
+  "event": "O25",
+  "structure": "RDE_O11",
+  "description": "RDE - Pharmacy/treatment refill authorization request",
+  "messageTypeName": "Pharmacy/treatment encoded order message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RDS^O13": {
+  "messageType": "RDS",
+  "event": "O13",
+  "structure": "RDS_O13",
+  "description": "RDS - Pharmacy/treatment dispense",
+  "messageTypeName": "Pharmacy/treatment dispense message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RDY^K15": {
+  "messageType": "RDY",
+  "event": "K15",
+  "structure": "RDY_K15",
+  "description": "RDY - Display response in response to QBP^Q15",
+  "messageTypeName": "Display based response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RDY^Z80": {
+  "messageType": "RDY",
+  "event": "Z80",
+  "structure": "RSP_K11",
+  "description": null,
+  "messageTypeName": "Display based response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "RDY^Z98": {
+  "messageType": "RDY",
+  "event": "Z98",
+  "structure": "RDY_K15",
+  "description": null,
+  "messageTypeName": "Display based response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "REF^I12": {
+  "messageType": "REF",
+  "event": "I12",
+  "structure": "REF_I12",
+  "description": "REF/RRI - Patient referral",
+  "messageTypeName": "Patient referral",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "REF^I13": {
+  "messageType": "REF",
+  "event": "I13",
+  "structure": "REF_I12",
+  "description": "REF/RRI - Modify patient referral",
+  "messageTypeName": "Patient referral",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "REF^I14": {
+  "messageType": "REF",
+  "event": "I14",
+  "structure": "REF_I12",
+  "description": "REF/RRI - Cancel patient referral",
+  "messageTypeName": "Patient referral",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "REF^I15": {
+  "messageType": "REF",
+  "event": "I15",
+  "structure": "REF_I12",
+  "description": "REF/RRI - Request patient referral status",
+  "messageTypeName": "Patient referral",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RER^RER": {
+  "messageType": "RER",
+  "event": "RER",
+  "structure": "RER_RER",
+  "description": "RER - Pharmacy encoded order information query response",
+  "messageTypeName": "Pharmacy/treatment encoded order information",
+  "table0003": {
+   "status": "not-in-2.5.1",
+   "history": "added v2.3, removed after v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RGR^RGR": {
+  "messageType": "RGR",
+  "event": "RGR",
+  "structure": "RGR_RGR",
+  "description": "RGR - Pharmacy dose information query response",
+  "messageTypeName": "Pharmacy/treatment dose information",
+  "table0003": {
+   "status": "not-in-2.5.1",
+   "history": "added v2.3, removed after v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RGV^O15": {
+  "messageType": "RGV",
+  "event": "O15",
+  "structure": "RGV_O15",
+  "description": "RGV - Pharmacy/treatment give",
+  "messageTypeName": "Pharmacy/treatment give message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ROR^ROR": {
+  "messageType": "ROR",
+  "event": "ROR",
+  "structure": "ROR_ROR",
+  "description": "ROR - Pharmacy prescription order query response",
+  "messageTypeName": "Pharmacy/treatment order response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RPA^I08": {
+  "messageType": "RPA",
+  "event": "I08",
+  "structure": "RPA_I08",
+  "description": "RQA/RPA - Request for treatment authorization information",
+  "messageTypeName": "Return patient authorization",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RPI^I01": {
+  "messageType": "RPI",
+  "event": "I01",
+  "structure": "RPI_I01",
+  "description": "RQI/RPI - Request for insurance information",
+  "messageTypeName": "Return patient information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RPI^I04": {
+  "messageType": "RPI",
+  "event": "I04",
+  "structure": "RPI_I04",
+  "description": "RQD/RPI - Request for patient demographic data",
+  "messageTypeName": "Return patient information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RPL^I02": {
+  "messageType": "RPL",
+  "event": "I02",
+  "structure": "RPL_I02",
+  "description": "RQI/RPL - Request/receipt of patient selection display list",
+  "messageTypeName": "Return patient display list",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RPR^I03": {
+  "messageType": "RPR",
+  "event": "I03",
+  "structure": "RPR_I03",
+  "description": "RQI/RPR - Request/receipt of patient selection list",
+  "messageTypeName": "Return patient list",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RQA^I08": {
+  "messageType": "RQA",
+  "event": "I08",
+  "structure": "RQA_I08",
+  "description": "RQA/RPA - Request for treatment authorization information",
+  "messageTypeName": "Request patient authorization",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RQA^I09": {
+  "messageType": "RQA",
+  "event": "I09",
+  "structure": "RQA_I08",
+  "description": "RQA/RPA - Request for modification to an authorization",
+  "messageTypeName": "Request patient authorization",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RQA^I10": {
+  "messageType": "RQA",
+  "event": "I10",
+  "structure": "RQA_I08",
+  "description": "RQA/RPA - Request for resubmission of an authorization",
+  "messageTypeName": "Request patient authorization",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RQA^I11": {
+  "messageType": "RQA",
+  "event": "I11",
+  "structure": "RQA_I08",
+  "description": "RQA/RPA - Request for cancellation of an authorization",
+  "messageTypeName": "Request patient authorization",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RQC^I05": {
+  "messageType": "RQC",
+  "event": "I05",
+  "structure": "RQC_I05",
+  "description": "RQC/RCI - Request for patient clinical information",
+  "messageTypeName": "Request clinical information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RQC^I06": {
+  "messageType": "RQC",
+  "event": "I06",
+  "structure": "RQC_I05",
+  "description": "RQC/RCL - Request/receipt of clinical data listing",
+  "messageTypeName": "Request clinical information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RQI^I01": {
+  "messageType": "RQI",
+  "event": "I01",
+  "structure": "RQI_I01",
+  "description": "RQI/RPI - Request for insurance information",
+  "messageTypeName": "Request patient information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RQI^I02": {
+  "messageType": "RQI",
+  "event": "I02",
+  "structure": "RQI_I01",
+  "description": "RQI/RPL - Request/receipt of patient selection display list",
+  "messageTypeName": "Request patient information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RQI^I03": {
+  "messageType": "RQI",
+  "event": "I03",
+  "structure": "RQI_I01",
+  "description": "RQI/RPR - Request/receipt of patient selection list",
+  "messageTypeName": "Request patient information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RQP^I04": {
+  "messageType": "RQP",
+  "event": "I04",
+  "structure": "RQP_I04",
+  "description": "RQD/RPI - Request for patient demographic data",
+  "messageTypeName": "Request patient demographics",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RQQ^Q09": {
+  "messageType": "RQQ",
+  "event": "Q09",
+  "structure": "RQQ_Q09",
+  "description": "RQQ - event replay query",
+  "messageTypeName": "Event replay query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3.1, removed after v2.5.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3, removed after v2.5.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RRA^O18": {
+  "messageType": "RRA",
+  "event": "O18",
+  "structure": "RRA_O18",
+  "description": "RRA - Pharmacy/treatment administration acknowledgment",
+  "messageTypeName": "Pharmacy/treatment administration acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RRD^O14": {
+  "messageType": "RRD",
+  "event": "O14",
+  "structure": "RRD_O14",
+  "description": "RRD - Pharmacy/treatment dispense acknowledgment",
+  "messageTypeName": "Pharmacy/treatment dispense acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RRE^O12": {
+  "messageType": "RRE",
+  "event": "O12",
+  "structure": "RRE_O12",
+  "description": "RRE - Pharmacy/treatment encoded order acknowledgment",
+  "messageTypeName": "Pharmacy/treatment encoded order acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RRE^O26": {
+  "messageType": "RRE",
+  "event": "O26",
+  "structure": "RRE_O12",
+  "description": "RRE - Pharmacy/Treatment Refill Authorization Acknowledgement",
+  "messageTypeName": "Pharmacy/treatment encoded order acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RRG^O16": {
+  "messageType": "RRG",
+  "event": "O16",
+  "structure": "RRG_O16",
+  "description": "RRG - Pharmacy/treatment give acknowledgment",
+  "messageTypeName": "Pharmacy/treatment give acknowledgment message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RRI^I12": {
+  "messageType": "RRI",
+  "event": "I12",
+  "structure": "RRI_I12",
+  "description": "REF/RRI - Patient referral",
+  "messageTypeName": "Return referral information",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RSP^K11": {
+  "messageType": "RSP",
+  "event": "K11",
+  "structure": "RSP_K11",
+  "description": "RSP - Segment pattern response in response to QBP^Q11",
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RSP^K21": {
+  "messageType": "RSP",
+  "event": "K21",
+  "structure": "RSP_K21",
+  "description": "RSP - Get person demographics response",
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RSP^K22": {
+  "messageType": "RSP",
+  "event": "K22",
+  "structure": "RSP_K21",
+  "description": "RSP - Find candidates response",
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RSP^K23": {
+  "messageType": "RSP",
+  "event": "K23",
+  "structure": "RSP_K23",
+  "description": "RSP - Get corresponding identifiers response",
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RSP^K24": {
+  "messageType": "RSP",
+  "event": "K24",
+  "structure": "RSP_K23",
+  "description": "RSP - Allocate identifiers response",
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "RSP^K25": {
+  "messageType": "RSP",
+  "event": "K25",
+  "structure": "RSP_K25",
+  "description": "RSP - Personnel Information by Segment Response",
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RSP^K31": {
+  "messageType": "RSP",
+  "event": "K31",
+  "structure": "RSP_K31",
+  "description": "RSP -Dispense History Response",
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RSP^Q11": {
+  "messageType": "RSP",
+  "event": "Q11",
+  "structure": "RSP_Q11",
+  "description": "QBP - Query by parameter requesting an RSP segment pattern response",
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RSP^Z82": {
+  "messageType": "RSP",
+  "event": "Z82",
+  "structure": "RSP_Z82",
+  "description": null,
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name"
+  }
+ },
+ "RSP^Z84": {
+  "messageType": "RSP",
+  "event": "Z84",
+  "structure": "RSP_K11",
+  "description": null,
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "RSP^Z86": {
+  "messageType": "RSP",
+  "event": "Z86",
+  "structure": "RSP_Z86",
+  "description": null,
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name"
+  }
+ },
+ "RSP^Z88": {
+  "messageType": "RSP",
+  "event": "Z88",
+  "structure": "RSP_Z88",
+  "description": null,
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name"
+  }
+ },
+ "RSP^Z90": {
+  "messageType": "RSP",
+  "event": "Z90",
+  "structure": "RSP_Z90",
+  "description": null,
+  "messageTypeName": "Segment pattern response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name"
+  }
+ },
+ "RTB^K13": {
+  "messageType": "RTB",
+  "event": "K13",
+  "structure": "RTB_K13",
+  "description": "RTB - Tabular response in response to QBP^Q13",
+  "messageTypeName": "Tabular response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.5"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "RTB^Z74": {
+  "messageType": "RTB",
+  "event": "Z74",
+  "structure": "RTB_Z74",
+  "description": null,
+  "messageTypeName": "Tabular response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name"
+  }
+ },
+ "RTB^Z76": {
+  "messageType": "RTB",
+  "event": "Z76",
+  "structure": "RTB_K13",
+  "description": null,
+  "messageTypeName": "Tabular response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "RTB^Z78": {
+  "messageType": "RTB",
+  "event": "Z78",
+  "structure": "RTB_K13",
+  "description": null,
+  "messageTypeName": "Tabular response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "RTB^Z92": {
+  "messageType": "RTB",
+  "event": "Z92",
+  "structure": "RTB_K13",
+  "description": null,
+  "messageTypeName": "Tabular response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "RTB^Z94": {
+  "messageType": "RTB",
+  "event": "Z94",
+  "structure": "RTB_K13",
+  "description": null,
+  "messageTypeName": "Tabular response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "RTB^Z96": {
+  "messageType": "RTB",
+  "event": "Z96",
+  "structure": "RTB_K13",
+  "description": null,
+  "messageTypeName": "Tabular response",
+  "table0003": {
+   "status": "unverified"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1"
+  }
+ },
+ "SIU^S12": {
+  "messageType": "SIU",
+  "event": "S12",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of new appointment booking",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "curated": {
+   "description": "Notification of New Appointment Booking — new appointment has been booked",
+   "notes": "Used for scheduling workflow. S12=New, S13=Rescheduled, S14=Modified, S15=Cancelled, S17=Deletion of Appointment.",
+   "abstractSyntax": null
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S13": {
+  "messageType": "SIU",
+  "event": "S13",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of appointment rescheduling",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S14": {
+  "messageType": "SIU",
+  "event": "S14",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of appointment modification",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S15": {
+  "messageType": "SIU",
+  "event": "S15",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of appointment cancellation",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S16": {
+  "messageType": "SIU",
+  "event": "S16",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of appointment discontinuation",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S17": {
+  "messageType": "SIU",
+  "event": "S17",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of appointment deletion",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S18": {
+  "messageType": "SIU",
+  "event": "S18",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of addition of service/resource on appointment",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S19": {
+  "messageType": "SIU",
+  "event": "S19",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of modification of service/resource on appointment",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S20": {
+  "messageType": "SIU",
+  "event": "S20",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of cancellation of service/resource on appointment",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S21": {
+  "messageType": "SIU",
+  "event": "S21",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of discontinuation of service/resource on appointment",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S22": {
+  "messageType": "SIU",
+  "event": "S22",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of deletion of service/resource on appointment",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S23": {
+  "messageType": "SIU",
+  "event": "S23",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of blocked schedule time slot(s)",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S24": {
+  "messageType": "SIU",
+  "event": "S24",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK - Notification of opened (\"unblocked\") schedule time slot(s)",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SIU^S26": {
+  "messageType": "SIU",
+  "event": "S26",
+  "structure": "SIU_S12",
+  "description": "SIU/ACK Notification that patient did not show up for schedule appointment",
+  "messageTypeName": "Schedule information unsolicited",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SPQ^Q08": {
+  "messageType": "SPQ",
+  "event": "Q08",
+  "structure": "SPQ_Q08",
+  "description": "SPQ - Stored procedure request",
+  "messageTypeName": "Stored procedure request",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3.1, removed after v2.5.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3, removed after v2.5.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "SQM^S25": {
+  "messageType": "SQM",
+  "event": "S25",
+  "structure": "SQM_S25",
+  "description": "SQM/SQR - Schedule query message and response",
+  "messageTypeName": "Schedule query message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "SQR^S25": {
+  "messageType": "SQR",
+  "event": "S25",
+  "structure": "SQR_S25",
+  "description": "SQM/SQR - Schedule query message and response",
+  "messageTypeName": "Schedule query response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S01": {
+  "messageType": "SRM",
+  "event": "S01",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request new appointment booking",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S02": {
+  "messageType": "SRM",
+  "event": "S02",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request appointment rescheduling",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S03": {
+  "messageType": "SRM",
+  "event": "S03",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request appointment modification",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S04": {
+  "messageType": "SRM",
+  "event": "S04",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request appointment cancellation",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S05": {
+  "messageType": "SRM",
+  "event": "S05",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request appointment discontinuation",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S06": {
+  "messageType": "SRM",
+  "event": "S06",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request appointment deletion",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S07": {
+  "messageType": "SRM",
+  "event": "S07",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request addition of service/resource on appointment",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S08": {
+  "messageType": "SRM",
+  "event": "S08",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request modification of service/resource on appointment",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S09": {
+  "messageType": "SRM",
+  "event": "S09",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request cancellation of service/resource on appointment",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S10": {
+  "messageType": "SRM",
+  "event": "S10",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request discontinuation of service/resource on appointment",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRM^S11": {
+  "messageType": "SRM",
+  "event": "S11",
+  "structure": "SRM_S01",
+  "description": "SRM/SRR - Request deletion of service/resource on appointment",
+  "messageTypeName": "Schedule request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "SRR^S01": {
+  "messageType": "SRR",
+  "event": "S01",
+  "structure": "SRR_S01",
+  "description": "SRM/SRR - Request new appointment booking",
+  "messageTypeName": "Scheduled request response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "SSR^U04": {
+  "messageType": "SSR",
+  "event": "U04",
+  "structure": "SSR_U04",
+  "description": "SSR/ACK - specimen status request",
+  "messageTypeName": "Specimen status request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "SSU^U03": {
+  "messageType": "SSU",
+  "event": "U03",
+  "structure": "SSU_U03",
+  "description": "SSU/ACK - Specimen status update",
+  "messageTypeName": "Specimen status update message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "SUR^P09": {
+  "messageType": "SUR",
+  "event": "P09",
+  "structure": "SUR_P09",
+  "description": "SUR - Summary product experience report",
+  "messageTypeName": "Summary product experience report",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "TBR^R08": {
+  "messageType": "TBR",
+  "event": "R08",
+  "structure": "TBR_R08",
+  "description": "TBR - Tabular Data Response",
+  "messageTypeName": "Tabular data response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3.1, removed after v2.5.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "TCR^U11": {
+  "messageType": "TCR",
+  "event": "U11",
+  "structure": "TCU_U10",
+  "description": "TCR/ACK - Automated equipment test code settings request",
+  "messageTypeName": "Automated equipment test code settings request message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI eventmap 2.5.1",
+   "description": "table 0003"
+  }
+ },
+ "TCU^U10": {
+  "messageType": "TCU",
+  "event": "U10",
+  "structure": "TCU_U10",
+  "description": "TCU/ACK - Automated equipment test code settings update",
+  "messageTypeName": "Automated equipment test code settings update message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.4"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "UDM^Q05": {
+  "messageType": "UDM",
+  "event": "Q05",
+  "structure": "UDM_Q05",
+  "description": "UDM/ACK - Unsolicited display update message",
+  "messageTypeName": "Unsolicited display update message",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.2"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "from v2.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "VQQ^Q07": {
+  "messageType": "VQQ",
+  "event": "Q07",
+  "structure": "VQQ_Q07",
+  "description": "VQQ - Virtual table query",
+  "messageTypeName": "Virtual table query",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3.1, removed after v2.5.1"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3, removed after v2.5.1"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "VXQ^V01": {
+  "messageType": "VXQ",
+  "event": "V01",
+  "structure": "VXQ_V01",
+  "description": "VXQ - Query for vaccination record",
+  "messageTypeName": "Query for vaccination record",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "VXR^V03": {
+  "messageType": "VXR",
+  "event": "V03",
+  "structure": "VXR_V03",
+  "description": "VXR - Vaccination record response",
+  "messageTypeName": "Vaccination record response",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "VXU^V04": {
+  "messageType": "VXU",
+  "event": "V04",
+  "structure": "VXU_V04",
+  "description": "VXU - Unsolicited vaccination record update",
+  "messageTypeName": "Unsolicited vaccination record update",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "VXX^V02": {
+  "messageType": "VXX",
+  "event": "V02",
+  "structure": "VXX_V02",
+  "description": "VXX - Response to vaccination query returning multiple PID matches",
+  "messageTypeName": "Response for vaccination query with multiple PID matches",
+  "table0003": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "table0076": {
+   "status": "valid",
+   "history": "added v2.3"
+  },
+  "src": {
+   "mapping": "HAPI structure name",
+   "description": "table 0003"
+  }
+ },
+ "ACK": {
+  "messageType": "ACK",
+  "event": null,
+  "structure": "ACK",
+  "description": "General Acknowledgment — response to any received message requiring acknowledgment",
+  "curated": {
+   "description": "General Acknowledgment — response to any received message requiring acknowledgment",
+   "notes": "MSA-1: AA=Accept, AE=Error, AR=Reject. MSA-2 echoes the MSH-10 of the original message. ERR-3 provides detailed error codes."
+  },
+  "src": {
+   "mapping": "overlay"
+  }
+ }
+}

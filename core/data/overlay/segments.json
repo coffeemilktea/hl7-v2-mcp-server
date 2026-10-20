@@ -1,0 +1,1998 @@
+{
+  "MSH": {
+    "name": "Message Header",
+    "description": "Defines the intent, source, destination and some specifics of the syntax of a message. Always the first segment of every HL7 message.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Field Separator",
+        "type": "ST",
+        "len": 1,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Defines the character that separates fields. Literal value |"
+      },
+      {
+        "seq": 2,
+        "name": "Encoding Characters",
+        "type": "ST",
+        "len": 4,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Four characters in this order: component separator ^, repetition separator ~, escape character \\, subcomponent separator &. Default: ^~\\&"
+      },
+      {
+        "seq": 3,
+        "name": "Sending Application",
+        "type": "HD",
+        "len": 227,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Uniquely identifies the sending application among all other applications within the network enterprise."
+      },
+      {
+        "seq": 4,
+        "name": "Sending Facility",
+        "type": "HD",
+        "len": 227,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Further identifies the sending application. Can be an organizational unit or department."
+      },
+      {
+        "seq": 5,
+        "name": "Receiving Application",
+        "type": "HD",
+        "len": 227,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Uniquely identifies the receiving application among all other applications within the network enterprise."
+      },
+      {
+        "seq": 6,
+        "name": "Receiving Facility",
+        "type": "HD",
+        "len": 227,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Further identifies the receiving application. Can be an organizational unit or department."
+      },
+      {
+        "seq": 7,
+        "name": "Date/Time Of Message",
+        "type": "TS",
+        "len": 26,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Contains the date/time that the sending system created the message. Format: YYYYMMDDHHMMSS[.SSSS][+/-ZZZZ]"
+      },
+      {
+        "seq": 8,
+        "name": "Security",
+        "type": "ST",
+        "len": 40,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Used to implement a security check between applications."
+      },
+      {
+        "seq": 9,
+        "name": "Message Type",
+        "type": "MSG",
+        "len": 15,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Contains the message type, trigger event, and message structure for the message. E.g., ADT^A01^ADT_A01"
+      },
+      {
+        "seq": 10,
+        "name": "Message Control ID",
+        "type": "ST",
+        "len": 20,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "A number or other identifier that uniquely identifies the message. Used to reference the message in acknowledgements."
+      },
+      {
+        "seq": 11,
+        "name": "Processing ID",
+        "type": "PT",
+        "len": 3,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Used to decide whether to process the message as defined in HL7 application (real) processing rules. P=Production, D=Debugging, T=Training."
+      },
+      {
+        "seq": 12,
+        "name": "Version ID",
+        "type": "VID",
+        "len": 60,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Matched by the receiving system to its own version to be sure the message will be interpreted correctly. Use 2.5.1 for this version."
+      },
+      {
+        "seq": 13,
+        "name": "Sequence Number",
+        "type": "NM",
+        "len": 15,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Non-null value in this field implies that the sequence number protocol is in use."
+      },
+      {
+        "seq": 14,
+        "name": "Continuation Pointer",
+        "type": "ST",
+        "len": 180,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Used to define continuations in application-level fields."
+      },
+      {
+        "seq": 15,
+        "name": "Accept Acknowledgment Type",
+        "type": "ID",
+        "len": 2,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "AL=Always, NE=Never, ER=Error/reject only, SU=Successful only. Table 0155."
+      },
+      {
+        "seq": 16,
+        "name": "Application Acknowledgment Type",
+        "type": "ID",
+        "len": 2,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "AL=Always, NE=Never, ER=Error/reject only, SU=Successful only. Table 0155."
+      },
+      {
+        "seq": 17,
+        "name": "Country Code",
+        "type": "ID",
+        "len": 3,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Country of origin for the message. ISO 3166 two-character codes."
+      },
+      {
+        "seq": 18,
+        "name": "Character Set",
+        "type": "ID",
+        "len": 16,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "The character set for the entire message. Table 0211. Default is ASCII."
+      },
+      {
+        "seq": 19,
+        "name": "Principal Language Of Message",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Primary language of the message. Data type is CE in v2.5.1; it became CWE in v2.7."
+      },
+      {
+        "seq": 20,
+        "name": "Alternate Character Set Handling Scheme",
+        "type": "ID",
+        "len": 20,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Alternate character set handling scheme. Table 0356."
+      },
+      {
+        "seq": 21,
+        "name": "Message Profile Identifier",
+        "type": "EI",
+        "len": 427,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Uniquely identifies the HL7 application message processing rules for the message."
+      }
+    ]
+  },
+  "MSA": {
+    "name": "Message Acknowledgment",
+    "description": "Defines the acknowledgment code and control information for the acknowledgment message. Always returned in an ACK message.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Acknowledgment Code",
+        "type": "ID",
+        "len": 2,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "AA=Application Accept, AE=Application Error, AR=Application Reject, CA=Commit Accept, CE=Commit Error, CR=Commit Reject. Table 0008."
+      },
+      {
+        "seq": 2,
+        "name": "Message Control ID",
+        "type": "ST",
+        "len": 20,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "The Message Control ID of the message being acknowledged (MSH-10 from the original)."
+      },
+      {
+        "seq": 3,
+        "name": "Text Message",
+        "type": "ST",
+        "len": 80,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "DEPRECATED in v2.5. Human-readable text giving further detail on a non-AA response."
+      },
+      {
+        "seq": 4,
+        "name": "Expected Sequence Number",
+        "type": "NM",
+        "len": 15,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "DEPRECATED. Sequence number the sender expected."
+      },
+      {
+        "seq": 5,
+        "name": "Delayed Acknowledgment Type",
+        "type": "ID",
+        "len": 1,
+        "opt": "W",
+        "rpt": 1,
+        "desc": "Withdrawn in v2.5.1 (usage W). Do not populate."
+      },
+      {
+        "seq": 6,
+        "name": "Error Condition",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "DEPRECATED. Error condition."
+      }
+    ]
+  },
+  "EVN": {
+    "name": "Event Type",
+    "description": "Used to communicate necessary trigger event information to receiving applications.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Event Type Code",
+        "type": "ID",
+        "len": 3,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED in v2.3.1+. Redundant with MSH-9 trigger event."
+      },
+      {
+        "seq": 2,
+        "name": "Recorded Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "The date and time the event was actually recorded."
+      },
+      {
+        "seq": 3,
+        "name": "Date/Time Planned Event",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "The date/time the event is planned to occur."
+      },
+      {
+        "seq": 4,
+        "name": "Event Reason Code",
+        "type": "IS",
+        "len": 3,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0062. Describes the reason for the event. E.g., 01=Patient request, 02=Physician order, 03=Census management."
+      },
+      {
+        "seq": 5,
+        "name": "Operator ID",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "The login of the person who entered the event. Used for audit."
+      },
+      {
+        "seq": 6,
+        "name": "Event Occurred",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "The date and time the event actually occurred."
+      },
+      {
+        "seq": 7,
+        "name": "Event Facility",
+        "type": "HD",
+        "len": 241,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Identifies the facility where the event occurred."
+      }
+    ]
+  },
+  "PID": {
+    "name": "Patient Identification",
+    "description": "Used by all applications as the primary means of communicating patient identification information. Contains all demographics. The most important segment in HL7 v2.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Set ID - PID",
+        "type": "SI",
+        "len": 4,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "For first occurrence of PID in a message, the value 1 is used."
+      },
+      {
+        "seq": 2,
+        "name": "Patient ID",
+        "type": "CX",
+        "len": 20,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED. Retained for backward compatibility. External patient ID."
+      },
+      {
+        "seq": 3,
+        "name": "Patient Identifier List",
+        "type": "CX",
+        "len": 250,
+        "opt": "R",
+        "rpt": "∞",
+        "desc": "Primary patient identification. CX components: ID^Check Digit^Check Digit Scheme^Assigning Authority^Identifier Type Code. Identifier Type Codes: MR=Medical Record, PI=Patient Internal ID, SS=SSN, DL=Driver's License."
+      },
+      {
+        "seq": 4,
+        "name": "Alternate Patient ID - PID",
+        "type": "CX",
+        "len": 20,
+        "opt": "B",
+        "rpt": "∞",
+        "desc": "DEPRECATED. Third party identifiers for this patient."
+      },
+      {
+        "seq": 5,
+        "name": "Patient Name",
+        "type": "XPN",
+        "len": 250,
+        "opt": "R",
+        "rpt": "∞",
+        "desc": "Legal name. XPN: Family^Given^Middle^Suffix^Prefix^Degree^Name Type. Name Type L=Legal, A=Alias, N=Nickname, P=Name of Partner/Spouse, M=Maiden."
+      },
+      {
+        "seq": 6,
+        "name": "Mother's Maiden Name",
+        "type": "XPN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Family name under which the mother was born."
+      },
+      {
+        "seq": 7,
+        "name": "Date/Time of Birth",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Patient's date and time of birth. Format: YYYYMMDD[HHMM[SS[.SSSS]]][+/-ZZZZ]."
+      },
+      {
+        "seq": 8,
+        "name": "Administrative Sex",
+        "type": "IS",
+        "len": 1,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0001. F=Female, M=Male, O=Other, U=Unknown, A=Ambiguous, N=Not applicable."
+      },
+      {
+        "seq": 9,
+        "name": "Patient Alias",
+        "type": "XPN",
+        "len": 250,
+        "opt": "B",
+        "rpt": "∞",
+        "desc": "DEPRECATED. Other names used by the patient."
+      },
+      {
+        "seq": 10,
+        "name": "Race",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Table 0005. Patient's race. E.g., 1002-5=American Indian or Alaska Native, 2028-9=Asian, 2054-5=Black, 2076-8=Native Hawaiian, 2106-3=White."
+      },
+      {
+        "seq": 11,
+        "name": "Patient Address",
+        "type": "XAD",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Mailing and home addresses. XAD: Street^Other^City^State^Zip^Country^Address Type. Address types: H=Home, B=Business, M=Mailing, BA=Bad address."
+      },
+      {
+        "seq": 12,
+        "name": "County Code",
+        "type": "IS",
+        "len": 4,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED. Use PID-11 (address) county/parish instead."
+      },
+      {
+        "seq": 13,
+        "name": "Phone Number - Home",
+        "type": "XTN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Patient's home phone number(s). XTN: [unused]^Telecom Use^Equipment Type^Email^Country Code^Area Code^Local Number^Extension^..."
+      },
+      {
+        "seq": 14,
+        "name": "Phone Number - Business",
+        "type": "XTN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Patient's business telephone number(s)."
+      },
+      {
+        "seq": 15,
+        "name": "Primary Language",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Patient's primary spoken language. ISO 639 codes."
+      },
+      {
+        "seq": 16,
+        "name": "Marital Status",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0002. A=Separated, B=Unmarried, C=Common law, D=Divorced, E=Legally separated, G=Living together, I=Interlocutory, M=Married, N=Annulled, O=Other, P=Domestic partner, R=Registered domestic partner, S=Single, T=Unreported, U=Unknown, W=Widowed."
+      },
+      {
+        "seq": 17,
+        "name": "Religion",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0006. Patient's religion."
+      },
+      {
+        "seq": 18,
+        "name": "Patient Account Number",
+        "type": "CX",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Patient account number assigned by accounting to which all charges, payments, etc. are recorded."
+      },
+      {
+        "seq": 19,
+        "name": "SSN Number - Patient",
+        "type": "ST",
+        "len": 16,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED. Social Security Number. Use PID-3 with identifier type SS."
+      },
+      {
+        "seq": 20,
+        "name": "Driver's License Number - Patient",
+        "type": "DLN",
+        "len": 25,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED. Driver's license number."
+      },
+      {
+        "seq": 21,
+        "name": "Mother's Identifier",
+        "type": "CX",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Used as a link field for newborns."
+      },
+      {
+        "seq": 22,
+        "name": "Ethnic Group",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Table 0189. 2135-2=Hispanic or Latino, 2186-5=Not Hispanic or Latino, U=Unknown."
+      },
+      {
+        "seq": 23,
+        "name": "Birth Place",
+        "type": "ST",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Free-text description of patient's birth place."
+      },
+      {
+        "seq": 24,
+        "name": "Multiple Birth Indicator",
+        "type": "ID",
+        "len": 1,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Y=Yes, N=No. Indicates if this patient was part of a multiple birth."
+      },
+      {
+        "seq": 25,
+        "name": "Birth Order",
+        "type": "NM",
+        "len": 2,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Birth order for multiple births. 1=First, 2=Second, etc."
+      },
+      {
+        "seq": 26,
+        "name": "Citizenship",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Citizenship of the patient. ISO 3166 codes."
+      },
+      {
+        "seq": 27,
+        "name": "Veterans Military Status",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0172. Military status of the patient."
+      },
+      {
+        "seq": 28,
+        "name": "Nationality",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "DEPRECATED. Table 0212."
+      },
+      {
+        "seq": 29,
+        "name": "Patient Death Date and Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Date and time of patient death."
+      },
+      {
+        "seq": 30,
+        "name": "Patient Death Indicator",
+        "type": "ID",
+        "len": 1,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Y=Yes, N=No. Indicates if the patient is deceased."
+      },
+      {
+        "seq": 31,
+        "name": "Identity Unknown Indicator",
+        "type": "ID",
+        "len": 1,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Y=Yes, N=No. Indicates whether or not the patient's/person's identity is known."
+      },
+      {
+        "seq": 32,
+        "name": "Identity Reliability Code",
+        "type": "IS",
+        "len": 20,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Table 0445. AL=Patient/Person Name is an Alias, UA=Unknown/Default Address, UD=Unknown/Default Date of Birth, US=Unknown/Default Social Security Number."
+      },
+      {
+        "seq": 33,
+        "name": "Last Update Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Date and time when this record was last updated in the sending system."
+      },
+      {
+        "seq": 34,
+        "name": "Last Update Facility",
+        "type": "HD",
+        "len": 241,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Identifies the facility of the last update to a patient record."
+      },
+      {
+        "seq": 35,
+        "name": "Species Code",
+        "type": "CE",
+        "len": 250,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Table 0446. The species of the patient. Used in veterinary context."
+      },
+      {
+        "seq": 36,
+        "name": "Breed Code",
+        "type": "CE",
+        "len": 250,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Table 0447. The breed of the animal. Used in veterinary context."
+      },
+      {
+        "seq": 37,
+        "name": "Strain",
+        "type": "ST",
+        "len": 80,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "An indication of a strain of an organism."
+      },
+      {
+        "seq": 38,
+        "name": "Production Class Code",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 2,
+        "desc": "Table 0429. Veterinary only. BF=Beef, BR=Breeding, DA=Dairy, DR=Draft, DU=Dual Purpose, LY=Layer, MT=Meat, NA=Not Applicable, OT=Other, PL=Pleasure, RA=Racing, SH=Show, U=Unknown."
+      }
+    ]
+  },
+  "PV1": {
+    "name": "Patient Visit",
+    "description": "Used by Registration/ADT applications to communicate information on an account or visit-specific basis.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Set ID - PV1",
+        "type": "SI",
+        "len": 4,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Sequence number of this segment. For first occurrence: 1."
+      },
+      {
+        "seq": 2,
+        "name": "Patient Class",
+        "type": "IS",
+        "len": 1,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Table 0004. B=Obstetrics, C=Commercial Account, E=Emergency, I=Inpatient, N=Not Applicable, O=Outpatient, P=Preadmit, R=Recurring Patient, U=Unknown."
+      },
+      {
+        "seq": 3,
+        "name": "Assigned Patient Location",
+        "type": "PL",
+        "len": 80,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "PL: Point of Care^Room^Bed^Facility^Location Status^Person Location Type^Building^Floor^Location Description^Comprehensive Location Identifier^Assigning Authority. The patient's assigned bed/location."
+      },
+      {
+        "seq": 4,
+        "name": "Admission Type",
+        "type": "IS",
+        "len": 2,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0007. A=Accident, C=Elective, E=Emergency, L=Labor and Delivery, N=Newborn, R=Routine, U=Urgent."
+      },
+      {
+        "seq": 5,
+        "name": "Preadmit Number",
+        "type": "CX",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Uniquely identifies the patient's pre-admission account."
+      },
+      {
+        "seq": 6,
+        "name": "Prior Patient Location",
+        "type": "PL",
+        "len": 80,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Previous patient location for transfers."
+      },
+      {
+        "seq": 7,
+        "name": "Attending Doctor",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Attending physician. XCN: ID^Family^Given^Middle^Suffix^Prefix^Degree^Source Table^Assigning Authority^Name Type."
+      },
+      {
+        "seq": 8,
+        "name": "Referring Doctor",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Referring physician."
+      },
+      {
+        "seq": 9,
+        "name": "Consulting Doctor",
+        "type": "XCN",
+        "len": 250,
+        "opt": "B",
+        "rpt": "∞",
+        "desc": "DEPRECATED."
+      },
+      {
+        "seq": 10,
+        "name": "Hospital Service",
+        "type": "IS",
+        "len": 3,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0069. The treatment or type of surgery the patient is scheduled for."
+      },
+      {
+        "seq": 11,
+        "name": "Temporary Location",
+        "type": "PL",
+        "len": 80,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Temporary patient location."
+      },
+      {
+        "seq": 14,
+        "name": "Admit Source",
+        "type": "IS",
+        "len": 6,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0023. 1=Physician referral, 2=Clinic referral, 3=HMO referral, 4=Transfer from hospital, 5=Transfer from SNF, 6=Transfer from another health care facility, 7=Emergency room, 8=Court/law enforcement, 9=Information not available."
+      },
+      {
+        "seq": 15,
+        "name": "Ambulatory Status",
+        "type": "IS",
+        "len": 2,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Table 0009. A0=No functional limitations, A1=Ambulates with assistive device, A2=Wheelchair/stretcher bound, A3=Comatose, A4=Disoriented, A5=Vision impaired, A6=Hearing impaired, A7=Speech impaired, A8=Non-English speaking, A9=Functional level unknown, B1=Oxygen therapy, B2=Special equipment, B3=Amputee, B4=Mastectomy, B5=Paraplegic, B6=Pregnant."
+      },
+      {
+        "seq": 16,
+        "name": "VIP Indicator",
+        "type": "IS",
+        "len": 2,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0099. Indicates whether patient is considered a VIP."
+      },
+      {
+        "seq": 17,
+        "name": "Admitting Doctor",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Admitting physician."
+      },
+      {
+        "seq": 18,
+        "name": "Patient Type",
+        "type": "IS",
+        "len": 2,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0018. Site-defined patient type."
+      },
+      {
+        "seq": 19,
+        "name": "Visit Number",
+        "type": "CX",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Unique number assigned to each patient visit. Often called encounter number."
+      },
+      {
+        "seq": 44,
+        "name": "Admit Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Date and time of admission."
+      },
+      {
+        "seq": 45,
+        "name": "Discharge Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Date and time of discharge."
+      },
+      {
+        "seq": 51,
+        "name": "Visit Indicator",
+        "type": "IS",
+        "len": 1,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0326. A=Account Level, V=Visit Level."
+      }
+    ]
+  },
+  "ORC": {
+    "name": "Common Order",
+    "description": "Used to transmit fields that are common to all orders (all types of services that are requested). ORC is REQUIRED in each ORDER group of ORM^O01 and ORR^O02. It is OPTIONAL in the ORDER_OBSERVATION group of ORU^R01 — a common misconception is that ORU requires it.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Order Control",
+        "type": "ID",
+        "len": 2,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Table 0119. The function of the order segment. NW=New Order, CA=Cancel Order, DC=Discontinue Order, HD=Hold Order, RL=Release Previous Hold, RP=Order/Service Replace Request, RU=Replaced Unsolicited, SC=Status Changed, SN=Send Order Number, OK=Order Accepted, UA=Unable to Accept Order, UC=Unable to Cancel, UM=Unable to Discontinue, UH=Unable to Put on Hold, UR=Unable to Release, UX=Unable to Change, AF=Order/Service Refill Request Approval, NA=Number Assigned, RE=Observations/Performed Service to Follow, OR=Released as Requested, RF=Refill Order Request, PA=Parent Order."
+      },
+      {
+        "seq": 2,
+        "name": "Placer Order Number",
+        "type": "EI",
+        "len": 22,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Identifier of the order placed by the placer application. EI: Entity Identifier^Namespace ID^Universal ID^Universal ID Type."
+      },
+      {
+        "seq": 3,
+        "name": "Filler Order Number",
+        "type": "EI",
+        "len": 22,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Order number assigned by the filling application (e.g., RIS accession number in radiology)."
+      },
+      {
+        "seq": 4,
+        "name": "Placer Group Number",
+        "type": "EI",
+        "len": 22,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Allows an order placing application to group sets of orders together."
+      },
+      {
+        "seq": 5,
+        "name": "Order Status",
+        "type": "ID",
+        "len": 2,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0038. Status of the order: A=Some, but not all, results available, CA=Order was canceled, CM=Order is completed, DC=Order was discontinued, ER=Error, hold order, HD=Order is on hold, IP=In process, unspecified, RP=Order has been replaced, SC=In process, scheduled."
+      },
+      {
+        "seq": 7,
+        "name": "Quantity/Timing",
+        "type": "TQ",
+        "len": 200,
+        "opt": "B",
+        "rpt": "∞",
+        "desc": "DEPRECATED in v2.5. Replaced by ORC-7 and ORC-8 in earlier versions; timing now in TQ1/TQ2 segments."
+      },
+      {
+        "seq": 9,
+        "name": "Date/Time of Transaction",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Date and time the current transaction enters the order."
+      },
+      {
+        "seq": 10,
+        "name": "Entered By",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Person who placed the request."
+      },
+      {
+        "seq": 11,
+        "name": "Verified By",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Person who verified the order."
+      },
+      {
+        "seq": 12,
+        "name": "Ordering Provider",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Provider who ordered the procedure."
+      },
+      {
+        "seq": 13,
+        "name": "Enterer's Location",
+        "type": "PL",
+        "len": 80,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Location where the order was entered."
+      },
+      {
+        "seq": 14,
+        "name": "Call Back Phone Number",
+        "type": "XTN",
+        "len": 250,
+        "opt": "O",
+        "rpt": 2,
+        "desc": "Phone number to call when the order is completed."
+      },
+      {
+        "seq": 15,
+        "name": "Order Effective Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Date/time that the changes indicated by the order control code take effect."
+      },
+      {
+        "seq": 16,
+        "name": "Order Control Code Reason",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Explanation or reason codes for the order event."
+      },
+      {
+        "seq": 17,
+        "name": "Entering Organization",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Organization that entered the order."
+      },
+      {
+        "seq": 18,
+        "name": "Entering Device",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Physical device (terminal, etc.) used to enter the order."
+      },
+      {
+        "seq": 19,
+        "name": "Action By",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Provider responsible for the action."
+      },
+      {
+        "seq": 21,
+        "name": "Ordering Facility Name",
+        "type": "XON",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Name of the facility with which the ordering provider is associated."
+      },
+      {
+        "seq": 22,
+        "name": "Ordering Facility Address",
+        "type": "XAD",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Address of the facility associated with the ordering provider."
+      }
+    ]
+  },
+  "OBR": {
+    "name": "Observation Request",
+    "description": "Used to transmit information specific to an order for a diagnostic study or observation. In radiology: the procedure request. OBR-18 is the Accession Number. OBR-25 is Result Status.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Set ID - OBR",
+        "type": "SI",
+        "len": 4,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "For the first order transmitted, the sequence number shall be 1."
+      },
+      {
+        "seq": 2,
+        "name": "Placer Order Number",
+        "type": "EI",
+        "len": 22,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Identifier assigned by the placer. Same as ORC-2."
+      },
+      {
+        "seq": 3,
+        "name": "Filler Order Number",
+        "type": "EI",
+        "len": 22,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Identifier assigned by the filler (RIS). Same as ORC-3."
+      },
+      {
+        "seq": 4,
+        "name": "Universal Service Identifier",
+        "type": "CE",
+        "len": 250,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Identifies universally the service to be performed. Contains the procedure code. E.g., CT abdomen, MRI brain. Use CPT-4, LOINC or site-defined codes. Data type is CE in v2.5.1 (CWE from v2.7)."
+      },
+      {
+        "seq": 5,
+        "name": "Priority",
+        "type": "ID",
+        "len": 2,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED. Kept for backward compatibility."
+      },
+      {
+        "seq": 6,
+        "name": "Requested Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED. Date/time the order was requested."
+      },
+      {
+        "seq": 7,
+        "name": "Observation Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Observation start date/time. In radiology: when the procedure began."
+      },
+      {
+        "seq": 8,
+        "name": "Observation End Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "End date and time of observation period."
+      },
+      {
+        "seq": 9,
+        "name": "Collection Volume",
+        "type": "CQ",
+        "len": 20,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "For laboratory: quantity of specimen collected."
+      },
+      {
+        "seq": 10,
+        "name": "Collector Identifier",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Person who collected the specimen."
+      },
+      {
+        "seq": 11,
+        "name": "Specimen Action Code",
+        "type": "ID",
+        "len": 1,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0065. Action to take with the specimen. A=Add ordered tests, G=Generated order, L=Lab to obtain specimen from patient, O=Specimen obtained by service, P=Pending specimen, Q=Specimen obtained by lab, R=Revised order, S=Schedule the tests, T=Transfer specimen."
+      },
+      {
+        "seq": 12,
+        "name": "Danger Code",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Code and/or text indicating any special handling considerations for the specimen."
+      },
+      {
+        "seq": 13,
+        "name": "Relevant Clinical Information",
+        "type": "ST",
+        "len": 300,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Additional clinical information about the patient or specimen to guide the filler. The clinical indication or reason for study."
+      },
+      {
+        "seq": 16,
+        "name": "Ordering Provider",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Provider who ordered the procedure. Same as ORC-12."
+      },
+      {
+        "seq": 17,
+        "name": "Order Callback Phone Number",
+        "type": "XTN",
+        "len": 250,
+        "opt": "O",
+        "rpt": 2,
+        "desc": "Phone number for results callback."
+      },
+      {
+        "seq": 18,
+        "name": "Placer Field 1",
+        "type": "ST",
+        "len": 60,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "User-defined placer field. In radiology, IHE RAD TF-2 maps the DICOM Accession Number (0008,0050) to OBR-18 for the Scheduled Workflow profile, and that is the most common convention. Be aware it is a convention, not a v2.5.1 requirement — some sites instead carry the accession in OBR-2, OBR-3 or ORC-3, so always confirm against the site's interface specification before mapping."
+      },
+      {
+        "seq": 19,
+        "name": "Placer Field 2",
+        "type": "ST",
+        "len": 60,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Additional placer-defined field."
+      },
+      {
+        "seq": 20,
+        "name": "Filler Field 1",
+        "type": "ST",
+        "len": 60,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Filler-defined field."
+      },
+      {
+        "seq": 21,
+        "name": "Filler Field 2",
+        "type": "ST",
+        "len": 60,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Filler-defined field."
+      },
+      {
+        "seq": 22,
+        "name": "Results Rpt/Status Chng - Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Date/time when the results were reported or status changed."
+      },
+      {
+        "seq": 24,
+        "name": "Diagnostic Serv Sect ID",
+        "type": "ID",
+        "len": 10,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0074. AU=Audiology, BG=Blood Gases, BLB=Blood Bank, CG=Cytogenetics, CH=Chemistry, CP=Cytopathology, CT=CAT Scan, CTH=Cardiac Catheterization, CUS=Cardiac Ultrasound, EC=Electrocardiac, EN=Electroneuro, GE=Genetics, HM=Hematology, ICU=Bedside ICU Monitoring, IMG=Diagnostic Imaging, IMM=Immunology, LAB=Laboratory, MB=Microbiology, MCB=Mycobacteriology, MYC=Mycology, NMR=Nuclear Magnetic Resonance, NMS=Nuclear Medicine Scan, NRS=Nursing Service Measures, OSL=Outside Lab, OT=Occupational Therapy, OTH=Other, OUS=OB Ultrasound, PAR=Parasitology, PAT=Pathology, PF=Pulmonary Function, PHR=Pharmacy, PHY=Physician (Hx. Dx. Rx.), PT=Physical Therapy, RAD=Radiology, RC=Respiratory Care (Therapy), RT=Radiation Therapy, RUS=Radiology Ultrasound, RX=Radiograph, SP=Surgical Pathology, SR=Serology, TX=Toxicology, URN=Urinalysis, VR=Virology, VUS=Vascular Ultrasound."
+      },
+      {
+        "seq": 25,
+        "name": "Result Status",
+        "type": "ID",
+        "len": 1,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Table 0123. Required whenever OBX segments are present. O=Order received, specimen not yet received; I=No results available, specimen received, procedure incomplete; S=No results available, procedure scheduled but not done; A=Some but not all results available; P=Preliminary (a verified early result is available); C=Correction to results; R=Results stored, not yet verified; F=Final results (can only be changed by a corrected result); X=No results available, order canceled; Y=No order on record for this test (query response only); Z=No record of this patient (query response only). Note: M, N and W are NOT valid table 0123 values — they belong to OBX-11 / table 0085."
+      },
+      {
+        "seq": 26,
+        "name": "Parent Result",
+        "type": "PRL",
+        "len": 400,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Links to the parent order."
+      },
+      {
+        "seq": 29,
+        "name": "Parent",
+        "type": "EIP",
+        "len": 200,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Used to link child orders to parent orders."
+      },
+      {
+        "seq": 31,
+        "name": "Reason for Study",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Clinical indication for the study."
+      },
+      {
+        "seq": 32,
+        "name": "Principal Result Interpreter",
+        "type": "NDL",
+        "len": 200,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Person who analyzed the observation and identified the conclusion."
+      },
+      {
+        "seq": 34,
+        "name": "Technician",
+        "type": "NDL",
+        "len": 200,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Person who performed the observation."
+      },
+      {
+        "seq": 36,
+        "name": "Scheduled Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Scheduled date and time for the study."
+      },
+      {
+        "seq": 44,
+        "name": "Procedure Code",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Unique identifier for the procedure. E.g., CPT code."
+      },
+      {
+        "seq": 45,
+        "name": "Procedure Code Modifier",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Contains the procedure code modifier to the procedure code."
+      }
+    ]
+  },
+  "OBX": {
+    "name": "Observation/Result",
+    "description": "Used to transmit a single observation or observation fragment. In radiology: used for report text and measurements. Can contain text, numeric values, coded values, images, and more.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Set ID - OBX",
+        "type": "SI",
+        "len": 4,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Sequence number for multiple OBX segments."
+      },
+      {
+        "seq": 2,
+        "name": "Value Type",
+        "type": "ID",
+        "len": 3,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Table 0125. CE=Coded Entry, CWE=Coded with Exceptions, CX=Extended Composite ID, DT=Date, DTM=Date/Time, ED=Encapsulated Data, FT=Formatted Text, GTS=General Timing Specification, ID=Coded Value for HL7, IS=Coded Value for User-Defined, MO=Money, NA=Numeric Array, NM=Numeric, RP=Reference Pointer, SN=Structured Numeric, ST=String Data, TM=Time, TX=Text Data, XAD=Extended Address, XCN=Extended Composite ID, XON=Extended Composite Name for Organizations, XPN=Extended Person Name, XTN=Extended Telecommunications Number."
+      },
+      {
+        "seq": 3,
+        "name": "Observation Identifier",
+        "type": "CE",
+        "len": 250,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Uniquely identifies the observation. Use LOINC codes when possible. E.g., 18782-3=Radiology Study Observation. Components: Identifier^Text^Name of Coding System^Alternate Identifier^Alternate Text^Name of Alternate Coding System. Data type is CE in v2.5.1 (CWE from v2.7)."
+      },
+      {
+        "seq": 4,
+        "name": "Observation Sub-ID",
+        "type": "ST",
+        "len": 20,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Distinguishes between multiple OBX segments with the same OBX-3. Used when a result has sub-components."
+      },
+      {
+        "seq": 5,
+        "name": "Observation Value",
+        "type": "varies",
+        "len": "∞",
+        "opt": "C",
+        "rpt": "∞",
+        "desc": "Contains the value observed by the observation producer. Data type matches OBX-2. For text reports use FT (Formatted Text) or TX (Text Data)."
+      },
+      {
+        "seq": 6,
+        "name": "Units",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Description of the units of measure for the result."
+      },
+      {
+        "seq": 7,
+        "name": "References Range",
+        "type": "ST",
+        "len": 60,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Normal range for the value. Format: low-high, or >value, or <value."
+      },
+      {
+        "seq": 8,
+        "name": "Abnormal Flags",
+        "type": "IS",
+        "len": 5,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Table 0078. L=Below low normal, H=Above high normal, LL=Below lower panic limits, HH=Above upper panic limits, <=(Less than), >=(Greater than), A=Abnormal, AA=Very abnormal, N=Normal, U=Significant change up, D=Significant change down, B=Better, W=Worse, S=Susceptible, R=Resistant, I=Intermediate, MS=Moderately susceptible, VS=Very susceptible."
+      },
+      {
+        "seq": 11,
+        "name": "Observation Result Status",
+        "type": "ID",
+        "len": 1,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Table 0085. C=Record coming over is a correction and thus replaces a final result, D=Deletes the OBX record, F=Final results, I=Specimen in lab; results pending, N=Not asked; used only on queries where only certain results are requested, O=Order detail description only (no result), P=Preliminary results, R=Results entered, not verified, S=Partial results, U=Results status change to Final — results did not change, W=Post original as wrong, X=Results cannot be obtained for this observation."
+      },
+      {
+        "seq": 14,
+        "name": "Date/Time of the Observation",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Date and time the observation was performed."
+      },
+      {
+        "seq": 15,
+        "name": "Producer's ID",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Identifies the person who created this observation."
+      },
+      {
+        "seq": 16,
+        "name": "Responsible Observer",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Person responsible for verifying the observation."
+      },
+      {
+        "seq": 17,
+        "name": "Observation Method",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Method used for the observation."
+      },
+      {
+        "seq": 18,
+        "name": "Equipment Instance Identifier",
+        "type": "EI",
+        "len": 22,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Identifies the device that produced the measurement."
+      },
+      {
+        "seq": 19,
+        "name": "Date/Time of the Analysis",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Date and time the observation was analyzed."
+      }
+    ]
+  },
+  "NTE": {
+    "name": "Notes and Comments",
+    "description": "Used to send notes and comments associated with the adjacent segment. Can appear after multiple segment types.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Set ID - NTE",
+        "type": "SI",
+        "len": 4,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Sequence number for multiple NTE segments."
+      },
+      {
+        "seq": 2,
+        "name": "Source of Comment",
+        "type": "ID",
+        "len": 8,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0105. L=Ancillary (filler) department, P=Orderer (placer) department, O=Other system."
+      },
+      {
+        "seq": 3,
+        "name": "Comment",
+        "type": "FT",
+        "len": 65536,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Free text comments. FT type allows embedded formatting (\\H\\ for highlight, \\N\\ for normal, \\.br\\ for line break)."
+      },
+      {
+        "seq": 4,
+        "name": "Comment Type",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0364. AI=Ancillary Instructions, AR=Ancillary Results, DR=Duplicate/Interaction Reason, GI=General Instructions, GR=General Results, PI=Patient Instructions, RE=Remark. Data type is CE in v2.5.1."
+      }
+    ]
+  },
+  "MRG": {
+    "name": "Merge Patient Information",
+    "description": "Used in patient merging (ADT^A40). Contains prior patient identifier(s). The MRN in MRG-1 is the 'losing' or prior ID — all records under it should be merged into the patient identified in PID.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Prior Patient Identifier List",
+        "type": "CX",
+        "len": 250,
+        "opt": "R",
+        "rpt": "∞",
+        "desc": "Prior patient identifier list. Used during patient merges."
+      },
+      {
+        "seq": 2,
+        "name": "Prior Alternate Patient ID",
+        "type": "CX",
+        "len": 20,
+        "opt": "B",
+        "rpt": "∞",
+        "desc": "DEPRECATED."
+      },
+      {
+        "seq": 3,
+        "name": "Prior Patient Account Number",
+        "type": "CX",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Prior patient account number."
+      },
+      {
+        "seq": 4,
+        "name": "Prior Patient ID",
+        "type": "CX",
+        "len": 20,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED."
+      },
+      {
+        "seq": 5,
+        "name": "Prior Visit Number",
+        "type": "CX",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Prior visit number."
+      },
+      {
+        "seq": 6,
+        "name": "Prior Alternate Visit ID",
+        "type": "CX",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Prior alternate visit number."
+      },
+      {
+        "seq": 7,
+        "name": "Prior Patient Name",
+        "type": "XPN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Prior patient name."
+      }
+    ]
+  },
+  "AL1": {
+    "name": "Patient Allergy Information",
+    "description": "Transmits information about patient allergy or adverse reaction information.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Set ID - AL1",
+        "type": "SI",
+        "len": 4,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Sequence number."
+      },
+      {
+        "seq": 2,
+        "name": "Allergen Type Code",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0127. DA=Drug Allergy, EA=Environmental Allergy, FA=Food Allergy, LA=Pollen Allergy, MA=Miscellaneous Allergy, MC=Miscellaneous Contraindication, PA=Plant Allergy. Data type is CE in v2.5.1."
+      },
+      {
+        "seq": 3,
+        "name": "Allergen Code/Mnemonic/Description",
+        "type": "CE",
+        "len": 250,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Uniquely identifies the allergy (allergen). Code and description of the allergy. Data type is CE in v2.5.1."
+      },
+      {
+        "seq": 4,
+        "name": "Allergy Severity Code",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0128. MI=Mild, MO=Moderate, SV=Severe, U=Unknown. Data type is CE in v2.5.1."
+      },
+      {
+        "seq": 5,
+        "name": "Allergy Reaction Code",
+        "type": "ST",
+        "len": 15,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Free text string for the allergic reaction experienced."
+      },
+      {
+        "seq": 6,
+        "name": "Identification Date",
+        "type": "DT",
+        "len": 8,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED. Date the allergy was identified."
+      }
+    ]
+  },
+  "DG1": {
+    "name": "Diagnosis",
+    "description": "Contains patient diagnosis information of various types.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Set ID - DG1",
+        "type": "SI",
+        "len": 4,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Sequence number."
+      },
+      {
+        "seq": 2,
+        "name": "Diagnosis Coding Method",
+        "type": "ID",
+        "len": 2,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED."
+      },
+      {
+        "seq": 3,
+        "name": "Diagnosis Code - DG1",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Identifies the diagnosis. Use ICD-9-CM, ICD-10-CM, or SNOMED codes. Data type is CE in v2.5.1."
+      },
+      {
+        "seq": 4,
+        "name": "Diagnosis Description",
+        "type": "ST",
+        "len": 40,
+        "opt": "B",
+        "rpt": 1,
+        "desc": "DEPRECATED. Free text description of the diagnosis."
+      },
+      {
+        "seq": 5,
+        "name": "Diagnosis Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Date and time when the diagnosis was made."
+      },
+      {
+        "seq": 6,
+        "name": "Diagnosis Type",
+        "type": "IS",
+        "len": 2,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Table 0052. A=Admitting, W=Working, F=Final."
+      },
+      {
+        "seq": 15,
+        "name": "Diagnosis Priority",
+        "type": "ID",
+        "len": 2,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0359. 0=Not included in diagnosis ranking, 1=Principal diagnosis, 2-∞=For ranked secondary diagnoses."
+      },
+      {
+        "seq": 16,
+        "name": "Diagnosing Clinician",
+        "type": "XCN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Provider who made the diagnosis."
+      },
+      {
+        "seq": 17,
+        "name": "Diagnosis Classification",
+        "type": "IS",
+        "len": 3,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0228. C=Consultation, D=Diagnosis, M=Medication (antibiotic), N=Nursing Diagnosis, O=Order, P=Procedure, R=Radiology, S=Sign and Symptom, T=Test, I=Invasive procedure not classified elsewhere."
+      },
+      {
+        "seq": 19,
+        "name": "Attestation Date/Time",
+        "type": "TS",
+        "len": 26,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Date the diagnosis was attested."
+      }
+    ]
+  },
+  "ZDS": {
+    "name": "Study Instance UID (IHE Extension)",
+    "description": "Non-standard Z-segment defined by IHE (Integrating the Healthcare Enterprise) in the Scheduled Workflow (SWF) profile. Carries the DICOM Study Instance UID in an HL7 ORM message, enabling the RIS to assign the UID before acquisition and communicate it to the PACS. Defined in IHE RAD TF Vol 2, transaction RAD-4.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Study Instance UID",
+        "type": "RP",
+        "len": 200,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "DICOM Study Instance UID (0020,000D). RP (Reference Pointer) data type with components Pointer^Application ID^Type of Data^Subtype. The UID goes in the first component; IHE examples populate the remainder as ^100^Application^DICOM. Example: 1.2.840.113619.2.1.1.322987881.621.736170080.681^100^Application^DICOM. The UID itself is limited to 64 characters by DICOM PS3.5 and must consist only of digits and dots."
+      }
+    ],
+    "note": "IHE RAD TF-2 defines exactly ONE field for ZDS. Segments in the wild that carry an accession number, procedure code or modality in ZDS-2 onward are site-local extensions, not part of the IHE definition."
+  },
+  "IN1": {
+    "name": "Insurance",
+    "description": "Contains insurance policy coverage information necessary to produce properly pro-rated and patient and insurance bills.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Set ID - IN1",
+        "type": "SI",
+        "len": 4,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Sequence number."
+      },
+      {
+        "seq": 2,
+        "name": "Insurance Plan ID",
+        "type": "CE",
+        "len": 250,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Uniquely identifies the insurance plan. Data type is CE in v2.5.1."
+      },
+      {
+        "seq": 3,
+        "name": "Insurance Company ID",
+        "type": "CX",
+        "len": 250,
+        "opt": "R",
+        "rpt": "∞",
+        "desc": "Uniquely identifies the insurance company."
+      },
+      {
+        "seq": 4,
+        "name": "Insurance Company Name",
+        "type": "XON",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Name of the insurance company."
+      },
+      {
+        "seq": 5,
+        "name": "Insurance Company Address",
+        "type": "XAD",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Address of the insurance company."
+      },
+      {
+        "seq": 15,
+        "name": "Plan Type",
+        "type": "IS",
+        "len": 3,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0086. Type of insurance plan."
+      },
+      {
+        "seq": 16,
+        "name": "Name Of Insured",
+        "type": "XPN",
+        "len": 250,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Name of the insured person."
+      },
+      {
+        "seq": 17,
+        "name": "Insured's Relationship To Patient",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0063. SEL=Self, SPO=Spouse, CHD=Child, OTH=Other, UNK=Unknown, MTH=Mother, FTH=Father, BRO=Brother, SIS=Sister, GRP=Grandparent. Data type is CE in v2.5.1."
+      },
+      {
+        "seq": 35,
+        "name": "Company Plan Code",
+        "type": "IS",
+        "len": 8,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0042. Identifies the specific medical benefit plan offered by the insurance company."
+      }
+    ]
+  },
+  "SCH": {
+    "name": "Scheduling Activity Information",
+    "description": "Contains information about the scheduled appointment in SIU and SRM messages.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Placer Appointment ID",
+        "type": "EI",
+        "len": 75,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Identifier assigned to the appointment by the placer application."
+      },
+      {
+        "seq": 2,
+        "name": "Filler Appointment ID",
+        "type": "EI",
+        "len": 75,
+        "opt": "C",
+        "rpt": 1,
+        "desc": "Identifier assigned to the appointment by the filler application."
+      },
+      {
+        "seq": 5,
+        "name": "Schedule ID",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Identifier of the schedule this appointment is booked against."
+      },
+      {
+        "seq": 6,
+        "name": "Event Reason",
+        "type": "CE",
+        "len": 250,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Reason this event occurred (why the appointment was booked, modified or cancelled). Data type is CE in v2.5.1."
+      },
+      {
+        "seq": 7,
+        "name": "Appointment Reason",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0276. Reason the appointment is to take place. ROUTINE, WALKIN, CHECKUP, EMERGENCY, FOLLOWUP."
+      },
+      {
+        "seq": 8,
+        "name": "Appointment Type",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0277. Type of appointment: Normal, Tentative, Complete."
+      },
+      {
+        "seq": 9,
+        "name": "Appointment Duration",
+        "type": "NM",
+        "len": 20,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Duration of the appointment. Units given in SCH-10. Note: this is SCH-9, not SCH-11."
+      },
+      {
+        "seq": 10,
+        "name": "Appointment Duration Units",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Units of measure for SCH-9 Appointment Duration (e.g., min, hr)."
+      },
+      {
+        "seq": 11,
+        "name": "Appointment Timing Quantity",
+        "type": "TQ",
+        "len": 200,
+        "opt": "R",
+        "rpt": "∞",
+        "desc": "Start date/time and repeating interval of the appointment. TQ data type; retained in v2.5.1 for the SCH segment even though TQ is deprecated elsewhere in favour of TQ1/TQ2."
+      },
+      {
+        "seq": 25,
+        "name": "Filler Status Code",
+        "type": "CE",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Table 0278. Status of the appointment in the filler system: Pending, Waitlist, Booked, Started, Complete, Cancelled, Discontinued, Overbook, Noshow, Blocked, Deleted. Data type is CE in v2.5.1."
+      }
+    ]
+  },
+  "ERR": {
+    "name": "Error",
+    "description": "Contains information about errors detected in the processing of HL7 messages. Replaces MSA-3 for error details.",
+    "fields": [
+      {
+        "seq": 1,
+        "name": "Error Code and Location",
+        "type": "ELD",
+        "len": 493,
+        "opt": "B",
+        "rpt": "∞",
+        "desc": "DEPRECATED. Error code and location."
+      },
+      {
+        "seq": 2,
+        "name": "Error Location",
+        "type": "ERL",
+        "len": 18,
+        "opt": "O",
+        "rpt": "∞",
+        "desc": "Identifies the location in a message related to the identified error."
+      },
+      {
+        "seq": 3,
+        "name": "HL7 Error Code",
+        "type": "CWE",
+        "len": 705,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Table 0357. 0=Message accepted, 100=Segment sequence error, 101=Required field missing, 102=Data type error, 103=Table value not found, 200=Unsupported message type, 201=Unsupported event code, 202=Unsupported processing ID, 203=Unsupported version ID, 204=Unknown key identifier, 205=Duplicate key identifier, 206=Application record locked, 207=Application internal error."
+      },
+      {
+        "seq": 4,
+        "name": "Severity",
+        "type": "ID",
+        "len": 2,
+        "opt": "R",
+        "rpt": 1,
+        "desc": "Table 0516. I=Informational, W=Warning, E=Error."
+      },
+      {
+        "seq": 5,
+        "name": "Application Error Code",
+        "type": "CWE",
+        "len": 705,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Application-specific error code."
+      },
+      {
+        "seq": 6,
+        "name": "Application Error Parameter",
+        "type": "ST",
+        "len": 80,
+        "opt": "O",
+        "rpt": 10,
+        "desc": "Additional information to be used, together with the Application Error Code, to understand a particular error condition."
+      },
+      {
+        "seq": 7,
+        "name": "Diagnostic Information",
+        "type": "TX",
+        "len": 2048,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "Information that may be used by help desk or system support personnel to diagnose a problem."
+      },
+      {
+        "seq": 8,
+        "name": "User Message",
+        "type": "TX",
+        "len": 250,
+        "opt": "O",
+        "rpt": 1,
+        "desc": "The text message to be displayed to the user of the application where the error occurred."
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "_comment": "Corrections applied on top of the HAPI-generated field data. Each entry records its evidence. Only add entries backed by a real v2.5.1 source.",
+  "fields": [
+    {
+      "location": "PID-38",
+      "set": {
+        "rpt": 2,
+        "table": "0429"
+      },
+      "evidence": "Caristix HL7-Definition v2.5.1 PID.38: rpt 2, table 0429 (spot check 2026-10-19). HAPI 2.5.1 records rpt 1 and no table; the original curated data also had rpt 2."
+    },
+    {
+      "location": "SCH-11",
+      "set": {
+        "opt": "B"
+      },
+      "evidence": "Caristix HL7-Definition v2.5.1 SCH.11 usage B (backward compatible; TQ1/TQ2 replace TQ). HAPI only distinguishes R/O and records O. The original curated data wrongly had R."
+    },
+    {
+      "location": "MRG-2",
+      "set": {
+        "opt": "B"
+      },
+      "evidence": "Caristix HL7-Definition v2.5.1 MRG.2 usage B, length 250 (HAPI length 250). The original curated data had length 20."
+    },
+    {
+      "location": "MRG-4",
+      "set": {
+        "opt": "B"
+      },
+      "evidence": "Caristix HL7-Definition v2.5.1 MRG.4 usage B, length 250 (HAPI length 250). The original curated data had length 20."
+    },
+    {
+      "location": "OBX-15",
+      "set": {
+        "name": "Producer's ID"
+      },
+      "evidence": "Caristix HL7-Definition v2.5.1 OBX.15 name 'Producer's ID' (CE), matching the original curated data. HAPI 2.5.1 names it 'Producer's Reference'."
+    }
+  ],
+  "tableCodes": [
+    {
+      "table": "0123",
+      "code": "M",
+      "status": "not-in-2.5.1",
+      "evidence": "Caristix HL7-Definition v2.5.1 table 0123 lists only A, C, F, I, O, P, R, S, X, Y, Z (spot check 2026-10-19); the FHIR STU3 table (v2.1\u2013v2.8.2 history) does not list M either."
+    },
+    {
+      "table": "0123",
+      "code": "N",
+      "status": "not-in-2.5.1",
+      "evidence": "Caristix HL7-Definition v2.5.1 table 0123 lists only A, C, F, I, O, P, R, S, X, Y, Z (spot check 2026-10-19); the FHIR STU3 table (v2.1\u2013v2.8.2 history) does not list N either."
+    },
+    {
+      "table": "0125",
+      "code": "ID",
+      "status": "unverified",
+      "evidence": "Sources disagree: the FHIR STU3 table history says 'added v2.2, removed after v2.8.1', but Caristix HL7-Definition v2.5.1 table 0125 does not list ID (spot check 2026-10-19). Not confirmed for v2.5.1."
+    }
+  ]
+}
