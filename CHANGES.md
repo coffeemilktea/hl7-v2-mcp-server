@@ -91,7 +91,7 @@
 
 ### Tests and CI
 
-- 122 `node:test` tests:
+- 121 `node:test` tests:
   - unit tests (parser, data, search, validator)
   - MCP integration over the in-memory transport
   - HTTP security tests (Host, Origin, CORS, API key, session expiry, body limit)
