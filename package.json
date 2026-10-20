@@ -1,23 +1,39 @@
 {
   "name": "hl7-v2-mcp-server",
-  "version": "1.0.0",
-  "description": "Model Context Protocol server giving LLMs structured access to the HL7 v2.5.1 standard — segment definitions, message structures, code tables, a message parser and a validator with deep profiles for ORM^O01, ADT^A08, ADT^A31, ADT^A40 and ORU^R01.",
+  "version": "2.0.0",
+  "description": "Model Context Protocol server for the HL7 v2.5.1 standard: all 149 segments, 2,078 fields, data types, message structures and code tables (with per-code v2.5.1 status), plus parse, validate, diff, de-identify and ACK tools.",
   "type": "module",
-  "main": "server.js",
+  "main": "src/server.js",
+  "exports": {
+    ".": "./src/server.js",
+    "./package.json": "./package.json"
+  },
   "bin": {
-    "hl7-v2-mcp-server": "server.js"
+    "hl7-v2-mcp-server": "bin/cli.js"
   },
   "files": [
-    "server.js"
+    "bin",
+    "src",
+    "server.js",
+    "NOTICE",
+    "CHANGES.md"
+  ],
+  "workspaces": [
+    "core"
   ],
   "scripts": {
-    "start": "node server.js"
+    "start": "node bin/cli.js --http",
+    "start:stdio": "node bin/cli.js",
+    "test": "node --test --test-reporter=spec test/",
+    "generate": "npm run generate --workspace hl7v2-core",
+    "fetch-sources": "npm run fetch-sources --workspace hl7v2-core"
   },
   "keywords": [
     "mcp",
     "model-context-protocol",
     "hl7",
     "hl7-v2",
+    "hl7v2",
     "healthcare",
     "interoperability",
     "ihe",
@@ -26,16 +42,17 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coffeemilktea/hl7-v2-mcp-server.git"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.12.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
     "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "zod": "^3.24.1"
+    "express": "^5.2.1",
+    "hl7v2-core": "^1.0.0",
+    "zod": "^3.25.76"
   }
 }
