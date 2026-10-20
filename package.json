@@ -24,7 +24,7 @@
   "scripts": {
     "start": "node bin/cli.js --http",
     "start:stdio": "node bin/cli.js",
-    "test": "node --test --test-force-exit --test-reporter=spec test/*.test.js",
+    "test": "node --test --test-reporter=spec test/*.test.js",
     "generate": "npm run generate --workspace hl7v2-core",
     "fetch-sources": "npm run fetch-sources --workspace hl7v2-core"
   },
