@@ -11,12 +11,18 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    # A hung test (e.g. an MCP child process left open) must not burn the 6-hour default.
+    timeout-minutes: 10
     strategy:
+      # Report every Node version instead of cancelling the rest on the first failure.
+      fail-fast: false
       matrix:
-        node: [20, 22, 24]
+        # 20 is end-of-life (2026-04-30) but stays while package.json says engines >=20.
+        # 26 becomes LTS on 2026-10-28.
+        node: [20, 22, 24, 26]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node }}
           cache: npm
