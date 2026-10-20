@@ -1,0 +1,25 @@
+name: Reference data is reproducible
+
+# Re-downloads the upstream sources (HAPI 2.5.1, HL7 Terminology 7.4.0, FHIR STU3
+# v2 tables) and checks that regenerating core/data gives the committed files.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 1 * *"
+
+permissions:
+  contents: read
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run fetch-sources
+      - run: npm run generate
+      - name: Generated data matches the committed data
+        run: git diff --exit-code -- core/data
