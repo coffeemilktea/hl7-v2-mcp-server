@@ -337,3 +337,14 @@ describe("deidentify_message", () => {
     assert.equal(r.isError, true);
   });
 });
+
+import { bool } from "../src/schemas.js";
+import { test as t2 } from "node:test";
+import assertB from "node:assert/strict";
+t2("boolean inputs accept 'false' strings instead of coercing them to true", () => {
+  assertB.equal(bool(true).parse("false"), false);
+  assertB.equal(bool(false).parse("true"), true);
+  assertB.equal(bool(true).parse(undefined), true);
+  assertB.equal(bool(false).parse(false), false);
+  assertB.throws(() => bool(false).parse("maybe"));
+});

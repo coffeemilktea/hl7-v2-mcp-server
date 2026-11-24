@@ -15,7 +15,7 @@ import { randomBytes } from "crypto";
 import { z } from "zod";
 import * as core from "hl7v2-core";
 import { ok, fail, READ_ONLY_NON_IDEMPOTENT } from "../result.js";
-import { message, out } from "../schemas.js";
+import { message, out, bool } from "../schemas.js";
 import { validateMessage } from "../validate/index.js";
 
 const ERROR_TEXT = Object.fromEntries(core.tableCodes("0357", { status: "valid" }).map((v) => [v.code, v.display]));
@@ -166,7 +166,7 @@ export function register(server) {
           .max(MAX_ERR)
           .optional()
           .describe("ERR segments to include."),
-        fromValidation: z.coerce.boolean().default(false).describe("Validate the message and add an ERR for each validation error."),
+        fromValidation: bool(false).describe("Validate the message and add an ERR for each validation error."),
         controlId: z.string().trim().min(1).max(20).optional().describe("MSH-10 for the ACK (max 20 characters). Default: random."),
         timestamp: z.string().regex(core.TS_RE).optional().describe("MSH-7 for the ACK as an HL7 DTM, e.g. 20261019120500-0700. Default: now, with offset."),
       },

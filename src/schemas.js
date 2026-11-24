@@ -43,3 +43,7 @@ export const issue = z.object({
  * informational fields do not break clients that validate structuredContent.
  */
 export const out = (shape) => z.object(shape).passthrough();
+
+/** Boolean that also accepts "true"/"false" strings (z.coerce.boolean() turns "false" into true). */
+export const bool = (def) =>
+  z.preprocess((v) => (typeof v === "string" ? ({ true: true, false: false }[v.trim().toLowerCase()] ?? v) : v), z.boolean()).default(def);

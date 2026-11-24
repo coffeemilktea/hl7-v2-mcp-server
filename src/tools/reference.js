@@ -2,7 +2,7 @@
 import { z } from "zod";
 import * as core from "hl7v2-core";
 import { ok, fail, READ_ONLY } from "../result.js";
-import { segmentCode, offset, limit, page, out } from "../schemas.js";
+import { segmentCode, offset, limit, page, out, bool } from "../schemas.js";
 
 const OPT = { R: "Required", O: "Optional", C: "Conditional", B: "Backward compatibility only", W: "Withdrawn", X: "Not supported" };
 
@@ -71,7 +71,7 @@ export function register(server) {
         "Full HL7 v2.5.1 definition of one segment: every field with data type, optionality (R/O/C/B/W), repetition, length, bound table and curated implementation notes.",
       inputSchema: {
         segment: segmentCode,
-        includeNotes: z.coerce.boolean().default(true).describe("Include curated implementation notes per field. Default true."),
+        includeNotes: bool(true).describe("Include curated implementation notes per field. Default true."),
       },
       outputSchema: out({
         code: z.string(),

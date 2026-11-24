@@ -2,7 +2,7 @@
 import { z } from "zod";
 import * as core from "hl7v2-core";
 import { ok, fail, READ_ONLY } from "../result.js";
-import { message, offset, limit, page, issue, out } from "../schemas.js";
+import { message, offset, limit, page, issue, out, bool } from "../schemas.js";
 import { validateMessage, PROFILES } from "../validate/index.js";
 
 /** Collapse [rep][comp][sub] to the most compact JSON form (string when trivial); HL7 explicit null "" becomes null. */
@@ -70,7 +70,7 @@ export function register(server) {
           .optional()
           .transform((v) => (v === undefined ? undefined : (Array.isArray(v) ? v : v.split(/[,\s]+/)).map((s) => s.trim().toUpperCase()).filter(Boolean)))
           .describe("Only return these segment types, e.g. ['PID','OBX'] or 'PID,OBX'."),
-        includeEmpty: z.coerce.boolean().default(false).describe("Include empty fields. Default false."),
+        includeEmpty: bool(false).describe("Include empty fields. Default false."),
         offset,
         limit: limit(100, 1000),
       },

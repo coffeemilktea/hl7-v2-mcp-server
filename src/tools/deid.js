@@ -10,7 +10,7 @@ import { createHmac, randomBytes } from "crypto";
 import { z } from "zod";
 import * as core from "hl7v2-core";
 import { ok, fail, READ_ONLY_NON_IDEMPOTENT } from "../result.js";
-import { message, out } from "../schemas.js";
+import { message, out, bool } from "../schemas.js";
 
 // Field rules by Safe Harbor category. id = pseudonymise (component 1 of CX/EI,
 // whole value of ST); name = replace with REDACTED; address = keep only state,
@@ -245,9 +245,9 @@ export function register(server) {
         dateMode: z.enum(["year", "shift", "keep"]).default("year").describe("year = keep only the year (Safe Harbor, default); shift = move every date by dateShiftDays (not Safe Harbor); keep = leave dates."),
         dateShiftDays: z.coerce.number().int().optional().describe("Days to shift dates when dateMode is 'shift' (negative moves earlier)."),
         seed: z.string().min(8).optional().describe("Secret used to key the pseudonyms. Supply the same seed to get the same pseudonyms across messages; omit for a random per-call key."),
-        redactFreeText: z.coerce.boolean().default(true).describe("Redact OBX-5 text values (TX/FT/ST), NTE-3 and PV2-12. Default true."),
-        redactProviders: z.coerce.boolean().default(false).describe("Also redact provider names (XCN fields). Default false."),
-        dropZSegments: z.coerce.boolean().default(true).describe("Remove local Z-segments whose content is unknown (ZDS is kept with its UID remapped). Default true."),
+        redactFreeText: bool(true).describe("Redact OBX-5 text values (TX/FT/ST), NTE-3 and PV2-12. Default true."),
+        redactProviders: bool(false).describe("Also redact provider names (XCN fields). Default false."),
+        dropZSegments: bool(true).describe("Remove local Z-segments whose content is unknown (ZDS is kept with its UID remapped). Default true."),
         keep: z.array(z.string()).default([]).describe("Fields to leave untouched, e.g. ['PID-8','OBR-4']."),
       },
       outputSchema: out({
