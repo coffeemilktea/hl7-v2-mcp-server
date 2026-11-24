@@ -252,6 +252,14 @@ describe("input validation", () => {
     const v = await sc("validate_message", { message: "hello world" });
     assert.equal(v.valid, false);
   });
+  test("a large broken message still returns a (shorter) report instead of an output-cap error", async () => {
+    const message = F.ORU_R01 + "\rPV1|1|O\rOBX|1|NM|x||1|||||F".repeat(5000);
+    const v = await sc("validate_message", { message });
+    assert.equal(v.valid, false);
+    assert.ok(v.counts.errors > 10000);
+    assert.ok(v.errors.length < 200 && v.errors.length > 0);
+    assert.match(v.truncated, new RegExp(`first ${v.errors.length} issues`));
+  });
 });
 
 describe("diff_messages", () => {

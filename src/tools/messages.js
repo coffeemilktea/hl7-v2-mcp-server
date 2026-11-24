@@ -3,7 +3,7 @@ import { z } from "zod";
 import * as core from "hl7v2-core";
 import { ok, fail, READ_ONLY } from "../result.js";
 import { message, offset, limit, page, issue, out, bool } from "../schemas.js";
-import { validateMessage, PROFILES } from "../validate/index.js";
+import { validateMessage, limitReport, MAX_ISSUES, PROFILES } from "../validate/index.js";
 
 /** Collapse [rep][comp][sub] to the most compact JSON form (string when trivial); HL7 explicit null "" becomes null. */
 function compact(reps) {
@@ -138,7 +138,14 @@ export function register(server) {
     },
     async ({ message }) => {
       try {
-        return ok(validateMessage(message), { hint: "Fix the first errors and validate again, or validate a smaller message." });
+        // Long issue messages can push even a capped report over the output cap: list fewer issues rather than fail.
+        const report = validateMessage(message);
+        let res;
+        for (const max of [MAX_ISSUES, 50, 10]) {
+          res = ok(limitReport(report, max), { hint: "Fix the first errors and validate again, or validate a smaller message." });
+          if (!res.isError) break;
+        }
+        return res;
       } catch (err) {
         return fail(`Validation failed: ${err.message}`);
       }

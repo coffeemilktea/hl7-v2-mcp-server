@@ -126,20 +126,35 @@ export function validateMessage(message) {
 export const MAX_ISSUES = 200;
 
 function finish(r, { typeKey, structure, version, profile, segNames }) {
-  const counts = { errors: r.errors.length, warnings: r.warnings.length, info: r.info.length };
-  const truncated = Object.values(counts).some((n) => n > MAX_ISSUES);
-  return {
+  const report = {
     valid: r.errors.length === 0,
     messageType: typeKey || null,
     messageStructure: structure || null,
     version: version || null,
     profileApplied: profile ? `${typeKey} — ${profile.label}` : "base and structure checks only",
-    counts,
-    ...(truncated ? { truncated: `Only the first ${MAX_ISSUES} issues of each severity are listed; counts has the totals.` } : {}),
-    errors: r.errors.slice(0, MAX_ISSUES),
-    warnings: r.warnings.slice(0, MAX_ISSUES),
-    info: r.info.slice(0, MAX_ISSUES),
+    counts: { errors: r.errors.length, warnings: r.warnings.length, info: r.info.length },
+    errors: r.errors,
+    warnings: r.warnings,
+    info: r.info,
     segmentCount: segNames.length,
-    segmentsFound: segNames.slice(0, MAX_ISSUES),
+    segmentsFound: segNames,
+  };
+  return limitReport(report, MAX_ISSUES);
+}
+
+/**
+ * Keep at most `max` issues per severity (and segment names) in a report,
+ * setting `truncated` when anything was dropped. `counts` keeps the totals.
+ */
+export function limitReport(report, max) {
+  const { truncated: _, ...rest } = report;
+  const truncated = Object.values(report.counts).some((n) => n > max) || report.segmentCount > max;
+  return {
+    ...rest,
+    ...(truncated ? { truncated: `Only the first ${max} issues of each severity (and ${max} segment names) are listed; counts and segmentCount have the totals.` } : {}),
+    errors: report.errors.slice(0, max),
+    warnings: report.warnings.slice(0, max),
+    info: report.info.slice(0, max),
+    segmentsFound: report.segmentsFound.slice(0, max),
   };
 }
