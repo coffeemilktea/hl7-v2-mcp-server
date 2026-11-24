@@ -12,7 +12,7 @@ export const ADT_A01 = msg(
   "MSH|^~\\&|ADT|HOSP|PACS|HOSP|20261019080000-0700||ADT^A01^ADT_A01|A01-0001|P|2.5.1",
   "EVN||20261019080000-0700",
   "PID|1||MRN12345^^^HOSP^MR||DOE^JANE^Q||19800214|F|||123 MAIN ST^^SPRINGFIELD^IL^62701^USA||^PRN^PH^^1^217^5551234",
-  seg("PV1", { 1: "1", 2: "I", 3: "4WEST^401^A^HOSP", 7: "1234^SMITH^ANNA^^^^DR", 10: "MED", 19: "V0001^^^HOSP^VN", 44: "20261019075500-0700" })
+  seg("PV1", { 1: "1", 2: "I", 3: "4WEST^401^A^HOSP", 7: "1234^SMITH^ANNA^^^DR", 10: "MED", 19: "V0001^^^HOSP^VN", 44: "20261019075500-0700" })
 );
 export const ADT_A04 = msg(
   "MSH|^~\\&|ADT|HOSP|RIS|HOSP|20261019090000-0700||ADT^A04^ADT_A01|A04-0001|P|2.5.1",
@@ -49,24 +49,24 @@ export const ORM_O01 = msg(
   "PID|1||MRN12345^^^HOSP^MR||DOE^JANE||19800214|F",
   "PV1|1|O",
   seg("ORC", { 1: "NW", 2: "PL1001", 3: "FL2001", 5: "SC", 9: "20261019103000-0700" }),
-  seg("OBR", { 1: "1", 2: "PL1001", 3: "FL2001", 4: "71046^XR CHEST 2 VIEWS^CPT", 7: "20261019103000-0700", 18: "ACC789" }),
+  seg("OBR", { 1: "1", 2: "PL1001", 3: "FL2001", 4: "71046^XR CHEST 2 VIEWS^C4", 7: "20261019103000-0700", 18: "ACC789" }),
   "ZDS|1.2.840.113619.2.55.3.604688119.969.1268071029.320^RIS^Application^DICOM"
 );
 export const ORU_R01 = msg(
   "MSH|^~\\&|RIS|HOSP|EMR|HOSP|20261019120000-0700||ORU^R01^ORU_R01|MSG0002|P|2.5.1",
   "PID|1||MRN12345^^^HOSP^MR||DOE^JANE||19800214|F",
   "ORC|RE|PL1001|FL2001",
-  seg("OBR", { 1: "1", 2: "PL1001", 3: "FL2001", 4: "71046^XR CHEST 2 VIEWS^CPT", 7: "20261019103000-0700", 18: "ACC789", 22: "20261019115500-0700", 24: "RAD", 25: "F" }),
-  seg("OBX", { 1: "1", 2: "TX", 3: "71046&IMP^Impression^CPT", 5: "No acute cardiopulmonary process.", 11: "F", 14: "20261019115500-0700" }),
-  seg("OBX", { 1: "2", 2: "NM", 3: "8867-4^Heart rate^LN", 5: "72", 6: "/min^beats per minute^UCUM", 7: "60-100", 8: "N", 11: "F" })
+  seg("OBR", { 1: "1", 2: "PL1001", 3: "FL2001", 4: "71046^XR CHEST 2 VIEWS^C4", 7: "20261019103000-0700", 18: "ACC789", 22: "20261019115500-0700", 24: "RAD", 25: "F" }),
+  seg("OBX", { 1: "1", 2: "TX", 3: "71046&IMP^Impression^C4", 5: "No acute cardiopulmonary process.", 11: "F", 14: "20261019115500-0700" }),
+  seg("OBX", { 1: "2", 2: "NM", 3: "8867-4^Heart rate^LN", 5: "72", 6: "/min^beats per minute^ISO+", 7: "60-100", 8: "N", 11: "F" })
 );
 export const OMI_O23 = msg(
   "MSH|^~\\&|EMR|HOSP|RIS|HOSP|20261019100000-0700||OMI^O23^OMI_O23|OMI-0001|P|2.5.1",
   "PID|1||MRN12345^^^HOSP^MR||DOE^JANE||19800214|F",
   "PV1|1|O",
   seg("ORC", { 1: "NW", 2: "PL3001", 5: "SC", 9: "20261019100000-0700" }),
-  "OBR|1|PL3001||74177^CT ABD PELVIS W CONTRAST^CPT|||20261019100000-0700",
-  "IPC|ACC3001^HOSP|RP3001|1.2.840.113619.2.55.3.1.1|SPS3001|CT^Computed Tomography^DCM"
+  "OBR|1|PL3001||74177^CT ABD PELVIS W CONTRAST^C4|||20261019100000-0700",
+  "IPC|ACC3001^HOSP|RP3001|1.2.840.113619.2.55.3.1.1|SPS3001|CT^^DCM"
 );
 export const SIU_S12 = msg(
   "MSH|^~\\&|SCHED|HOSP|RIS|HOSP|20261019090000-0700||SIU^S12^SIU_S12|SIU-0001|P|2.5.1",
@@ -74,12 +74,41 @@ export const SIU_S12 = msg(
   seg("TQ1", { 1: "1", 7: "20261021090000-0700", 8: "20261021093000-0700" }),
   "PID|1||MRN12345^^^HOSP^MR||DOE^JANE||19800214|F",
   "RGS|1|A",
-  seg("AIS", { 1: "1", 2: "A", 3: "74177^CT ABD PELVIS W CONTRAST^CPT", 4: "20261021090000-0700", 7: "30", 8: "min" }),
+  seg("AIS", { 1: "1", 2: "A", 3: "74177^CT ABD PELVIS W CONTRAST^C4", 4: "20261021090000-0700", 7: "30", 8: "min" }),
   seg("AIL", { 1: "1", 2: "A", 3: "CT1^^^HOSP", 6: "20261021090000-0700" }),
   seg("AIP", { 1: "1", 2: "A", 3: "1234^SMITH^ANNA", 6: "20261021090000-0700" })
 );
 
 export const ALT_DELIMS = "MSH#$*@!#RIS#HOSP#PACS#HOSP#20261019103000##ORM$O01$ORM_O01#MSG9#P#2.5.1\rPID#1##123$$$HOSP$MR##DOE$JANE";
+
+/** Re-encode a default-delimited message with MSH-1 '#' and MSH-2 '$*@!'. */
+export function withAltDelimiters(message) {
+  const map = { "|": "#", "^": "$", "~": "*", "\\": "@", "&": "!" };
+  return message.replace(/[|^~\\&]/g, (c) => map[c]);
+}
+
+/** ADT^A01 exercising repetitions, components, subcomponents, escapes and explicit nulls. */
+export const ADT_A01_RICH = msg(
+  "MSH|^~\\&|ADT|HOSP|PACS|HOSP|20261019080000-0700||ADT^A01^ADT_A01|A01-0002|P|2.5.1|||AL|NE",
+  "EVN||20261019080000-0700",
+  'PID|1||MRN12345^^^HOSP&1.2.3.4&ISO^MR~123456789^^^SSA^SS||O\'BRIEN\\T\\SMITH^MARY^ANN||19800214|F|||12 HIGH ST\\F\\UNIT 4^^SPRINGFIELD^IL^62701^USA^H~PO BOX 9^^SPRINGFIELD^IL^62702^USA^M|||||""',
+  seg("PV1", { 1: "1", 2: "I", 3: "4WEST^401^A^HOSP", 19: "V0003^^^HOSP^VN", 44: "20261019075500-0700" })
+);
+
+/** ORU^R01 lab result with several order groups, NTEs and SN/CE values. */
+export const ORU_R01_LAB = msg(
+  "MSH|^~\\&|LIS|LAB|EMR|HOSP|20261019120000-0700||ORU^R01^ORU_R01|LAB-0001|P|2.5.1",
+  "PID|1||MRN12345^^^HOSP^MR||DOE^JANE||19800214|F",
+  "PV1|1|O",
+  "ORC|RE|PL5001|FL5001",
+  seg("OBR", { 1: "1", 2: "PL5001", 3: "FL5001", 4: "24323-8^Comprehensive metabolic panel^LN", 7: "20261019090000-0700", 22: "20261019115500-0700", 25: "F" }),
+  seg("OBX", { 1: "1", 2: "NM", 3: "2345-7^Glucose^LN", 5: "105", 6: "mg/dL^^ISO+", 7: "70-99", 8: "H", 11: "F" }),
+  "NTE|1||Fasting specimen\\.br\\Collected 08:00",
+  seg("OBX", { 1: "2", 2: "SN", 3: "2160-0^Creatinine^LN", 5: "<^0.5", 6: "mg/dL^^ISO+", 11: "F" }),
+  "ORC|RE|PL5002|FL5002",
+  seg("OBR", { 1: "2", 2: "PL5002", 3: "FL5002", 4: "600-7^Blood culture^LN", 7: "20261019090000-0700", 25: "P" }),
+  seg("OBX", { 1: "1", 2: "CE", 3: "600-7^Blood culture^LN", 5: "264868006^No growth^SNM", 11: "P" })
+);
 
 /** Replace field n (standard numbering) of the first segment `seg` in a message. */
 export function setField(message, seg, n, value) {

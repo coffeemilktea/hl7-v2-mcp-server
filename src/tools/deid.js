@@ -99,7 +99,7 @@ export function deidentify(opts) {
       const seq = seqOf(i);
       if (isMsh && seq <= 2) continue;
       const raw = parts[i];
-      if (raw === "") continue;
+      if (raw === "" || core.isNull(raw)) continue; // nothing to de-identify in an empty or explicit-null ("") field
       if (keepPaths.some((p) => p.segment === name && (p.field === undefined || p.field === seq) && (p.occurrence ?? 1) === occ)) continue;
       const def = core.getField(name, seq);
       let type = def?.type ?? null;

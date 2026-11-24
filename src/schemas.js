@@ -4,10 +4,14 @@
  */
 import { z } from "zod";
 
+/** Largest message accepted (characters). Large enough for embedded reports, small enough to bound work. */
+export const MAX_MESSAGE_CHARS = 1_000_000;
+
 export const message = z
   .string()
-  .min(1)
-  .describe("HL7 v2 message text (pipe-delimited). Segments may end in \\r, \\n or \\r\\n; MLLP framing (0x0B ... 0x1C 0x0D) is stripped automatically.");
+  .refine((s) => s.trim().length > 0, "The message is empty.")
+  .refine((s) => s.length <= MAX_MESSAGE_CHARS, `The message is over ${MAX_MESSAGE_CHARS.toLocaleString("en-US")} characters.`)
+  .describe("One HL7 v2 message, starting with MSH. Segments may end in \\r, \\n or \\r\\n; MLLP framing (0x0B ... 0x1C 0x0D) is stripped.");
 
 export const segmentCode = z
   .string()
@@ -28,7 +32,11 @@ export const page = z.object({
   nextOffset: z.number().int().nullable(),
 });
 
-export const issue = z.object({ location: z.string(), message: z.string() });
+export const issue = z.object({
+  location: z.string(),
+  message: z.string(),
+  code: z.string().optional().describe("HL7 table 0357 error condition (errors only), as used in ERR-3."),
+});
 
 /**
  * Output schema helper: an object schema that allows extra keys, so optional

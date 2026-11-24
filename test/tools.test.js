@@ -125,6 +125,17 @@ describe("message tools", () => {
     assert.equal(p.parsedSegments.length, 1);
     assert.equal(p.nextOffset, 1);
   });
+  test("parse_message decodes escapes, keeps repetitions and maps explicit null to null", async () => {
+    const p = await sc("parse_message", { message: F.ADT_A01_RICH, segments: ["PID"] });
+    const f = p.parsedSegments[0].fields;
+    assert.equal(f["PID-5 (Patient Name)"][0], "O'BRIEN&SMITH");
+    assert.equal(f["PID-11 (Patient Address)"][0][0], "12 HIGH ST|UNIT 4");
+    assert.deepEqual(f["PID-3 (Patient Identifier List)"][0][3], ["HOSP", "1.2.3.4", "ISO"]);
+    assert.equal(f["PID-16 (Marital Status)"], null);
+    const alt = await sc("parse_message", { message: F.withAltDelimiters(F.ADT_A01_RICH), segments: "PID" });
+    assert.deepEqual(alt.parsedSegments[0].fields["PID-3 (Patient Identifier List)"], f["PID-3 (Patient Identifier List)"]);
+    assert.equal(alt.delimiters.fieldSep, "#");
+  });
   test("parse_message rejects non-HL7 text", async () => {
     const r = await call("parse_message", { message: "hello" });
     assert.equal(r.isError, true);
@@ -165,6 +176,68 @@ describe("generate_ack", () => {
   test("escapes delimiters in diagnostics", async () => {
     const r = await sc("generate_ack", { message: F.ORU_R01, ackCode: "AE", errors: [{ code: "207", diagnostic: "a|b^c" }] });
     assert.match(r.segments[2], /a\\F\\b\\S\\c/);
+  });
+  test("ADT^A01 ACK: trigger echoed, segments terminated, original mode", async () => {
+    const r = await sc("generate_ack", { message: F.ADT_A01, controlId: "ACK2", timestamp: "20261019080100-0700" });
+    assert.equal(r.segments[0], "MSH|^~\\&|PACS|HOSP|ADT|HOSP|20261019080100-0700||ACK^A01^ACK|ACK2|P|2.5.1");
+    assert.equal(r.mode, "original");
+    assert.ok(r.ack.endsWith("MSA|AA|A01-0001\r"));
+  });
+  test("ERR-2 uses the global segment occurrence", async () => {
+    const r = await sc("generate_ack", { message: F.ORU_R01.replace("||72|", "||seventy|"), fromValidation: true });
+    assert.equal(r.acknowledgmentCode, "AE");
+    assert.equal(r.segments[2], "ERR||OBX^2^5^1|102^Data type error^HL70357|E|||'seventy' is not a valid NM (optional sign, digits, optional decimal point).");
+  });
+  test("segment sequence errors map to 100 with a segment-only ERL", async () => {
+    const r = await sc("generate_ack", { message: F.dropSegment(F.ADT_A01, "EVN"), fromValidation: true });
+    assert.ok(r.segments.includes("ERR||EVN^1|100^Segment sequence error^HL70357|E|||Required EVN is missing before PID (ADT_A01)."));
+  });
+  test("unsupported message type is rejected (AR, 200)", async () => {
+    const r = await sc("generate_ack", { message: F.setField(F.ADT_A08, "MSH", 9, "ZZZ^Z99"), fromValidation: true });
+    assert.equal(r.acknowledgmentCode, "AR");
+    assert.match(r.segments[2], /^ERR\|\|MSH\^1\^9\^1\^1\|200\^Unsupported message type\^HL70357\|E/);
+  });
+  test("enhanced mode: accept acknowledgment by default; MSH-15/16 advice", async () => {
+    const r = await sc("generate_ack", { message: F.ADT_A01_RICH });
+    assert.equal(r.mode, "enhanced");
+    assert.equal(r.acknowledgmentCode, "CA");
+    const app = await sc("generate_ack", { message: F.ADT_A01_RICH, ackCode: "AA" });
+    assert.match(app.notes.join(" "), /MSH-16 .* 'NE'/);
+    const orig = await sc("generate_ack", { message: F.ORU_R01, ackCode: "CA" });
+    assert.match(orig.notes.join(" "), /original mode/);
+  });
+  test("custom delimiters are reused in the ACK", async () => {
+    const r = await sc("generate_ack", { message: F.withAltDelimiters(F.ORU_R01), ackCode: "AE", errors: [{ location: "PID-3", code: 101, diagnostic: "a#b" }], controlId: "A1", timestamp: "20261019" });
+    assert.equal(r.segments[0], "MSH#$*@!#EMR#HOSP#RIS#HOSP#20261019##ACK$R01$ACK#A1#P#2.5.1");
+    assert.equal(r.segments[2], "ERR##PID$1$3$1#101$Required field missing$HL70357#E###a@F@b");
+    const v = await sc("validate_message", { message: r.ack });
+    assert.deepEqual(v.errors, []);
+  });
+  test("non-2.5.1 version is noted; ACKs are not acknowledged", async () => {
+    const r = await sc("generate_ack", { message: F.setField(F.ORU_R01, "MSH", 12, "2.3") });
+    assert.match(r.notes.join(" "), /203/);
+    const ack = await sc("generate_ack", { message: F.ORU_R01 });
+    const again = await call("generate_ack", { message: ack.ack });
+    assert.equal(again.isError, true);
+    assert.match(again.content[0].text, /never acknowledged/);
+  });
+});
+
+describe("input validation", () => {
+  test("empty, whitespace and oversized messages are rejected with a clear error", async () => {
+    for (const message of ["", "   \r\n", "MSH|" + "X".repeat(1_000_001)]) {
+      const r = await call("validate_message", { message });
+      assert.equal(r.isError, true);
+    }
+  });
+  test("non-HL7 text gives an MCP error, not a crash", async () => {
+    for (const name of ["parse_message", "generate_ack", "deidentify_message"]) {
+      const r = await call(name, { message: "hello world" });
+      assert.equal(r.isError, true, name);
+      assert.match(r.content[0].text, /MSH/, name);
+    }
+    const v = await sc("validate_message", { message: "hello world" });
+    assert.equal(v.valid, false);
   });
 });
 

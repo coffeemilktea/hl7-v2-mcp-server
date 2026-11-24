@@ -2,7 +2,7 @@
 import { z } from "zod";
 import * as core from "hl7v2-core";
 import { ok, fail, READ_ONLY } from "../result.js";
-import { offset, limit, page, out } from "../schemas.js";
+import { message, offset, limit, page, out } from "../schemas.js";
 
 const DEFAULT_IGNORE = ["MSH-7", "MSH-10"];
 
@@ -109,8 +109,8 @@ export function register(server) {
       description:
         "Compare two HL7 v2 messages segment by segment (matched by segment type and occurrence) and report added/removed segments and field, component or subcomponent differences with v2.5.1 field names. MSH-7 and MSH-10 are ignored by default. Values are compared after decoding escapes.",
       inputSchema: {
-        left: z.string().min(1).describe("The first (e.g. expected or before) message."),
-        right: z.string().min(1).describe("The second (e.g. actual or after) message."),
+        left: message.describe("The first (e.g. expected or before) message."),
+        right: message.describe("The second (e.g. actual or after) message."),
         ignore: z
           .array(z.string())
           .default(DEFAULT_IGNORE)

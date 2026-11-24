@@ -1,36 +1,57 @@
 /**
  * Dependency-free HL7 v2 message parser shared by both MCP servers.
  *
- * Positions follow the standard's numbering: field 1 of MSH is the field
- * separator and field 2 the encoding characters, so MSH-9 is MSH-9.
+ * Positions follow the standard's numbering: field 1 of MSH (and FHS/BHS) is
+ * the field separator and field 2 the encoding characters, so MSH-9 is MSH-9.
  */
 
 const DEFAULTS = { fieldSep: "|", compSep: "^", repSep: "~", escChar: "\\", subSep: "&" };
+const HEADER = /^(MSH|FHS|BHS)/;
 
-/** Strip MLLP framing and normalise segment terminators to \r. */
+/** HL7 explicit null: `""` means "delete/clear this value", distinct from an empty (not sent) value. */
+export const NULL_VALUE = '""';
+export const isNull = (v) => v === NULL_VALUE;
+
+/** Strip MLLP framing and leading whitespace; normalise \r\n and \n segment terminators to \r. */
 export function normalize(message) {
   let raw = String(message ?? "");
-  raw = raw.replace(/^\x0B/, "").replace(/\x1C\x0D?$/, "");
+  raw = raw.replace(/^\s*\x0B/, "").replace(/\x1C\x0D?\s*$/, "").replace(/^\s+/, "");
   return raw.replace(/\r\n/g, "\r").replace(/\n/g, "\r");
 }
 
-/** Split a message into segment lines and recover its delimiters from MSH. */
+/** split() that treats a missing ("") separator as "no split". */
+const splitOn = (s, sep) => (sep ? String(s).split(sep) : [String(s)]);
+
+/**
+ * Split a message into segment lines and recover its delimiters from MSH-1/MSH-2.
+ * MSH-2 is read only up to the next field separator, so a short MSH-2 never
+ * borrows the field separator as a delimiter. A missing encoding character
+ * falls back to its default unless that character is already in use.
+ */
 export function dissect(message) {
   const lines = normalize(message)
     .split("\r")
-    .map((l) => l.replace(/\s+$/, ""))
+    .map((l) => l.replace(/[ \t]+$/, ""))
     .filter((l) => l.length > 0);
   const msh = lines[0] ?? "";
-  const isMsh = /^(MSH|FHS|BHS)/.test(msh);
-  const at = (i, d) => (isMsh && msh.length > i ? msh[i] : d);
-  return {
-    lines,
-    fieldSep: at(3, DEFAULTS.fieldSep),
-    compSep: at(4, DEFAULTS.compSep),
-    repSep: at(5, DEFAULTS.repSep),
-    escChar: at(6, DEFAULTS.escChar),
-    subSep: at(7, DEFAULTS.subSep),
+  if (!HEADER.test(msh) || msh.length < 4) return { lines, ...DEFAULTS, charset: null };
+  const fieldSep = msh[3];
+  const enc = msh.slice(4).split(fieldSep)[0];
+  const used = new Set([fieldSep]);
+  const pick = (i, def) => {
+    let ch = enc[i];
+    if (ch === undefined) ch = used.has(def) ? "" : def;
+    if (ch) used.add(ch);
+    return ch;
   };
+  const compSep = pick(0, DEFAULTS.compSep);
+  const repSep = pick(1, DEFAULTS.repSep);
+  const escChar = pick(2, DEFAULTS.escChar);
+  const subSep = pick(3, DEFAULTS.subSep);
+  // MSH-18 Character Set decides how \Xhh..\ bytes are decoded.
+  const msh18 = msh.startsWith("MSH") ? msh.split(fieldSep)[17] ?? "" : "";
+  const charset = /UTF-8/i.test(msh18) ? "utf-8" : msh18 ? msh18 : null;
+  return { lines, fieldSep, compSep, repSep, escChar, subSep, charset };
 }
 
 /** The delimiters of a dissected message, without the lines. */
@@ -47,7 +68,7 @@ export const delimitersOf = (ctx) => ({
  * the field separator and f(2) the encoding characters.
  */
 export function fielder(line, fieldSep = "|") {
-  const isMsh = /^(MSH|FHS|BHS)/.test(line);
+  const isMsh = HEADER.test(line);
   const parts = line.split(fieldSep);
   return (n) => (isMsh ? (n === 1 ? fieldSep : parts[n - 1] ?? "") : parts[n] ?? "");
 }
@@ -55,18 +76,25 @@ export function fielder(line, fieldSep = "|") {
 /** Number of fields present on a segment line (standard numbering). */
 export function fieldCount(line, fieldSep = "|") {
   const n = line.split(fieldSep).length - 1;
-  return /^(MSH|FHS|BHS)/.test(line) ? n + 1 : n;
+  return HEADER.test(line) ? n + 1 : n;
 }
 
 /** Component n (1-based) of a raw value, trimmed. Not unescaped. */
-export const comp = (val, n, sep = "^") => ((val ?? "").split(sep)[n - 1] ?? "").trim();
+export const comp = (val, n, sep = "^") => (splitOn(val ?? "", sep)[n - 1] ?? "").trim();
 /** Non-empty repetitions of a raw value. */
-export const reps = (val, sep = "~") => (val ?? "").split(sep).filter((x) => x.trim().length > 0);
+export const reps = (val, sep = "~") => splitOn(val ?? "", sep).filter((x) => x.trim().length > 0);
+
+function hexBytes(hex, charset) {
+  const bytes = Uint8Array.from(hex.match(/.{2}/g).map((b) => parseInt(b, 16)));
+  if (charset === "utf-8") return new TextDecoder("utf-8").decode(bytes);
+  return String.fromCharCode(...bytes); // ASCII / ISO 8859-1
+}
 
 /**
- * Decode HL7 escape sequences in one pass: \F\ \S\ \T\ \R\ \E\ \.br\ \Xhh..\
- * and drop the highlighting/formatting escapes (\H\ \N\ and other \.xx\).
- * Unknown sequences are left as-is rather than guessed.
+ * Decode HL7 escape sequences in one pass: \F\ \S\ \T\ \R\ \E\, \Xhh..\ (UTF-8
+ * when MSH-18 says so, otherwise ISO 8859-1), \.br\ and \.sp n\ as line breaks;
+ * highlighting (\H\ \N\) and other formatting commands are dropped. Unknown
+ * sequences (\Cxxyy\, \Mxxyyzz\, \Zxx\ local escapes) are left as-is.
  */
 export function unescape(value, ctx = DEFAULTS) {
   if (value === undefined || value === null || value === "") return value;
@@ -87,36 +115,29 @@ export function unescape(value, ctx = DEFAULTS) {
     }
     const seq = s.slice(i + 1, end);
     let rep;
+    let m;
     if (seq === "F") rep = ctx.fieldSep;
     else if (seq === "S") rep = ctx.compSep;
     else if (seq === "T") rep = ctx.subSep;
     else if (seq === "R") rep = ctx.repSep;
     else if (seq === "E") rep = e;
     else if (seq === ".br") rep = "\n";
+    else if ((m = /^\.sp\s*(\d*)$/.exec(seq))) rep = "\n".repeat(Math.max(1, Number(m[1] || 1)));
     else if (seq === "H" || seq === "N") rep = "";
-    else if (/^X([0-9A-Fa-f]{2})+$/.test(seq)) {
-      rep = seq
-        .slice(1)
-        .match(/.{2}/g)
-        .map((b) => String.fromCharCode(parseInt(b, 16)))
-        .join("");
-    } else if (/^\.(sp|fi|nf|in|ti|sk|ce)/.test(seq)) rep = "";
-    if (rep === undefined) {
-      out += s.slice(i, end + 1);
-    } else {
-      out += rep;
-    }
+    else if (/^X([0-9A-Fa-f]{2})+$/.test(seq)) rep = hexBytes(seq.slice(1), ctx.charset);
+    else if (/^\.(fi|nf|in|ti|sk|ce)/.test(seq)) rep = "";
+    out += rep === undefined ? s.slice(i, end + 1) : rep;
     i = end;
   }
   return out;
 }
 
-/** Encode text so it is safe inside one component/subcomponent. */
+/** Encode text so it is safe inside one component/subcomponent. Line breaks become \.br\. */
 export function escape(value, ctx = DEFAULTS) {
   if (value === undefined || value === null) return "";
-  const e = ctx.escChar ?? DEFAULTS.escChar;
+  const e = ctx.escChar || DEFAULTS.escChar;
   let out = "";
-  for (const ch of String(value)) {
+  for (const ch of String(value).replace(/\r\n/g, "\n")) {
     if (ch === e) out += `${e}E${e}`;
     else if (ch === ctx.fieldSep) out += `${e}F${e}`;
     else if (ch === ctx.compSep) out += `${e}S${e}`;
@@ -131,23 +152,25 @@ export function escape(value, ctx = DEFAULTS) {
 /** Split one raw field into repetitions → components → subcomponents (decoded). */
 export function splitField(raw, ctx = DEFAULTS, { isEncodingField = false } = {}) {
   if (isEncodingField) return [[[raw]]];
-  return String(raw ?? "")
-    .split(ctx.repSep)
-    .map((rep) => rep.split(ctx.compSep).map((c) => c.split(ctx.subSep).map((s) => unescape(s, ctx))));
+  return splitOn(raw ?? "", ctx.repSep).map((rep) =>
+    splitOn(rep, ctx.compSep).map((c) => splitOn(c, ctx.subSep).map((s) => unescape(s, ctx)))
+  );
 }
 
 /**
  * Parse a message into a structured tree.
  * Returns { delimiters, segments: [{ name, index, line, fields: [{ seq, raw, reps }] }] }
- * where reps is [rep][component][subcomponent] of decoded strings.
+ * where reps is [rep][component][subcomponent] of decoded strings. An HL7
+ * explicit null stays the literal string `""` (see isNull).
  */
 export function parseMessage(message) {
   const ctx = dissect(message);
   if (ctx.lines.length === 0) throw new Error("No segments found in message.");
-  if (!/^(MSH|FHS|BHS)/.test(ctx.lines[0])) throw new Error("Message must begin with an MSH segment.");
+  if (!HEADER.test(ctx.lines[0])) throw new Error(`Message must begin with an MSH segment (found '${ctx.lines[0].slice(0, 3)}').`);
+  if (ctx.lines[0].length < 8) throw new Error("MSH is too short: it must start with MSH, the field separator and the encoding characters, e.g. MSH|^~\\&|.");
   const segments = ctx.lines.map((line, index) => {
     const name = line.slice(0, 3);
-    const isMsh = /^(MSH|FHS|BHS)/.test(name);
+    const isMsh = HEADER.test(name);
     const parts = line.split(ctx.fieldSep);
     const fields = [];
     if (isMsh) {
@@ -191,7 +214,7 @@ export function getValue(parsed, path) {
   if (!p.field) return seg.line;
   const f = seg.fields.find((x) => x.seq === p.field);
   if (!f) return undefined;
-  if (p.field <= 2 && /^(MSH|FHS|BHS)/.test(seg.name)) return f.raw;
+  if (p.field <= 2 && HEADER.test(seg.name)) return f.raw;
   const rep = f.reps[(p.repetition ?? 1) - 1];
   if (!rep) return undefined;
   if (!p.component) return rep.map((c) => c.join(parsed.delimiters.subSep)).join(parsed.delimiters.compSep);

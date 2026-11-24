@@ -5,10 +5,13 @@ import { ok, fail, READ_ONLY } from "../result.js";
 import { message, offset, limit, page, issue, out } from "../schemas.js";
 import { validateMessage, PROFILES } from "../validate/index.js";
 
-/** Collapse [rep][comp][sub] to the most compact JSON form (string when trivial). */
+/** Collapse [rep][comp][sub] to the most compact JSON form (string when trivial); HL7 explicit null "" becomes null. */
 function compact(reps) {
   const r = reps.map((rep) => {
-    const comps = rep.map((subs) => (subs.length === 1 ? subs[0] : subs));
+    const comps = rep.map((subs) => {
+      const vals = subs.map((v) => (core.isNull(v) ? null : v));
+      return vals.length === 1 ? vals[0] : vals;
+    });
     return comps.length === 1 ? comps[0] : comps;
   });
   return r.length === 1 ? r[0] : r;
@@ -19,9 +22,12 @@ export function summarize(parsed) {
     const p = core.parsePath(path);
     const seg = parsed.segments.filter((s) => s.name === p.segment)[0];
     const f = seg?.fields.find((x) => x.seq === p.field);
-    return f && f.raw !== "" ? f.raw : null;
+    return f && f.raw !== "" && !core.isNull(f.raw) ? f.raw : null;
   };
-  const val = (path) => core.getValue(parsed, path) || null;
+  const val = (path) => {
+    const v = core.getValue(parsed, path);
+    return v && !core.isNull(v) ? v : null;
+  };
   const accCandidates = [
     ["OBR-18", raw("OBR-18")],
     ["IPC-1", val("IPC-1.1")],
@@ -56,7 +62,7 @@ export function register(server) {
     {
       title: "Parse an HL7 v2 message",
       description:
-        "Parse an HL7 v2.x message into JSON: a summary (type, control id, patient, accession, status) and every segment's fields labelled with v2.5.1 field names. Escape sequences are decoded. Use `segments` and offset/limit for large messages.",
+        'Parse an HL7 v2 message into JSON: a summary (type, control id, patient, accession, status) and each segment\'s fields labelled with v2.5.1 names. Delimiters come from MSH-1/MSH-2 and escape sequences are decoded. A field is a string, or nested arrays for repetitions → components → subcomponents; null is the HL7 explicit null "" (delete the value). Use `segments` and offset/limit for large messages.',
       inputSchema: {
         message,
         segments: z
@@ -114,7 +120,7 @@ export function register(server) {
     "validate_message",
     {
       title: "Validate an HL7 v2.5.1 message",
-      description: `Validate an HL7 v2.5.1 message. Base MSH and structural checks run on any message (including message type, trigger and structure against v2.5.1 tables 0076/0003/0354). Deep profiles add required-field, code-table, timestamp, identifier and cross-segment checks for: ${Object.keys(PROFILES).join(", ")}. Codes from later HL7 versions are reported as errors; codes that cannot be verified for v2.5.1 as warnings.`,
+      description: `Validate a message against HL7 v2.5.1: MSH and message type/event/structure (tables 0076, 0003, 0354); segment order against the abstract message syntax; and for every segment, field optionality, repetition, length, data type formats (DTM, DT, TM, NM, SI) and coded values. Semantic profiles add checks for: ${Object.keys(PROFILES).join(", ")}. Each error has a location (e.g. OBX[2]-5.1) and the table 0357 code to use in ERR-3. Codes from later HL7 versions are errors.`,
       inputSchema: { message },
       outputSchema: out({
         valid: z.boolean(),
@@ -130,6 +136,12 @@ export function register(server) {
       }),
       annotations: { title: "Validate an HL7 v2.5.1 message", ...READ_ONLY },
     },
-    async ({ message }) => ok(validateMessage(message))
+    async ({ message }) => {
+      try {
+        return ok(validateMessage(message), { hint: "Fix the first errors and validate again, or validate a smaller message." });
+      } catch (err) {
+        return fail(`Validation failed: ${err.message}`);
+      }
+    }
   );
 }

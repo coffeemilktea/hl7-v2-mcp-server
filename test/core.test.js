@@ -29,9 +29,51 @@ test("unescape decodes standard escapes in one pass and leaves unknown ones", ()
   assert.equal(core.unescape(core.escape("a|b^c&d~e\\f", d), d), "a|b^c&d~e\\f");
 });
 
+test("delimiters come from MSH-2 only; a short MSH-2 never borrows the field separator", () => {
+  const d = core.dissect("MSH|^~\\|A|B\rPID|1||X&Y");
+  assert.equal(d.subSep, "&");
+  assert.equal(d.escChar, "\\");
+  const p = core.parseMessage("MSH|^~\\|A|B\rPID|1||X&Y");
+  assert.equal(core.getValue(p, "PID-3.1.2"), "Y");
+  // a custom escape character that is also a default delimiter is not reused
+  assert.equal(core.dissect("MSH|&~^|A").subSep, "");
+  assert.deepEqual(core.parseMessage("MSH|&~^|A\rPID|1||a&b").segments[1].fields[2].reps, [[["a"], ["b"]]]);
+});
+
+test("repetition, component and subcomponent splitting", () => {
+  const p = core.parseMessage("MSH|^~\\&|A\rPID|1||A1^^^H&1.2&ISO^MR~B2^^^H^PI||DOE^JANE");
+  const f = p.segments[1].fields[2];
+  assert.equal(f.reps.length, 2);
+  assert.deepEqual(f.reps[0][3], ["H", "1.2", "ISO"]);
+  assert.equal(core.getValue(p, "PID-3[2].5"), "PI");
+  assert.equal(core.getValue(p, "PID-3.4.3"), "ISO");
+  assert.equal(core.getValue(p, "PID-3[3]"), undefined);
+});
+
+test("explicit null is kept distinct from empty", () => {
+  const p = core.parseMessage('MSH|^~\\&|A\rPID|1||X||""|');
+  assert.equal(core.getValue(p, "PID-5"), '""');
+  assert.equal(core.isNull(core.getValue(p, "PID-5")), true);
+  assert.equal(core.getValue(p, "PID-4"), "");
+});
+
+test("escape sequences: formatting, hex by MSH-18 charset, custom escape character", () => {
+  const d = core.dissect("MSH|^~\\&|A");
+  assert.equal(core.unescape("a\\.sp2\\b\\.sp\\c", d), "a\n\nb\nc");
+  assert.equal(core.unescape("caf\\XC3A9\\", d), "cafÃ©"); // ISO 8859-1 by default
+  const u = core.dissect("MSH|^~\\&|A|||||||||||||||UNICODE UTF-8");
+  assert.equal(u.charset, "utf-8");
+  assert.equal(core.unescape("caf\\XC3A9\\", u), "café");
+  const alt = core.dissect("MSH#$*@!#A");
+  assert.equal(core.unescape("a@F@b@T@c@E@", alt), "a#b!c@");
+  assert.equal(core.escape("line1\r\nline2", d), "line1\\.br\\line2");
+  assert.equal(core.escape("a#b!c", alt), "a@F@b@T@c");
+});
+
 test("parser strips MLLP framing and accepts \\n line endings", () => {
   const p = core.parseMessage("\x0B" + ORU_R01.replace(/\r/g, "\n") + "\x1C\x0D");
   assert.equal(p.segments.length, 6);
+  assert.equal(core.parseMessage("\r\n  " + ORU_R01.replace(/\r/g, "\r\n") + "\r\n").segments.length, 6);
 });
 
 test("parseMessage rejects empty and non-MSH input", () => {
@@ -50,7 +92,31 @@ test("timestamps", () => {
   assert.ok(core.checkTimestamp("20261319").errors.length > 0);
   assert.ok(core.checkTimestamp("2026-10-19").errors.length > 0);
   assert.equal(core.toFhirDate("20261019103000-0700"), "2026-10-19T10:30:00-07:00");
+  assert.equal(core.toFhirDate("20261019103000.25+0530"), "2026-10-19T10:30:00.25+05:30");
   assert.match(core.nowTs(), core.TS_RE);
+});
+
+test("DTM precision rules", () => {
+  for (const ok of ["2026", "202610", "20261019", "2026101910", "202610191030", "20261019103000.1234", "20261019-0500", "20280229"]) {
+    assert.equal(core.checkTimestamp(ok).ok, true, ok);
+  }
+  for (const bad of ["2026.5", "20261019103.5", "2026101", "20260229", "20261019250000", "20261019+9999", "2026101910300012345"]) {
+    assert.equal(core.checkTimestamp(bad).ok, false, bad);
+  }
+  assert.equal(core.checkTimestamp("20261019103000").zoneless, true);
+  assert.equal(core.checkTimestamp("20261019").zoneless, false);
+});
+
+test("DT, TM, NM and SI formats", () => {
+  assert.equal(core.checkDate("20261019").ok, true);
+  assert.equal(core.checkDate("202610191030").ok, false);
+  assert.equal(core.checkTime("1030").ok, true);
+  assert.equal(core.checkTime("103000.12-0700").ok, true);
+  assert.equal(core.checkTime("2530").ok, false);
+  for (const n of ["1", "-1.5", "+.5", "007", "3."]) assert.match(n, core.NM_RE);
+  for (const n of ["1e3", "1,000", "", "abc", "--1"]) assert.doesNotMatch(n, core.NM_RE);
+  assert.match("9999", core.SI_RE);
+  assert.doesNotMatch("-1", core.SI_RE);
 });
 
 test("generated data covers all of v2.5.1", () => {
