@@ -36,8 +36,8 @@ search("accession").items;         // IPC-1, SAC-1, SAC-2, ...
 
 Exports:
 
-- **Parser:** `parseMessage`, `getValue`, `parsePath`, `dissect`, `fielder`, `comp`, `reps`, `unescape`, `escape`, `buildSegment`
-- **Timestamps:** `checkTimestamp`, `toFhirDate`, `nowTs`
+- **Parser:** `parseMessage`, `getValue`, `parsePath`, `dissect`, `fielder`, `comp`, `reps`, `unescape`, `escape`, `buildSegment`, `isNull`
+- **Formats:** `checkTimestamp` (DTM/TS), `checkDate` (DT), `checkTime` (TM), `NM_RE`, `SI_RE`, `toFhirDate`, `nowTs`
 - **Data:** `getSegment`, `getField`, `getDatatype`, `getStructure`, `getEvent`, `getTable`, `tableCodes`, `checkCode`, `validCodeSet`, `search`, `paginate`, `meta`
 
 ## Regenerating the data

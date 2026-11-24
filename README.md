@@ -98,6 +98,8 @@ did in v1.
 
 All tools are read-only, return `structuredContent` that matches a published output schema, and
 accept lenient input: `"3"` or `3`, table `4` or `0004`, and `adt_a04`, `ADT^A04` or `ADT A04`.
+Messages may use `\r`, `\n` or `\r\n` terminators and MLLP framing, and are limited to 1,000,000
+characters. Empty or non-HL7 input returns an MCP error that explains the problem.
 
 | Tool | What it does |
 |---|---|
@@ -109,9 +111,9 @@ accept lenient input: `"3"` or `3`, table `4` or `0004`, and `adt_a04`, `ADT^A04
 | `get_message_structure` | Abstract message syntax for an event (`ADT^A04`) or a structure (`ADT_A01`): groups, choices, required and repeating segments. |
 | `lookup_code_table` | Table values with their v2.5.1 status. Defaults to valid codes only. Paginated. |
 | `search_definitions` | **New.** Searches segments, fields, data types, events, structures, tables and codes by concept ("accession", "discharge date"). |
-| `parse_message` | Parses to JSON with fields labelled by name and escapes decoded. It also returns a summary (MRN, prior MRN, order control, accession and *which field it came from*, Study Instance UID, result status). Filter by segment type and page with offset/limit. |
-| `validate_message` | Base and structural checks, plus deep profiles (below). |
-| `generate_ack` | **New.** Builds a v2.5.1 ACK: swapped MSH, `ACK^<trigger>^ACK`, and MSA echoing MSH-10. It can add ERR segments with ERL location, a table 0357 code and severity. `fromValidation` turns validation errors into ERRs. |
+| `parse_message` | Parses to JSON with fields labelled by name. Delimiters come from MSH-1/MSH-2 and escapes are decoded. The HL7 explicit null `""` is returned as JSON `null`. It also returns a summary (MRN, prior MRN, order control, accession and *which field it came from*, Study Instance UID, result status). Filter by segment type and page with offset/limit. |
+| `validate_message` | Checks message type, segment order and fields against v2.5.1, plus semantic profiles (below). Each error has a canonical location and its table 0357 code. |
+| `generate_ack` | **New.** Builds a v2.5.1 ACK: swapped MSH, `ACK^<trigger>^ACK`, the sender's delimiters, and MSA echoing MSH-10. ERR segments carry the ERL location, a table 0357 code and the severity. It follows original vs enhanced mode (MSH-15/16: AA/AE/AR or CA/CE/CR). `fromValidation` turns validation errors into ERRs, using AR (or CR) for an unsupported message type, event, processing ID or version. |
 | `diff_messages` | **New.** Compares two messages by segment, field, component or subcomponent, using decoded values and field names. MSH-7 and MSH-10 are ignored by default. |
 | `deidentify_message` | **New.** Removes or pseudonymises HIPAA Safe Harbor identifiers by v2.5.1 field and data type (details below). It never returns the original values. |
 
@@ -120,29 +122,36 @@ Resources: `hl7v2://segment/{code}`, `hl7v2://datatype/{code}`, `hl7v2://table/{
 
 ### Validation
 
-These base checks run on every message:
+The validator works in layers. The first three run on every message:
 
-- MSH delimiters.
-- MSH-7 and other timestamps.
-- MSH-9 message code, trigger and structure, checked against tables 0076, 0003 and 0354, including whether the structure matches the event.
-- MSH-10 length.
-- MSH-11 (table 0103), MSH-12 and MSH-15/16 (table 0155).
-- Segments that aren't defined in v2.5.1.
-- EVN-1 agreeing with MSH-9.2.
-- MSA on ACK messages (MSA-5 is withdrawn in v2.5.1).
+1. **MSH and message type.** MSH-2 must be exactly four distinct encoding characters. MSH-9 (MSG) is checked against tables 0076, 0003 and 0354; the event/structure pair must exist in v2.5.1, and an ACK must use structure `ACK`. Also MSH-10 (at most 20 characters), MSH-11 (table 0103), MSH-12 (other versions warn) and EVN-1 agreeing with MSH-9.2.
+2. **Segment order** against the v2.5.1 abstract message syntax for the structure (groups, `[optional]`, `{repeating}`, `<choice>`). The validator reports missing, out-of-sequence and foreign segments, and recovers so that more than one problem is found. Z-segments may appear anywhere.
+3. **Fields** of every v2.5.1 segment:
+   - optionality: R must be valued, W must be empty, B gets a note
+   - repetition limits, maximum length, and field/component counts
+   - formats (DTM/TS, DT, TM, NM, SI) down to subcomponents
+   - ID/IS values against their tables (HL7 tables inside composites; table 0396 patterns such as `HL7nnnn` and `99zzz` are accepted)
+   - OBX-5 checked as the type named in OBX-2
+   - `""` (explicit null) is accepted, except in a required field, where it warns
 
-| Profile | What it checks beyond the base checks |
+Each error carries the table 0357 code an ACK would report: 100 sequence, 101 required, 102 data type, 103 table, 200–203 unsupported type, event, processing ID or version. Locations are canonical, such as `OBX[2]-5.1` or `PID-3[2].4`; `[n]` is the segment's occurrence in the whole message.
+
+4. **Semantic profiles** for these message types:
+
+| Profile | What it adds |
 |---|---|
-| `ADT^A01` | EVN; PID; PV1, which is required; an outpatient class on an admission; and that PV1-3, PV1-19 and PV1-44 are present. It also flags a discharge time on an admission. |
-| `ADT^A03` | PV1-45 discharge date/time present, PV1-19, and PV1-36 against table 0112 when HL7 publishes values for it. |
-| `ADT^A04` | An inpatient class on a registration; PV1-19; and a discharge time on a registration. |
-| `ADT^A08` | EVN placement, PV1 required by ADT_A01, **PV1-19 missing**, and MRG rejected. |
-| `ADT^A31` | PV1 required by ADT_A05, **PV1-19 populated on a person-level event**, and a patient class other than N. |
-| `ADT^A40` | PID↔MRG pairing across the repeating PATIENT group, MRG order, **self-merge**, cross-authority merges, and MRG-2/4 as backward-compatible only. |
-| `ORM^O01` | ORC-1 (table 0119), order numbers, action codes on existing orders, **SC without ORC-5**, ORC↔OBR pairing, OBR-4, the accession, and the ZDS DICOM UID. |
-| `OMI^O23` | ORDER groups (ORC, one OBR, at least one IPC). IPC-1 to IPC-4 are required (accession, requested procedure, Study Instance UID, scheduled procedure step). Also checks UID format, DICOM modality coding and consistent accessions. |
-| `ORU^R01` | OBX grouped under its OBR, OBR-25 (table 0123) with an explicit callout when a table 0085 code is used, OBX-11 (table 0085), OBX-2 (table 0125: **CWE is not a v2.5.1 value type**), **OBR-25 checked against every OBX-11**, NM values that aren't numeric, and repeated OBX-3 without OBX-4. |
-| `SIU^S12` | SCH first and present only once; SCH-1 or SCH-2; SCH-6, SCH-16 and SCH-20 required; SCH-11 is backward-compatible only (use TQ1); timing present; RGS groups with AIS, AIG, AIL and AIP inside them; AIS-3; action codes (table 0206). |
+| `ADT^A01` | An outpatient class on an admission; PV1-3, PV1-19 and PV1-44 present; a discharge time on an admission. |
+| `ADT^A03` | PV1-45 discharge date/time and PV1-19 present; PV1-36 against table 0112. |
+| `ADT^A04` | An inpatient class on a registration; PV1-19; a discharge time on a registration. |
+| `ADT^A08` | **PV1-19 missing** on a visit-level update. |
+| `ADT^A31` | **PV1-19 populated on a person-level event**; a patient class other than N. |
+| `ADT^A40` | Each PID paired with its MRG: **self-merge**, cross-authority merges, prior ID without an authority. |
+| `ORM^O01` | Order identification, **SC without ORC-5**, the accession number, and the ZDS DICOM UID. |
+| `OMI^O23` | Study Instance UID format, DICOM modality coding, and consistent accessions across the IPCs of one order. |
+| `ORU^R01` | OBR-25 (table 0123), with an explicit callout when a table 0085 code is used; **OBR-25 checked against every OBX-11 in its group**; OBX-2 required when OBX-5 is valued; repeated OBX-3/OBX-4. |
+| `SIU^S12` | SCH-1 or SCH-2 present; timing present (TQ1 or SCH-11); resources identified. |
+
+All PID-bearing profiles also check that PID-3 identifiers have an ID, an assigning authority and a type, and that PV1-2 is a table 0004 value.
 
 ### De-identification
 
@@ -181,7 +190,11 @@ people expect.
 | **SCH-9 vs SCH-11** | Appointment Duration is SCH-9, with its units in SCH-10. SCH-11 is the backward-compatible TQ timing field. |
 | **Table 0078** | The off-scale abnormal flags are `<` and `>`. |
 | **OBR-18 accession** | Using OBR-18 for the DICOM Accession Number is an IHE RAD convention. `parse_message` reports which field it found the accession in. |
-| **MSH-3 / MSH-5** | Optional in the standard, so they're reported as warnings. |
+| **MSH-3 / MSH-5** | Optional in the standard, so their absence is only an info note. |
+| **Coding systems (table 0396)** | CPT-4 is `C4`. `UCUM` and `SCT` entered table 0396 in v2.6; v2.5.1 has `ISO+` and `SNM`. Local systems are `99zzz`. |
+| **Time zones** | The UTC offset in DTM is optional in v2.5.1; without it the sender's local time is implied. A fraction of a second is only allowed after the seconds. |
+| **Explicit null** | `""` tells the receiver to delete a value; an empty field means "not sent, leave as is". `parse_message` returns `""` as `null`. |
+| **ACK modes** | With MSH-15/16 empty the sender uses original mode (AA/AE/AR). If either is valued it uses enhanced mode: an accept ack CA/CE/CR, then an application ack AA/AE/AR as requested. Acknowledgments are never acknowledged. |
 
 ## Example prompts
 
@@ -207,7 +220,7 @@ The layout:
 - `core/`: the `hl7v2-core` package (data, parser, search).
 - `src/server.js`: the tool and resource registry.
 - `src/tools/`: the tools.
-- `src/validate/`: validation profiles.
+- `src/validate/`: the validator (`structure.js` segment order, `fields.js` field checks, `profiles/` semantic checks).
 - `src/transport/`: stdio and HTTP.
 - `bin/cli.js`: the entry point.
 
