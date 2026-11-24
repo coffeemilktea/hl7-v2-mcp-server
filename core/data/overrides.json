@@ -36,6 +36,29 @@
         "name": "Producer's ID"
       },
       "evidence": "Caristix HL7-Definition v2.5.1 OBX.15 name 'Producer's ID' (CE), matching the original curated data. HAPI 2.5.1 names it 'Producer's Reference'."
+    },
+    {
+      "location": "MSA-3",
+      "set": {
+        "opt": "B"
+      },
+      "evidence": "HL7 v2.5.1 Ch. 2 MSA attribute table: MSA-3 Text Message is B (backward compatibility); error text goes in ERR. HAPI only distinguishes R/O and records O."
+    },
+    {
+      "location": "MSA-6",
+      "set": {
+        "opt": "B"
+      },
+      "evidence": "HL7 v2.5.1 Ch. 2 MSA attribute table: MSA-6 Error Condition is B (backward compatibility); the error code goes in ERR-3. HAPI only distinguishes R/O and records O."
+    }
+  ],
+  "tables": [
+    {
+      "table": "0203",
+      "set": {
+        "type": "User"
+      },
+      "evidence": "HL7 v2.5.1 Ch. 2A CX.5 Identifier Type Code refers to 'User-defined Table 0203 - Identifier type' for suggested values; the table became HL7-defined in v2.7. THO's v2-table-type records the current classification (HL7)."
     }
   ],
   "tableCodes": [

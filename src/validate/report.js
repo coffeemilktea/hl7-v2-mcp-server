@@ -53,7 +53,7 @@ export function checkUid(r, loc, uid, { label = "Study Instance UID" } = {}) {
 }
 
 /** Table 0396 lists patterns rather than literal codes for HL7 tables and local systems. */
-const PATTERN_CODES = { "0396": [/^HL7\d{4}$/, /^99[A-Z0-9]{1,3}$/i, /^L$/] };
+const PATTERN_CODES = { "0396": [/^HL7\d{4}$/, /^ISO\d{4}$/, /^IBT\d{4}$/, /^99[A-Z0-9]{1,3}$/i, /^L$/] };
 
 const validList = (id) => tableCodes(id, { status: "valid" }).map((v) => v.code);
 

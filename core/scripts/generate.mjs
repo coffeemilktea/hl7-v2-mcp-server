@@ -291,6 +291,12 @@ for (const id of [...tableIds].sort()) {
     values,
   };
 }
+// THO's v2-table-type reflects the current v2 version; correct tables whose v2.5.1 type differs.
+for (const o of overrides.tables ?? []) {
+  if (!tables[o.table]) throw new Error(`Table override ${o.table} targets a table that was not generated.`);
+  Object.assign(tables[o.table], o.set);
+  tables[o.table].override = o.evidence;
+}
 
 const tableValid = (id) => new Set((tables[id]?.values ?? []).filter((v) => v.status === "valid").map((v) => v.code));
 const t0440 = new Map((tables["0440"]?.values ?? []).map((v) => [v.code, v]));

@@ -10,7 +10,7 @@ test("parser numbers MSH fields as the standard does", () => {
   assert.equal(core.getValue(p, "MSH-9.2"), "R01");
   assert.equal(core.getValue(p, "MSH-10"), "MSG0002");
   assert.equal(core.getValue(p, "OBX[2]-5"), "72");
-  assert.equal(core.getValue(p, "OBX[1]-3.1.2"), "IMP");
+  assert.equal(core.getValue(p, "OBX[1]-3.3"), "LN");
 });
 
 test("parser recovers non-default delimiters", () => {
@@ -140,7 +140,12 @@ test("review bug fixes are reflected in the data", () => {
     assert.equal(f.opt, "B");
     assert.equal(f.len, 250);
   }
-  assert.equal(core.getField("OBX", 2).len, 2);
+  assert.equal(core.getField("OBX", 2).len, 2); // as published in v2.5.1; valid 3-character codes are accepted by the validator
+  assert.doesNotMatch(core.getField("OBX", 2).desc, /CWE=/);
+  assert.equal(core.getTable("0203").type, "User");
+  assert.ok(core.getTable("0203").override);
+  assert.equal(core.getField("MSA", 3).opt, "B");
+  assert.equal(core.getField("MSA", 6).opt, "B");
   assert.equal(core.getField("PD1", 8).name, "Organ Donor Code");
   assert.equal(core.getDatatype("CE").components.length, 6);
 });

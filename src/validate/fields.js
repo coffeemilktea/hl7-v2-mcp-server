@@ -6,7 +6,7 @@
  * OBX-2. A location a profile already reported on is not reported twice.
  * Z-segments are skipped: their content is defined locally or by IHE, not by HL7 tables.
  */
-import { getSegment, getDatatype, getTable, checkDate, checkTime, unescape, isNull, NM_RE, SI_RE } from "hl7v2-core";
+import { getSegment, getDatatype, getTable, checkCode, checkDate, checkTime, unescape, isNull, NM_RE, SI_RE } from "hl7v2-core";
 import { E, checkTs, checkTableCode } from "./report.js";
 import { at } from "./common.js";
 
@@ -19,14 +19,18 @@ const B_HINT = {
   "MRG-2": "carry prior identifiers as repeats of MRG-1.",
   "MRG-4": "carry prior identifiers as repeats of MRG-1.",
   "SCH-11": "send the appointment timing in TQ1.",
-  "MSA-3": "send error detail in ERR.",
+  "MSA-3": "send the text in ERR-8 (User Message) or ERR-7 (Diagnostic Information).",
+  "MSA-6": "send the error code in ERR-3.",
   "EVN-1": "MSH-9.2 is authoritative.",
   "ERR-1": "use ERR-2 (location) and ERR-3 (error code).",
   "ORC-7": "send timing in the TQ1/TQ2 segments.",
-  "OBR-27": "send timing in the TQ1/TQ2 segments.",
 };
 
 const split = (s, sep) => (sep ? s.split(sep) : [s]);
+/** True when a raw value holds nothing but delimiters (e.g. "^^~^"). */
+const blank = (raw, ctx) => [ctx.compSep, ctx.repSep, ctx.subSep].reduce((s, d) => (d ? s.split(d).join("") : s), raw).trim() === "";
+/** A valid code of an ID/IS table is never "too long": v2.5.1 publishes OBX-2 length 2 although table 0125 has XAD, XCN, XON, XPN, XTN. */
+const validCode = (type, table, v) => (type === "ID" || type === "IS") && table && checkCode(table, v.trim()).status === "valid";
 
 /** Check one value of `type` (raw text); level 0 = field repetition, 1 = component, 2 = subcomponent. */
 function checkValue(ctx, r, loc, type, raw, table, level) {
@@ -56,7 +60,15 @@ function checkValue(ctx, r, loc, type, raw, table, level) {
       return;
   }
   const dt = getDatatype(type);
-  if (!dt?.components?.length || level >= 2) return;
+  if (!dt?.components?.length) {
+    // A primitive value cannot contain the next delimiter down: it must be escaped (\S\, \T\).
+    const [sep, esc] = level === 0 ? [ctx.compSep, "S"] : level === 1 ? [ctx.subSep, "T"] : [];
+    if (sep && raw.includes(sep) && !r.has(loc)) {
+      r.warn(loc, `${type} is a primitive type but the value contains the ${level === 0 ? "component" : "subcomponent"} separator '${sep}'. Escape it as ${ctx.escChar}${esc}${ctx.escChar} or the receiver splits the value.`);
+    }
+    return;
+  }
+  if (level >= 2) return;
   const parts = split(raw, level === 0 ? ctx.compSep : ctx.subSep);
   if (parts.length > dt.components.length && parts.slice(dt.components.length).some((p) => p !== "") && !r.has(loc)) {
     r.warn(loc, `${parts.length} ${level === 0 ? "components" : "subcomponents"}, but ${type} has ${dt.components.length} in v2.5.1.`);
@@ -83,9 +95,9 @@ export function checkFields(ctx, r) {
       const raw = seg.f(fd.seq);
       const loc = at(seg, fd.seq);
       const label = `${seg.name}-${fd.seq} ${fd.name}`;
-      if (raw === "" || (fd.opt === "R" && isNull(raw))) {
+      if (raw === "" || (fd.opt === "R" && (isNull(raw) || blank(raw, ctx)))) {
         if (fd.opt === "R" && !r.has(loc)) {
-          if (raw === "") r.err(loc, `${label} is required (R) in v2.5.1.`, E.REQUIRED);
+          if (!isNull(raw)) r.err(loc, `${label} is required (R) in v2.5.1${raw ? " but holds only delimiters" : ""}.`, E.REQUIRED);
           else r.warn(loc, `${label} is required (R) but sent as the explicit null "", which tells the receiver to delete the value.`);
         }
         continue;
@@ -108,7 +120,7 @@ export function checkFields(ctx, r) {
         const rloc = at(seg, fd.seq, { rep: i + 1 });
         if (type && type !== "varies") checkValue(ctx, r, rloc, type, rep, table, 0);
         const len = unescape(rep, ctx).length;
-        if (fd.len && len > fd.len && !r.has(rloc)) r.warn(rloc, `${label} is ${len} characters; the v2.5.1 maximum is ${fd.len}.`);
+        if (fd.len && len > fd.len && !r.has(rloc) && !validCode(type, table, rep)) r.warn(rloc, `${label} is ${len} characters; the v2.5.1 maximum is ${fd.len}.`);
       });
     }
   }

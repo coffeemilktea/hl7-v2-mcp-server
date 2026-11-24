@@ -22661,7 +22661,7 @@
  "0203": {
   "id": "0203",
   "name": "Identifier Type",
-  "type": "HL7",
+  "type": "User",
   "introduced": "2.3",
   "whereUsed": "CX.5, PPN.13, XCN.13, XON.7",
   "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
@@ -24293,7 +24293,8 @@
      "FHIR-STU3"
     ]
    }
-  ]
+  ],
+  "override": "HL7 v2.5.1 Ch. 2A CX.5 Identifier Type Code refers to 'User-defined Table 0203 - Identifier type' for suggested values; the table became HL7-defined in v2.7. THO's v2-table-type records the current classification (HL7)."
  },
  "0204": {
   "id": "0204",

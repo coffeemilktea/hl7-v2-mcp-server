@@ -206,6 +206,19 @@ describe("generate_ack", () => {
     const orig = await sc("generate_ack", { message: F.ORU_R01, ackCode: "CA" });
     assert.match(orig.notes.join(" "), /original mode/);
   });
+  test("enhanced mode: content errors → application ack AE (not CE); unsupported type → CR", async () => {
+    const content = await sc("generate_ack", { message: F.setField(F.ADT_A01_RICH, "PV1", 2, "Q"), fromValidation: true });
+    assert.equal(content.acknowledgmentCode, "AE");
+    assert.match(content.notes.join(" "), /would be CA/);
+    const reject = await sc("generate_ack", { message: F.setField(F.ADT_A01_RICH, "MSH", 12, "9.9"), errors: [{ location: "MSH-12", code: 203 }] });
+    assert.equal(reject.acknowledgmentCode, "CR");
+  });
+  test("ERR segments from validation are capped", async () => {
+    const many = F.ORU_R01 + "\r" + Array.from({ length: 150 }, (_, i) => `OBX|${i + 3}|NM|X^Y^LN||bad|||||F`).join("\r");
+    const r = await sc("generate_ack", { message: many, fromValidation: true });
+    assert.equal(r.errCount, 100);
+    assert.match(r.notes.join(" "), /first 100/);
+  });
   test("custom delimiters are reused in the ACK", async () => {
     const r = await sc("generate_ack", { message: F.withAltDelimiters(F.ORU_R01), ackCode: "AE", errors: [{ location: "PID-3", code: 101, diagnostic: "a#b" }], controlId: "A1", timestamp: "20261019" });
     assert.equal(r.segments[0], "MSH#$*@!#EMR#HOSP#RIS#HOSP#20261019##ACK$R01$ACK#A1#P#2.5.1");

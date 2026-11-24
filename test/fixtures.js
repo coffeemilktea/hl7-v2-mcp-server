@@ -57,7 +57,7 @@ export const ORU_R01 = msg(
   "PID|1||MRN12345^^^HOSP^MR||DOE^JANE||19800214|F",
   "ORC|RE|PL1001|FL2001",
   seg("OBR", { 1: "1", 2: "PL1001", 3: "FL2001", 4: "71046^XR CHEST 2 VIEWS^C4", 7: "20261019103000-0700", 18: "ACC789", 22: "20261019115500-0700", 24: "RAD", 25: "F" }),
-  seg("OBX", { 1: "1", 2: "TX", 3: "71046&IMP^Impression^C4", 5: "No acute cardiopulmonary process.", 11: "F", 14: "20261019115500-0700" }),
+  seg("OBX", { 1: "1", 2: "TX", 3: "19005-8^Radiology Imaging study [Impression]^LN", 5: "No acute cardiopulmonary process.", 11: "F", 14: "20261019115500-0700" }),
   seg("OBX", { 1: "2", 2: "NM", 3: "8867-4^Heart rate^LN", 5: "72", 6: "/min^beats per minute^ISO+", 7: "60-100", 8: "N", 11: "F" })
 );
 export const OMI_O23 = msg(

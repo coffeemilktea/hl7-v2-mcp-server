@@ -159,6 +159,35 @@ describe("field checks (optionality, repetition, length, data types, tables)", (
   });
 });
 
+describe("second-pass conformance fixes", () => {
+  test("3-character v2.5.1 value types are not 'too long' for OBX-2 (published length 2)", () => {
+    const xad = F.ORU_R01.replace("|NM|8867-4^Heart rate^LN||72|/min^beats per minute^ISO+|60-100|N|", "|XAD|56799-0^Address^LN||1 MAIN ST^^SPRINGFIELD^IL^62701^USA||||");
+    clean(v(xad));
+    assert.equal(has(v(F.ORU_R01.replace("OBX|1|TX|", "OBX|1|CWE|")).errors, "OBX[1]-2", /not valid in v2\.5\.1/), true);
+  });
+  test("table 0203 is user-defined in v2.5.1: local identifier types are not flagged", () => {
+    clean(v(setField(F.ADT_A08, "PID", 3, "MRN12345^^^HOSP^LOCALMRN")));
+  });
+  test("MSA-3 and MSA-6 are backward-compatible only", () => {
+    const r = v("MSH|^~\\&|EMR|HOSP|RIS|HOSP|20261019120500-0700||ACK^R01^ACK|ACK1|P|2.5.1\rMSA|AE|MSG0002|Bad PID|||101^Required field missing^HL70357");
+    assert.equal(has(r.info, "MSA-3", /ERR-8/), true);
+    assert.equal(has(r.info, "MSA-6", /ERR-3/), true);
+  });
+  test("a required field holding only delimiters is missing", () => assert.equal(codeAt(v(setField(F.ADT_A08, "PID", 5, "^^")), "PID-5"), "101"));
+  test("an empty family name is a warning, not a required-field error (XPN components are optional)", () => {
+    const r = v(setField(F.ADT_A08, "PID", 5, "^JANE"));
+    assert.deepEqual(r.errors, []);
+    assert.equal(has(r.warnings, "PID-5.1"), true);
+  });
+  test("unescaped delimiters inside primitive values warn", () => {
+    assert.equal(has(v(F.ORU_R01.replace("19005-8^", "19005-8&IMP^")).warnings, "OBX[1]-3.1", /subcomponent separator/), true);
+    assert.equal(has(v(F.ORU_R01.replace("No acute cardiopulmonary process.", "Impression^none")).warnings, "OBX[1]-5", /\\S\\/), true);
+  });
+  test("table 0396 ISOnnnn and IBTnnnn patterns are accepted", () => {
+    clean(v(F.ORU_R01.replace("^beats per minute^ISO+", "^beats per minute^ISO2955")));
+  });
+});
+
 describe("ORU^R01", () => {
   test("OBX-11 code in OBR-25 is called out", () => assert.equal(has(v(setField(F.ORU_R01, "OBR", 25, "W")).errors, "OBR-25", /table 0085/), true));
   test("OBR-25 M is a later-version code, not v2.5.1", () => assert.equal(has(v(setField(F.ORU_R01, "OBR", 25, "M")).errors, "OBR-25", /not valid in v2\.5\.1/), true));

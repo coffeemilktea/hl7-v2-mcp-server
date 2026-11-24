@@ -22,6 +22,8 @@ const ERROR_TEXT = Object.fromEntries(core.tableCodes("0357", { status: "valid" 
 /** Table 0357 codes that mean the message cannot be processed at all: AR / CR rather than AE / CE. */
 const REJECT_CODES = new Set(["200", "201", "202", "203"]);
 const ACK_TYPES = { AL: "always", NE: "never", ER: "only on error", SU: "only on success" };
+/** Most ERR segments one ACK carries (also the limit on the `errors` input). */
+const MAX_ERR = 100;
 
 /** Canonical validator location ("PID-3[2].4", "OBX[2]-5.1", "EVN") → ERL components, or "" when it is not a segment location. */
 export function erl(location, ctx) {
@@ -58,37 +60,50 @@ export function buildAck(input) {
   if (fromValidation) {
     validation = validateMessage(msg);
     for (const f of validation.errors) {
-      if (f.code) errs.push({ location: f.location, code: f.code, severity: "E", diagnostic: f.message });
-      else unmapped.push(f);
+      if (!f.code) unmapped.push(f);
+      else if (errs.length < MAX_ERR) errs.push({ location: f.location, code: f.code, severity: "E", diagnostic: f.message });
     }
+    if (validation.errors.length - unmapped.length + errors.length > MAX_ERR) notes.push(`Only the first ${MAX_ERR} errors became ERR segments.`);
   }
 
   const failed = errs.some((e) => e.severity === "E") || (validation && !validation.valid);
   const rejected = errs.some((e) => e.severity === "E" && REJECT_CODES.has(e.code));
-  const level = enhanced ? "C" : "A";
-  const code = ackCode ?? `${level}${rejected ? "R" : failed ? "E" : "A"}`;
+  // v2.5.1 §2.9: AR/CR reject an unsupported message type, event, processing id or version; AE reports
+  // content errors. In enhanced mode the accept (commit) ack only says whether the message was safely
+  // received (CA, or CE when it could not be committed), so content errors go in the application ack (AE).
+  let code = ackCode;
+  if (!code) {
+    if (!enhanced) code = rejected ? "AR" : failed ? "AE" : "AA";
+    else if (rejected) code = "CR";
+    else if (failed) {
+      code = "AE";
+      notes.push("Enhanced mode with content errors: this is the application acknowledgment (AE). The accept acknowledgment for this message would be CA, because it could be received and committed.");
+    } else code = "CA";
+  }
+  const commit = code.startsWith("C");
 
-  // Acknowledgment-mode advice (v2.5.1 §2.9).
-  if (code.startsWith("C") && !enhanced) {
+  if (commit && !enhanced) {
     notes.push(`${code} is an enhanced-mode accept (commit) code, but MSH-15/16 are empty, so the sender uses original mode and expects AA, AE or AR.`);
   }
   if (enhanced) {
-    const requested = code.startsWith("C") ? ["MSH-15 Accept Acknowledgment Type", accept] : ["MSH-16 Application Acknowledgment Type", application];
-    const [field, type] = requested;
+    const [field, type] = commit ? ["MSH-15 Accept Acknowledgment Type", accept] : ["MSH-16 Application Acknowledgment Type", application];
     const positive = code.endsWith("A");
     if (!type) notes.push(`${field} is empty; in enhanced mode that means the sender did not ask for this acknowledgment.`);
     else if (type === "NE" || (type === "ER" && positive) || (type === "SU" && !positive)) notes.push(`${field} is '${type}' (${ACK_TYPES[type]}), so the sender does not expect this ${code}.`);
-    if (!ackCode) notes.push(`Enhanced mode (MSH-15 '${accept || "-"}', MSH-16 '${application || "-"}'): this is the accept acknowledgment (${code}). Pass ackCode AA/AE/AR for the application acknowledgment.`);
+    if (!ackCode && commit) notes.push(`Enhanced mode (MSH-15 '${accept || "-"}', MSH-16 '${application || "-"}'): this is the accept acknowledgment (${code}). Pass ackCode AA/AE/AR for the application acknowledgment.`);
   }
   if (["AE", "AR", "CE", "CR"].includes(code) && errs.length === 0) {
     notes.push(`${code} without an ERR segment: add 'errors' (or fromValidation) so the sender learns what was wrong.`);
   }
-  if (["AA", "CA"].includes(code) && errs.some((e) => e.severity === "E")) {
-    notes.push(`${code} (accept) is being sent with error-severity ERR segments; receivers may ignore them. Consider ${level}E.`);
+  if (code === "AA" && errs.some((e) => e.severity === "E")) {
+    notes.push("AA (accept) is being sent with error-severity ERR segments; receivers may ignore them. Consider AE.");
+  }
+  if (code === "CA" && errs.some((e) => e.severity === "E" && !REJECT_CODES.has(e.code))) {
+    notes.push("Content errors belong in the application acknowledgment (AE); a CA only confirms the message was committed.");
   }
   const version = m(12) || "2.5.1";
   if (core.comp(version, 1, ctx.compSep) !== "2.5.1") {
-    notes.push(`The message is version '${core.comp(version, 1, ctx.compSep)}'. The ACK echoes it in MSH-12; a v2.5.1-only receiver would instead reject with ${level}R and ERR-3 code 203 (unsupported version id).`);
+    notes.push(`The message is version '${core.comp(version, 1, ctx.compSep)}'. The ACK echoes it in MSH-12; a v2.5.1-only receiver would instead reject with ${enhanced ? "CR" : "AR"} and ERR-3 code 203 (unsupported version id).`);
   }
 
   const cid = controlId ?? `ACK${randomBytes(8).toString("hex").toUpperCase()}`;
@@ -148,7 +163,7 @@ export function register(server) {
               userMessage: z.string().max(250).optional().describe("ERR-8 User Message."),
             })
           )
-          .max(100)
+          .max(MAX_ERR)
           .optional()
           .describe("ERR segments to include."),
         fromValidation: z.coerce.boolean().default(false).describe("Validate the message and add an ERR for each validation error."),

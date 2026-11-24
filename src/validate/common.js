@@ -39,7 +39,8 @@ export function checkPid(ctx, r, pid) {
     if (!comp(rep, 5, compSep)) r.warn(at(pid, 3, { ...o, comp: 5 }), "No Identifier Type Code (MR, PI, SS, DL...). Receivers use this to pick the right identifier out of the list.");
   });
   const name = reps(pid.f(5), repSep)[0];
-  if (name && !comp(name, 1, compSep)) r.err(at(pid, 5, { comp: 1 }), "Family Name is empty.", "101");
+  // XPN components are all optional in v2.5.1, so a name without a family name is conformant but rarely intended.
+  if (name && !comp(name, 1, compSep)) r.warn(at(pid, 5, { comp: 1 }), "Family Name (XPN.1) is empty; patient matching usually depends on it.");
 }
 
 /** Shared PV1 checks. Patient class is a User table, but an unknown class breaks every downstream worklist, so it is an error. */

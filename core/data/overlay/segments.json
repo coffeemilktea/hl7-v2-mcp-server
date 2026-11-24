@@ -1330,7 +1330,7 @@
         "len": 3,
         "opt": "C",
         "rpt": 1,
-        "desc": "Table 0125. CE=Coded Entry, CWE=Coded with Exceptions, CX=Extended Composite ID, DT=Date, DTM=Date/Time, ED=Encapsulated Data, FT=Formatted Text, GTS=General Timing Specification, ID=Coded Value for HL7, IS=Coded Value for User-Defined, MO=Money, NA=Numeric Array, NM=Numeric, RP=Reference Pointer, SN=Structured Numeric, ST=String Data, TM=Time, TX=Text Data, XAD=Extended Address, XCN=Extended Composite ID, XON=Extended Composite Name for Organizations, XPN=Extended Person Name, XTN=Extended Telecommunications Number."
+        "desc": "Table 0125 in v2.5.1: AD, CE, CF, CK, CN, CP, CX, DT, ED, FT, MO, NM, PN, RP, SN, ST, TM, TN, TS, TX, XAD, XCN, XON, XPN, XTN. CWE and DTM were added in v2.6 and CNE in v2.7; in v2.5.1 send coded results as CE and date/times as TS. v2.5.1 publishes a length of 2 although XAD, XCN, XON, XPN and XTN have three characters (v2.6 raised it to 3), so any valid table 0125 code is accepted."
       },
       {
         "seq": 3,
