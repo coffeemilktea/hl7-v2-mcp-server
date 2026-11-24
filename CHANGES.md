@@ -5,7 +5,7 @@
 ### Parser (`hl7v2-core`)
 
 - Encoding characters are read from MSH-2 only. A short MSH-2 such as `^~\` used to make the field separator the subcomponent separator.
-- `\Xhh\` is decoded as UTF-8 when MSH-18 is `UNICODE UTF-8`, and `\.sp n\` becomes line breaks. CRLF is escaped as one `\.br\`. Leading whitespace is tolerated.
+- `\Xhh\` is decoded as UTF-8 when MSH-18 is `UNICODE UTF-8`, and `\.sp n\` becomes line breaks (at most 100, so a hostile count cannot exhaust memory). CRLF is escaped as one `\.br\`. Leading whitespace is tolerated.
 - `isNull()` marks the HL7 explicit null `""`. `parse_message` returns it as `null`, and de-identification leaves it alone.
 - DTM: a fraction is only allowed after the seconds. Calendar days and UTC offset ranges are checked. A missing offset is allowed by v2.5.1, so it is now a single info note rather than a warning per field. New `checkDate`, `checkTime`, `NM_RE` and `SI_RE`.
 
@@ -15,6 +15,8 @@
 - **Field checks** run on every segment: R/W/B optionality, repetition, length, field and component counts, DTM/DT/TM/NM/SI formats, and ID/IS table values. OBX-5 is checked as the type in OBX-2.
 - Locations are canonical, with global occurrence (`OBX[2]-5.1`). Group-relative tags such as `OBR[2]/OBX[1]-11` are gone.
 - Each error carries its table 0357 code.
+- An HL7 table code that matches only when case is ignored is a warning (User tables: a note).
+- `validate_message` lists at most 200 issues per severity, and fewer (50, then 10) when that would exceed the output cap; `counts` keeps the totals.
 - New checks: MSH-2 must be four distinct characters; MSG.2 is required; an undefined type/event pair is error 201; an ACK must use structure ACK.
 - Profiles now hold only the semantic checks. Required-field, order and timestamp checks moved to the generic layers.
 
@@ -22,13 +24,13 @@
 
 - ERR-2 (ERL) is built from canonical locations. Before, `ORDER[2]/ORC-1` became `ORD^1`, and message-level findings became `mes^1`.
 - ERR-3 codes come from the validator rather than from regexes over message text.
-- Original vs enhanced mode follows MSH-15/16. A commit code in original mode gets a note, as does an ack the sender asked not to receive (NE/ER/SU). Unsupported type/event/processing ID/version → AR (CR).
+- Original vs enhanced mode follows MSH-15/16. A commit code in original mode gets a note, as does an ack the sender asked not to receive (NE/ER/SU). Unsupported type/event/processing ID → AR (CR). A non-2.5.1 version is only noted; pass code 203 to reject it. The `timestamp` input must be an in-range DTM.
 - It refuses to acknowledge an ACK. MSH-2 is rebuilt from the parsed delimiters, and every segment is CR-terminated.
 
 ### Tools and tests
 
 - Message inputs are capped at 1,000,000 characters, and empty input is rejected with a clear error.
-- New realistic fixtures: an ADT^A01 with repetitions, subcomponents, escapes, nulls and enhanced mode, and a multi-order ORU^R01 lab result. New edge-case tests cover custom delimiters, LF/CRLF/MLLP, escapes, DTM precision and ACK ERL, codes and modes. 121 → 166 tests.
+- New realistic fixtures: an ADT^A01 with repetitions, subcomponents, escapes, nulls and enhanced mode, and a multi-order ORU^R01 lab result. New edge-case tests cover custom delimiters, LF/CRLF/MLLP, escapes, DTM precision and ACK ERL, codes and modes. 121 → 181 tests.
 - Fixture corrections that the new checks found: an XCN prefix sent as the degree, `CPT` → `C4`, `UCUM`/`SCT` (not v2.5.1 table 0396 codes), and IPC-5 over its length.
 
 ## 2.0.0 (unreleased, branch `buildout`)

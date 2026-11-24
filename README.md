@@ -113,7 +113,7 @@ characters. Empty or non-HL7 input returns an MCP error that explains the proble
 | `search_definitions` | **New.** Searches segments, fields, data types, events, structures, tables and codes by concept ("accession", "discharge date"). |
 | `parse_message` | Parses to JSON with fields labelled by name. Delimiters come from MSH-1/MSH-2 and escapes are decoded. The HL7 explicit null `""` is returned as JSON `null`. It also returns a summary (MRN, prior MRN, order control, accession and *which field it came from*, Study Instance UID, result status). Filter by segment type and page with offset/limit. |
 | `validate_message` | Checks message type, segment order and fields against v2.5.1, plus semantic profiles (below). Each error has a canonical location and its table 0357 code. |
-| `generate_ack` | **New.** Builds a v2.5.1 ACK: swapped MSH, `ACK^<trigger>^ACK`, the sender's delimiters, and MSA echoing MSH-10. ERR segments carry the ERL location, a table 0357 code and the severity. It follows original vs enhanced mode (MSH-15/16: AA/AE/AR or CA/CE/CR). `fromValidation` turns validation errors into ERRs, using AR (or CR) for an unsupported message type, event, processing ID or version. |
+| `generate_ack` | **New.** Builds a v2.5.1 ACK: swapped MSH, `ACK^<trigger>^ACK`, the sender's delimiters, and MSA echoing MSH-10. ERR segments carry the ERL location, a table 0357 code and the severity. It follows original vs enhanced mode (MSH-15/16: AA/AE/AR or CA/CE/CR). `fromValidation` turns validation errors into ERRs, using AR (or CR) for an unsupported message type, event or processing ID. A non-2.5.1 version is only noted; pass an error with code 203 to reject it. |
 | `diff_messages` | **New.** Compares two messages by segment, field, component or subcomponent, using decoded values and field names. MSH-7 and MSH-10 are ignored by default. |
 | `deidentify_message` | **New.** Removes or pseudonymises HIPAA Safe Harbor identifiers by v2.5.1 field and data type (details below). It never returns the original values. |
 
@@ -134,7 +134,7 @@ The validator works in layers. The first three run on every message:
    - OBX-5 checked as the type named in OBX-2
    - `""` (explicit null) is accepted, except in a required field, where it warns
 
-Each error carries the table 0357 code an ACK would report: 100 sequence, 101 required, 102 data type, 103 table, 200–203 unsupported type, event, processing ID or version. Locations are canonical, such as `OBX[2]-5.1` or `PID-3[2].4`; `[n]` is the segment's occurrence in the whole message.
+Each error carries the table 0357 code an ACK would report: 100 sequence, 101 required, 102 data type, 103 table, 200–202 unsupported type, event or processing ID. (203, unsupported version, is not emitted: other versions only warn.) Locations are canonical, such as `OBX[2]-5.1` or `PID-3[2].4`; `[n]` is the segment's occurrence in the whole message.
 
 4. **Semantic profiles** for these message types:
 
