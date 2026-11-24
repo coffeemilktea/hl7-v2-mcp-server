@@ -183,6 +183,13 @@ describe("second-pass conformance fixes", () => {
     assert.equal(has(v(F.ORU_R01.replace("19005-8^", "19005-8&IMP^")).warnings, "OBX[1]-3.1", /subcomponent separator/), true);
     assert.equal(has(v(F.ORU_R01.replace("No acute cardiopulmonary process.", "Impression^none")).warnings, "OBX[1]-5", /\\S\\/), true);
   });
+  test("issue lists are capped so a broken large message still returns a usable report", () => {
+    const r = v(F.ORU_R01 + "\r" + Array.from({ length: 400 }, (_, i) => `OBX|${i + 3}|NM|X^Y^LN||bad|||||F`).join("\r"));
+    assert.ok(r.counts.errors > 400);
+    assert.equal(r.errors.length, 200);
+    assert.match(r.truncated, /200/);
+    assert.equal(r.segmentCount, 406);
+  });
   test("table 0396 ISOnnnn and IBTnnnn patterns are accepted", () => {
     clean(v(F.ORU_R01.replace("^beats per minute^ISO+", "^beats per minute^ISO2955")));
   });

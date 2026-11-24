@@ -122,17 +122,24 @@ export function validateMessage(message) {
   return done({ typeKey, structure: structureId, version, profile });
 }
 
+/** Most issues returned per severity; `counts` always has the totals. */
+export const MAX_ISSUES = 200;
+
 function finish(r, { typeKey, structure, version, profile, segNames }) {
+  const counts = { errors: r.errors.length, warnings: r.warnings.length, info: r.info.length };
+  const truncated = Object.values(counts).some((n) => n > MAX_ISSUES);
   return {
     valid: r.errors.length === 0,
     messageType: typeKey || null,
     messageStructure: structure || null,
     version: version || null,
     profileApplied: profile ? `${typeKey} — ${profile.label}` : "base and structure checks only",
-    counts: { errors: r.errors.length, warnings: r.warnings.length, info: r.info.length },
-    errors: r.errors,
-    warnings: r.warnings,
-    info: r.info,
-    segmentsFound: segNames,
+    counts,
+    ...(truncated ? { truncated: `Only the first ${MAX_ISSUES} issues of each severity are listed; counts has the totals.` } : {}),
+    errors: r.errors.slice(0, MAX_ISSUES),
+    warnings: r.warnings.slice(0, MAX_ISSUES),
+    info: r.info.slice(0, MAX_ISSUES),
+    segmentCount: segNames.length,
+    segmentsFound: segNames.slice(0, MAX_ISSUES),
   };
 }
