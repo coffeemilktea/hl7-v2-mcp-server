@@ -64,6 +64,9 @@ test("escape sequences: formatting, hex by MSH-18 charset, custom escape charact
   const u = core.dissect("MSH|^~\\&|A|||||||||||||||UNICODE UTF-8");
   assert.equal(u.charset, "utf-8");
   assert.equal(core.unescape("caf\\XC3A9\\", u), "café");
+  // Only the first MSH-18 repetition is the default character set.
+  assert.equal(core.dissect("MSH|^~\\&|A|||||||||||||||8859/1~UNICODE UTF-8").charset, "8859/1");
+  assert.equal(core.dissect("MSH|^~\\&|A|||||||||||||||UNICODE UTF-8~8859/1").charset, "utf-8");
   const alt = core.dissect("MSH#$*@!#A");
   assert.equal(core.unescape("a@F@b@T@c@E@", alt), "a#b!c@");
   assert.equal(core.escape("line1\r\nline2", d), "line1\\.br\\line2");

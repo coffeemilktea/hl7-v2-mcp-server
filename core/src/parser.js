@@ -48,8 +48,8 @@ export function dissect(message) {
   const repSep = pick(1, DEFAULTS.repSep);
   const escChar = pick(2, DEFAULTS.escChar);
   const subSep = pick(3, DEFAULTS.subSep);
-  // MSH-18 Character Set decides how \Xhh..\ bytes are decoded.
-  const msh18 = msh.startsWith("MSH") ? msh.split(fieldSep)[17] ?? "" : "";
+  // MSH-18 Character Set decides how \Xhh..\ bytes are decoded; its first repetition is the default set.
+  const msh18 = msh.startsWith("MSH") ? splitOn(msh.split(fieldSep)[17] ?? "", repSep)[0].trim() : "";
   const charset = /UTF-8/i.test(msh18) ? "utf-8" : msh18 ? msh18 : null;
   return { lines, fieldSep, compSep, repSep, escChar, subSep, charset };
 }
