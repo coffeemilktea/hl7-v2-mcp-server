@@ -84,15 +84,22 @@ export const comp = (val, n, sep = "^") => (splitOn(val ?? "", sep)[n - 1] ?? ""
 /** Non-empty repetitions of a raw value. */
 export const reps = (val, sep = "~") => splitOn(val ?? "", sep).filter((x) => x.trim().length > 0);
 
+/** Most line breaks one \.sp n\ produces, so a hostile count cannot exhaust memory. */
+const MAX_SP_LINES = 100;
+
 function hexBytes(hex, charset) {
   const bytes = Uint8Array.from(hex.match(/.{2}/g).map((b) => parseInt(b, 16)));
   if (charset === "utf-8") return new TextDecoder("utf-8").decode(bytes);
-  return String.fromCharCode(...bytes); // ASCII / ISO 8859-1
+  // ASCII / ISO 8859-1: one character per byte (no argument spreading, which overflows the stack on long runs).
+  let out = "";
+  for (const b of bytes) out += String.fromCharCode(b);
+  return out;
 }
 
 /**
  * Decode HL7 escape sequences in one pass: \F\ \S\ \T\ \R\ \E\, \Xhh..\ (UTF-8
- * when MSH-18 says so, otherwise ISO 8859-1), \.br\ and \.sp n\ as line breaks;
+ * when MSH-18 says so, otherwise ISO 8859-1), \.br\ and \.sp n\ as line breaks
+ * (n capped at 100);
  * highlighting (\H\ \N\) and other formatting commands are dropped. Unknown
  * sequences (\Cxxyy\, \Mxxyyzz\, \Zxx\ local escapes) are left as-is.
  */
@@ -122,7 +129,7 @@ export function unescape(value, ctx = DEFAULTS) {
     else if (seq === "R") rep = ctx.repSep;
     else if (seq === "E") rep = e;
     else if (seq === ".br") rep = "\n";
-    else if ((m = /^\.sp\s*(\d*)$/.exec(seq))) rep = "\n".repeat(Math.max(1, Number(m[1] || 1)));
+    else if ((m = /^\.sp\s*(\d*)$/.exec(seq))) rep = "\n".repeat(Math.min(MAX_SP_LINES, Math.max(1, Number(m[1] || 1))));
     else if (seq === "H" || seq === "N") rep = "";
     else if (/^X([0-9A-Fa-f]{2})+$/.test(seq)) rep = hexBytes(seq.slice(1), ctx.charset);
     else if (/^\.(fi|nf|in|ti|sk|ce)/.test(seq)) rep = "";

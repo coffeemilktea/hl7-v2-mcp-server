@@ -70,6 +70,12 @@ test("escape sequences: formatting, hex by MSH-18 charset, custom escape charact
   assert.equal(core.escape("a#b!c", alt), "a@F@b@T@c");
 });
 
+test("escape decoding is bounded: huge \\.sp n\\ is capped, long \\Xhh..\\ runs do not overflow", () => {
+  const d = core.dissect("MSH|^~\\&|A");
+  assert.equal(core.unescape("a\\.sp999999999\\b", d), `a${"\n".repeat(100)}b`);
+  assert.equal(core.unescape(`\\X${"41".repeat(300000)}\\`, d), "A".repeat(300000));
+});
+
 test("parser strips MLLP framing and accepts \\n line endings", () => {
   const p = core.parseMessage("\x0B" + ORU_R01.replace(/\r/g, "\n") + "\x1C\x0D");
   assert.equal(p.segments.length, 6);
