@@ -234,6 +234,11 @@ describe("generate_ack", () => {
     assert.equal(again.isError, true);
     assert.match(again.content[0].text, /never acknowledged/);
   });
+  test("an out-of-range timestamp is rejected", async () => {
+    const r = await call("generate_ack", { message: F.ORU_R01, timestamp: "20261332" });
+    assert.equal(r.isError, true);
+    assert.match(r.content[0].text, /valid HL7 DTM/);
+  });
 });
 
 describe("input validation", () => {

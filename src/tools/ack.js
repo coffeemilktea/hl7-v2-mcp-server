@@ -143,7 +143,7 @@ export function register(server) {
     {
       title: "Generate an ACK",
       description:
-        "Build the HL7 v2.5.1 general acknowledgment (ACK) for a received message: MSH with sender/receiver swapped, MSH-9 ACK^<trigger>^ACK, MSA-2 echoing MSH-10, and optional ERR segments (ERR-2 location, ERR-3 table 0357 code, ERR-4 severity). Honours original vs enhanced mode (MSH-15/16). With fromValidation the message is validated first and each error becomes an ERR; unsupported type/event/processing id/version give AR (CR).",
+        "Build the HL7 v2.5.1 general acknowledgment (ACK) for a received message: MSH with sender/receiver swapped, MSH-9 ACK^<trigger>^ACK, MSA-2 echoing MSH-10, and optional ERR segments (ERR-2 location, ERR-3 table 0357 code, ERR-4 severity). Honours original vs enhanced mode (MSH-15/16). With fromValidation the message is validated first and each error becomes an ERR; an unsupported message type, event or processing id (ERR-3 200–202) gives AR (CR). A non-2.5.1 MSH-12 is only noted; to reject it pass an error with code 203.",
       inputSchema: {
         message,
         ackCode: z
@@ -168,7 +168,11 @@ export function register(server) {
           .describe("ERR segments to include."),
         fromValidation: bool(false).describe("Validate the message and add an ERR for each validation error."),
         controlId: z.string().trim().min(1).max(20).optional().describe("MSH-10 for the ACK (max 20 characters). Default: random."),
-        timestamp: z.string().regex(core.TS_RE).optional().describe("MSH-7 for the ACK as an HL7 DTM, e.g. 20261019120500-0700. Default: now, with offset."),
+        timestamp: z
+          .string()
+          .trim()
+          .refine((s) => s !== "" && core.checkTimestamp(s).ok, "Not a valid HL7 DTM (YYYY[MM[DD[HH[MM[SS[.S[S[S[S]]]]]]]]][+/-ZZZZ], with in-range month, day, hour, minute, second and offset).")
+          .optional().describe("MSH-7 for the ACK as an HL7 DTM, e.g. 20261019120500-0700. Default: now, with offset."),
       },
       outputSchema: out({
         ack: z.string(),
