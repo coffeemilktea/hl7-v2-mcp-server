@@ -60,7 +60,8 @@ const validList = (id) => tableCodes(id, { status: "valid" }).map((v) => v.code)
 /**
  * Check a coded value against a v2.5.1 table.
  *
- * - valid in v2.5.1            → passes (a note if only the case differs)
+ * - valid in v2.5.1            → passes (if only the case differs: a warning for
+ *                                 HL7 tables, a note for User tables)
  * - in another version only    → `severity` (default error), naming the version
  * - listed later, unverifiable → warning (never presented as valid)
  * - unknown                    → `severity`, or a warning for User tables
@@ -79,7 +80,12 @@ export function checkTableCode(r, loc, tableId, value, { severity = "error", str
   const res = checkCode(t.id, v);
   const report = (sev, msg) => (sev === "error" ? r.err(loc, msg, code) : sev === "warning" ? r.warn(loc, msg) : r.note(loc, msg));
   if (res.known && res.status === "valid") {
-    if (res.entry.code !== v) r.note(loc, `'${v}' matches ${label} code '${res.entry.code}' only when case is ignored; HL7 codes are case-sensitive.`);
+    if (res.entry.code !== v) {
+      // HL7-defined codes are case-sensitive; a site may have defined its User table codes either way.
+      const msg = `'${v}' matches ${label} code '${res.entry.code}' only when case is ignored; HL7 codes are case-sensitive, so send '${res.entry.code}'.`;
+      if (t.type === "User") r.note(loc, msg);
+      else r.warn(loc, msg);
+    }
     return true;
   }
   if (res.known && res.status === "not-in-2.5.1") {

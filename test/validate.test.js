@@ -190,6 +190,12 @@ describe("second-pass conformance fixes", () => {
     assert.match(r.truncated, /200/);
     assert.equal(r.segmentCount, 406);
   });
+  test("HL7 table codes are case-sensitive: a case-only match warns", () => {
+    const r = v(F.ADT_A08.replace("ADT^A08^ADT_A01", "adt^a08^ADT_A01"));
+    assert.equal(r.valid, true);
+    assert.equal(has(r.warnings, "MSH-9.1", /case-sensitive, so send 'ADT'/), true);
+    assert.equal(has(r.warnings, "MSH-9.2", /'A08'/), true);
+  });
   test("table 0396 ISOnnnn and IBTnnnn patterns are accepted", () => {
     clean(v(F.ORU_R01.replace("^beats per minute^ISO+", "^beats per minute^ISO2955")));
   });
